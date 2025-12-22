@@ -11,7 +11,7 @@ from datetime import datetime
 class SettingsLogger:
     """Logs all generation settings to a searchable history file"""
     
-    LOG_FILE = os.path.expanduser("~/AI/ComfyUI/output/generation_history.json")
+    LOG_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "output", "generation_history.json")
     
     @classmethod
     def INPUT_TYPES(cls):
@@ -76,7 +76,7 @@ class SettingsLogger:
 class SettingsViewer:
     """View and search past generation settings"""
     
-    LOG_FILE = os.path.expanduser("~/AI/ComfyUI/output/generation_history.json")
+    LOG_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "output", "generation_history.json")
     
     @classmethod
     def INPUT_TYPES(cls):
@@ -128,7 +128,7 @@ class SettingsViewer:
 class SettingsRecall:
     """Recall settings from a specific history entry by ID"""
     
-    LOG_FILE = os.path.expanduser("~/AI/ComfyUI/output/generation_history.json")
+    LOG_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "output", "generation_history.json")
     
     @classmethod
     def INPUT_TYPES(cls):
@@ -165,7 +165,7 @@ class SettingsRecall:
 class CompareSettings:
     """Compare two history entries side by side"""
     
-    LOG_FILE = os.path.expanduser("~/AI/ComfyUI/output/generation_history.json")
+    LOG_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "output", "generation_history.json")
     
     @classmethod
     def INPUT_TYPES(cls):
