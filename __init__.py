@@ -243,3 +243,66 @@ from .advanced_lighting_nodes import NODE_CLASS_MAPPINGS as ADV_LIGHT_MAPPINGS
 from .advanced_lighting_nodes import NODE_DISPLAY_NAME_MAPPINGS as ADV_LIGHT_DISPLAY_MAPPINGS
 NODE_CLASS_MAPPINGS.update(ADV_LIGHT_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(ADV_LIGHT_DISPLAY_MAPPINGS)
+
+# Import skin detail nodes
+from .skin_detail_nodes import NODE_CLASS_MAPPINGS as SKIN_MAPPINGS
+from .skin_detail_nodes import NODE_DISPLAY_NAME_MAPPINGS as SKIN_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(SKIN_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(SKIN_DISPLAY_MAPPINGS)
+
+# Import hair detail nodes
+from .hair_detail_nodes import NODE_CLASS_MAPPINGS as HAIR_MAPPINGS
+from .hair_detail_nodes import NODE_DISPLAY_NAME_MAPPINGS as HAIR_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(HAIR_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(HAIR_DISPLAY_MAPPINGS)
+
+# Import body detail nodes
+from .body_detail_nodes import NODE_CLASS_MAPPINGS as BODY_MAPPINGS
+from .body_detail_nodes import NODE_DISPLAY_NAME_MAPPINGS as BODY_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(BODY_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(BODY_DISPLAY_MAPPINGS)
+
+# Import face detail nodes
+from .face_detail_nodes import NODE_CLASS_MAPPINGS as FACE_MAPPINGS
+from .face_detail_nodes import NODE_DISPLAY_NAME_MAPPINGS as FACE_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(FACE_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(FACE_DISPLAY_MAPPINGS)
+
+# Import clothing detail nodes
+from .clothing_detail_nodes import NODE_CLASS_MAPPINGS as CLOTHING_MAPPINGS
+from .clothing_detail_nodes import NODE_DISPLAY_NAME_MAPPINGS as CLOTHING_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(CLOTHING_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(CLOTHING_DISPLAY_MAPPINGS)
+
+# Import environment detail nodes
+from .environment_detail_nodes import NODE_CLASS_MAPPINGS as ENV_MAPPINGS
+from .environment_detail_nodes import NODE_DISPLAY_NAME_MAPPINGS as ENV_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(ENV_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(ENV_DISPLAY_MAPPINGS)
+
+# Import camera effects nodes
+from .camera_effects_nodes import NODE_CLASS_MAPPINGS as CAM_MAPPINGS
+from .camera_effects_nodes import NODE_DISPLAY_NAME_MAPPINGS as CAM_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(CAM_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(CAM_DISPLAY_MAPPINGS)
+
+# Import artistic style nodes
+from .artistic_style_nodes import NODE_CLASS_MAPPINGS as ART_MAPPINGS
+from .artistic_style_nodes import NODE_DISPLAY_NAME_MAPPINGS as ART_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(ART_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(ART_DISPLAY_MAPPINGS)
+
+# Import motion master nodes
+from .motion_master_nodes import NODE_CLASS_MAPPINGS as MOTION_MASTER_MAPPINGS
+from .motion_master_nodes import NODE_DISPLAY_NAME_MAPPINGS as MOTION_MASTER_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(MOTION_MASTER_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(MOTION_MASTER_DISPLAY_MAPPINGS)
+
+# Import private nodes (local only, not tracked by git)
+try:
+    from .private_nodes import NODE_CLASS_MAPPINGS as PRIVATE_MAPPINGS
+    from .private_nodes import NODE_DISPLAY_NAME_MAPPINGS as PRIVATE_DISPLAY_MAPPINGS
+    NODE_CLASS_MAPPINGS.update(PRIVATE_MAPPINGS)
+    NODE_DISPLAY_NAME_MAPPINGS.update(PRIVATE_DISPLAY_MAPPINGS)
+except ImportError:
+    pass  # Private nodes file doesn't exist, skip
