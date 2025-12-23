@@ -141,35 +141,6 @@ class DetailFocusZones:
         return (f"{prompt}, {details}",)
 
 
-class AgeController:
-    """Fine-tune apparent age"""
-    
-    AGES = {
-        "16-20": "young adult, late teens, youthful appearance, fresh face, early twenties",
-        "21-25": "early twenties, young adult, youthful, mid-twenties",
-        "26-30": "mid to late twenties, young adult, prime age, late twenties",
-        "31-35": "early thirties, mature young adult, established adult",
-        "36-40": "mid thirties to forty, mature adult, experienced look",
-        "41-50": "forties, mature, distinguished, middle-aged",
-    }
-    
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "prompt": ("STRING", {"default": "", "multiline": True}),
-                "age_range": (list(cls.AGES.keys()),),
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("aged_prompt",)
-    FUNCTION = "set_age"
-    CATEGORY = "Mason's Nodes/Content Quality"
-
-    def set_age(self, prompt, age_range):
-        age_desc = self.AGES.get(age_range, "")
-        return (f"{prompt}, {age_desc}",)
 
 
 class BodyTypeSelector:
@@ -240,7 +211,7 @@ NODE_CLASS_MAPPINGS = {
     "SkinToneMatcher": SkinToneMatcher,
     "BackgroundConsistency": BackgroundConsistency,
     "DetailFocusZones": DetailFocusZones,
-    "AgeController": AgeController,
+
     "BodyTypeSelector": BodyTypeSelector,
 }
 
@@ -249,6 +220,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SkinToneMatcher": "🎨 Skin Tone Matcher",
     "BackgroundConsistency": "🖼️ Background Consistency",
     "DetailFocusZones": "🔍 Detail Focus Zones",
-    "AgeController": "📅 Age Controller",
+
     "BodyTypeSelector": "�� Body Type Selector",
 }
