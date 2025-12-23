@@ -144,6 +144,27 @@ After generating all frames:
 
 ---
 
+## 7. Visual Pose Verification (Zero VRAM "ControlNet")
+
+**Purpose:** Verify your pose logic visually before generating (saves time/compute).
+
+```text
+Visual Step (Check what you are asking for):
+1. PoseVisualizer → Select "arms=crossed", "legs=spread"
+2. Preview Image → SEE the stick figure. Does it look right?
+
+Generation Step (Match the visual):
+3. UpperBodyRig → Select "crossed_chest"
+4. LowerBodyRig → Select "legs_spread"
+5. PoseStringAssembler → Connect rigs to get full prompt
+6. CLIP Text Encode → Connect assembled string here
+
+*Note: If you eventually get a ControlNet model, you can plug the
+PoseVisualizer image directly into it!*
+```
+
+---
+
 ## Quick Reference: Node Categories
 
 | Category | Use For |
