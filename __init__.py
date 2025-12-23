@@ -418,6 +418,12 @@ from .efficiency_nodes import NODE_DISPLAY_NAME_MAPPINGS as EFFICIENCY_DISPLAY_M
 NODE_CLASS_MAPPINGS.update(EFFICIENCY_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(EFFICIENCY_DISPLAY_MAPPINGS)
 
+# Import NSFW LoRA emulator nodes
+from .nsfw_lora_emulator_nodes import NODE_CLASS_MAPPINGS as NSFW_LORA_MAPPINGS
+from .nsfw_lora_emulator_nodes import NODE_DISPLAY_NAME_MAPPINGS as NSFW_LORA_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(NSFW_LORA_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(NSFW_LORA_DISPLAY_MAPPINGS)
+
 # Import private nodes (local only, not tracked by git)
 try:
     from .private_nodes import NODE_CLASS_MAPPINGS as PRIVATE_MAPPINGS
