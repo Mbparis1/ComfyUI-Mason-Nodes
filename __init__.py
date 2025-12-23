@@ -406,6 +406,18 @@ from .advanced_control_nodes import NODE_DISPLAY_NAME_MAPPINGS as ADV_CONTROL_DI
 NODE_CLASS_MAPPINGS.update(ADV_CONTROL_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(ADV_CONTROL_DISPLAY_MAPPINGS)
 
+# Import micro detail nodes
+from .micro_detail_nodes import NODE_CLASS_MAPPINGS as MICRO_MAPPINGS
+from .micro_detail_nodes import NODE_DISPLAY_NAME_MAPPINGS as MICRO_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(MICRO_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(MICRO_DISPLAY_MAPPINGS)
+
+# Import efficiency nodes
+from .efficiency_nodes import NODE_CLASS_MAPPINGS as EFFICIENCY_MAPPINGS
+from .efficiency_nodes import NODE_DISPLAY_NAME_MAPPINGS as EFFICIENCY_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(EFFICIENCY_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(EFFICIENCY_DISPLAY_MAPPINGS)
+
 # Import private nodes (local only, not tracked by git)
 try:
     from .private_nodes import NODE_CLASS_MAPPINGS as PRIVATE_MAPPINGS
