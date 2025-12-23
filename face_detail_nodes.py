@@ -289,6 +289,152 @@ class DimpleController:
         return (f"{prompt}, {dim}",)
 
 
+class ForeheadController:
+    """Control forehead appearance"""
+    
+    HEIGHT = {
+        "low": "low forehead, short forehead, small forehead area",
+        "medium": "medium forehead, balanced forehead, proportional",
+        "high": "high forehead, tall forehead, prominent forehead",
+        "very_high": "very high forehead, large forehead, bold forehead",
+    }
+    
+    WIDTH = {
+        "narrow": "narrow forehead, slim forehead",
+        "medium": "medium width forehead, balanced",
+        "wide": "wide forehead, broad forehead",
+    }
+    
+    FEATURES = {
+        "smooth": "smooth forehead, flawless forehead skin",
+        "expression_lines": "forehead lines, expression lines, mature forehead",
+        "prominent_brow": "prominent brow ridge, strong brow bone",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "height": (list(cls.HEIGHT.keys()),),
+                "width": (list(cls.WIDTH.keys()),),
+                "features": (list(cls.FEATURES.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("forehead_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Face Detail"
+
+    def apply(self, prompt, height, width, features):
+        h = self.HEIGHT.get(height, "")
+        w = self.WIDTH.get(width, "")
+        f = self.FEATURES.get(features, "")
+        return (f"{prompt}, {h}, {w}, {f}",)
+
+
+class CheekFullnessController:
+    """Control cheek fullness and definition"""
+    
+    FULLNESS = {
+        "hollow": "hollow cheeks, sunken cheeks, gaunt face, model thin",
+        "slim": "slim cheeks, lean face, defined face, low body fat",
+        "natural": "natural cheeks, balanced fullness, healthy face",
+        "full": "full cheeks, round cheeks, youthful cheeks",
+        "chubby": "chubby cheeks, puffy cheeks, baby face, cute round",
+    }
+    
+    BLUSH_AREA = {
+        "none": "",
+        "apples": "rosy cheek apples, blushing on cheek apples",
+        "high": "high blush, blush near cheekbones",
+        "full": "full cheek blush, all-over rosy cheeks",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "fullness": (list(cls.FULLNESS.keys()),),
+                "blush_area": (list(cls.BLUSH_AREA.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("cheek_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Face Detail"
+
+    def apply(self, prompt, fullness, blush_area):
+        f = self.FULLNESS.get(fullness, "")
+        b = self.BLUSH_AREA.get(blush_area, "")
+        if b:
+            return (f"{prompt}, {f}, {b}",)
+        return (f"{prompt}, {f}",)
+
+
+class FaceSymmetryController:
+    """Control facial symmetry for realism"""
+    
+    SYMMETRY = {
+        "perfect": "perfectly symmetrical face, ideal symmetry, flawless",
+        "near_perfect": "near-perfect facial symmetry, balanced features",
+        "natural": "natural facial symmetry, slight asymmetry, realistic",
+        "slight_asymmetry": "slight facial asymmetry, natural imperfection, authentic",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "symmetry": (list(cls.SYMMETRY.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("symmetry_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Face Detail"
+
+    def apply(self, prompt, symmetry):
+        s = self.SYMMETRY.get(symmetry, "")
+        return (f"{prompt}, {s}",)
+
+
+class TeethController:
+    """Control teeth appearance when visible"""
+    
+    TEETH = {
+        "hidden": "mouth closed, no teeth visible",
+        "subtle": "teeth slightly visible, closed smile",
+        "visible": "teeth visible, open smile, showing teeth",
+        "perfect": "perfect white teeth, straight teeth, beautiful smile",
+        "natural": "natural teeth, realistic teeth, authentic smile",
+        "gap": "gap tooth, tooth gap, diastema, cute gap",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "teeth_type": (list(cls.TEETH.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("teeth_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Face Detail"
+
+    def apply(self, prompt, teeth_type):
+        t = self.TEETH.get(teeth_type, "")
+        return (f"{prompt}, {t}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "FacialStructureController": FacialStructureController,
     "NoseController": NoseController,
@@ -297,6 +443,10 @@ NODE_CLASS_MAPPINGS = {
     "EyebrowShapeController": EyebrowShapeController,
     "EarController": EarController,
     "DimpleController": DimpleController,
+    "ForeheadController": ForeheadController,
+    "CheekFullnessController": CheekFullnessController,
+    "FaceSymmetryController": FaceSymmetryController,
+    "TeethController": TeethController,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -307,4 +457,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "EyebrowShapeController": "🤨 Eyebrow Shape",
     "EarController": "👂 Ear Controller",
     "DimpleController": "😊 Dimple Controller",
+    "ForeheadController": "🧠 Forehead Controller",
+    "CheekFullnessController": "😊 Cheek Fullness",
+    "FaceSymmetryController": "⚖️ Face Symmetry",
+    "TeethController": "🦷 Teeth Controller",
 }

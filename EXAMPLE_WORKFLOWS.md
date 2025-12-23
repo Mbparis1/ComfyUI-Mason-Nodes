@@ -3,6 +3,7 @@
 ## How to Use These Workflows
 
 These are TEXT-BASED workflow guides. In ComfyUI:
+
 1. Add each node in the order listed
 2. Connect STRING outputs to STRING inputs in sequence
 3. Feed final STRING into your positive prompt
@@ -13,7 +14,7 @@ These are TEXT-BASED workflow guides. In ComfyUI:
 
 **Purpose:** High-quality photorealistic portrait
 
-```
+```text
 Nodes in order:
 1. CompleteCharacterBuilder → Set gender, age, ethnicity, features
 2. FacialStructureController → Define bone structure
@@ -35,7 +36,7 @@ Final output → CLIP Text Encode (Positive)
 
 **Purpose:** Full body shots with detailed control
 
-```
+```text
 Nodes in order:
 1. CompleteCharacterBuilder → Full character setup
 2. BodyTypeSelector → Body type, breast size, height
@@ -59,7 +60,7 @@ Nodes in order:
 
 **Purpose:** Intimate/boudoir style content
 
-```
+```text
 Nodes in order:
 1. CompleteCharacterBuilder → Character with body type focus
 2. BodyTypeSelector → Proportions, sizes
@@ -86,7 +87,7 @@ Negative: bad anatomy, deformed, extra limbs, blurry
 
 **Purpose:** Generate consistent frames for animation
 
-```
+```text
 For EACH frame (use batch queue or manual):
 
 1. ConsistentSubjectLock → Lock subject description
@@ -110,7 +111,7 @@ After generating all frames:
 
 **Purpose:** Non-photorealistic artistic renders
 
-```
+```text
 1. CompleteCharacterBuilder → Base character
 2. RenderStyleController → "oil_painting", "anime", etc.
 3. ArtMovementController → Art style
@@ -128,7 +129,7 @@ After generating all frames:
 
 **Purpose:** Pool, shower, or wet scenes
 
-```
+```text
 1. CompleteCharacterBuilder → Character
 2. SwimwearSelector → Bikini type and pattern
 3. SkinShineController → "wet" or "sweaty"
