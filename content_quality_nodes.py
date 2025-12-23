@@ -145,7 +145,7 @@ class AgeController:
     """Fine-tune apparent age"""
     
     AGES = {
-        "18-20": "young adult, late teens, youthful appearance, fresh face, early twenties",
+        "16-20": "young adult, late teens, youthful appearance, fresh face, early twenties",
         "21-25": "early twenties, young adult, youthful, mid-twenties",
         "26-30": "mid to late twenties, young adult, prime age, late twenties",
         "31-35": "early thirties, mature young adult, established adult",
