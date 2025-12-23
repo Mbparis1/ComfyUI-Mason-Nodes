@@ -424,6 +424,12 @@ from .nsfw_lora_emulator_nodes import NODE_DISPLAY_NAME_MAPPINGS as NSFW_LORA_DI
 NODE_CLASS_MAPPINGS.update(NSFW_LORA_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(NSFW_LORA_DISPLAY_MAPPINGS)
 
+# Import NSFW act nodes
+from .nsfw_act_nodes import NODE_CLASS_MAPPINGS as NSFW_ACT_MAPPINGS
+from .nsfw_act_nodes import NODE_DISPLAY_NAME_MAPPINGS as NSFW_ACT_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(NSFW_ACT_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(NSFW_ACT_DISPLAY_MAPPINGS)
+
 # Import private nodes (local only, not tracked by git)
 try:
     from .private_nodes import NODE_CLASS_MAPPINGS as PRIVATE_MAPPINGS
