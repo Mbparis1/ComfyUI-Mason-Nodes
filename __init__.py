@@ -394,6 +394,18 @@ from .system_optimization_nodes import NODE_DISPLAY_NAME_MAPPINGS as SYS_OPT_DIS
 NODE_CLASS_MAPPINGS.update(SYS_OPT_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(SYS_OPT_DISPLAY_MAPPINGS)
 
+# Import accessory detail nodes
+from .accessory_detail_nodes import NODE_CLASS_MAPPINGS as ACCESSORY_MAPPINGS
+from .accessory_detail_nodes import NODE_DISPLAY_NAME_MAPPINGS as ACCESSORY_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(ACCESSORY_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(ACCESSORY_DISPLAY_MAPPINGS)
+
+# Import advanced control nodes
+from .advanced_control_nodes import NODE_CLASS_MAPPINGS as ADV_CONTROL_MAPPINGS
+from .advanced_control_nodes import NODE_DISPLAY_NAME_MAPPINGS as ADV_CONTROL_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(ADV_CONTROL_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(ADV_CONTROL_DISPLAY_MAPPINGS)
+
 # Import private nodes (local only, not tracked by git)
 try:
     from .private_nodes import NODE_CLASS_MAPPINGS as PRIVATE_MAPPINGS
