@@ -430,6 +430,12 @@ from .nsfw_act_nodes import NODE_DISPLAY_NAME_MAPPINGS as NSFW_ACT_DISPLAY_MAPPI
 NODE_CLASS_MAPPINGS.update(NSFW_ACT_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(NSFW_ACT_DISPLAY_MAPPINGS)
 
+# Import niche NSFW act nodes
+from .nsfw_niche_act_nodes import NODE_CLASS_MAPPINGS as NSFW_NICHE_MAPPINGS
+from .nsfw_niche_act_nodes import NODE_DISPLAY_NAME_MAPPINGS as NSFW_NICHE_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(NSFW_NICHE_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(NSFW_NICHE_DISPLAY_MAPPINGS)
+
 # Import private nodes (local only, not tracked by git)
 try:
     from .private_nodes import NODE_CLASS_MAPPINGS as PRIVATE_MAPPINGS
