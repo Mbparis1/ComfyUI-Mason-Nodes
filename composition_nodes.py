@@ -4,6 +4,9 @@ Professional photographic composition control - SD 1.5 optimized
 """
 
 
+
+
+
 class RuleOfThirdsPositioner:
     """Subject placement using rule of thirds"""
     
