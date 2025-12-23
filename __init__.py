@@ -382,6 +382,18 @@ from .lora_emulator_nodes import NODE_DISPLAY_NAME_MAPPINGS as LORA_EMULATOR_DIS
 NODE_CLASS_MAPPINGS.update(LORA_EMULATOR_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(LORA_EMULATOR_DISPLAY_MAPPINGS)
 
+# Import extended LoRA emulator nodes
+from .lora_emulator_extended_nodes import NODE_CLASS_MAPPINGS as LORA_EXT_MAPPINGS
+from .lora_emulator_extended_nodes import NODE_DISPLAY_NAME_MAPPINGS as LORA_EXT_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(LORA_EXT_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(LORA_EXT_DISPLAY_MAPPINGS)
+
+# Import system optimization nodes
+from .system_optimization_nodes import NODE_CLASS_MAPPINGS as SYS_OPT_MAPPINGS
+from .system_optimization_nodes import NODE_DISPLAY_NAME_MAPPINGS as SYS_OPT_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(SYS_OPT_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(SYS_OPT_DISPLAY_MAPPINGS)
+
 # Import private nodes (local only, not tracked by git)
 try:
     from .private_nodes import NODE_CLASS_MAPPINGS as PRIVATE_MAPPINGS
