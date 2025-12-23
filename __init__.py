@@ -213,3 +213,33 @@ from .realistic_motion_nodes import NODE_CLASS_MAPPINGS as REAL_MOTION_MAPPINGS
 from .realistic_motion_nodes import NODE_DISPLAY_NAME_MAPPINGS as REAL_MOTION_DISPLAY_MAPPINGS
 NODE_CLASS_MAPPINGS.update(REAL_MOTION_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(REAL_MOTION_DISPLAY_MAPPINGS)
+
+# Import image enhancement nodes
+from .image_enhancement_nodes import NODE_CLASS_MAPPINGS as IMG_ENH_MAPPINGS
+from .image_enhancement_nodes import NODE_DISPLAY_NAME_MAPPINGS as IMG_ENH_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(IMG_ENH_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(IMG_ENH_DISPLAY_MAPPINGS)
+
+# Import expression interpolation nodes
+from .expression_interpolation_nodes import NODE_CLASS_MAPPINGS as EXPR_MAPPINGS
+from .expression_interpolation_nodes import NODE_DISPLAY_NAME_MAPPINGS as EXPR_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(EXPR_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(EXPR_DISPLAY_MAPPINGS)
+
+# Import outfit descriptor nodes
+from .outfit_descriptor_nodes import NODE_CLASS_MAPPINGS as OUTFIT_MAPPINGS
+from .outfit_descriptor_nodes import NODE_DISPLAY_NAME_MAPPINGS as OUTFIT_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(OUTFIT_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(OUTFIT_DISPLAY_MAPPINGS)
+
+# Import composition nodes
+from .composition_nodes import NODE_CLASS_MAPPINGS as COMP_MAPPINGS
+from .composition_nodes import NODE_DISPLAY_NAME_MAPPINGS as COMP_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(COMP_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(COMP_DISPLAY_MAPPINGS)
+
+# Import advanced lighting nodes
+from .advanced_lighting_nodes import NODE_CLASS_MAPPINGS as ADV_LIGHT_MAPPINGS
+from .advanced_lighting_nodes import NODE_DISPLAY_NAME_MAPPINGS as ADV_LIGHT_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(ADV_LIGHT_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(ADV_LIGHT_DISPLAY_MAPPINGS)

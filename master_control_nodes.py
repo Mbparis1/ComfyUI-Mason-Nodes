@@ -150,13 +150,20 @@ class CompleteCharacterBuilder:
         return {
             "required": {
                 "gender": (["female", "male"],),
-                "age_range": (["18-22", "23-28", "29-35", "36-45"],),
-                "ethnicity": (["caucasian", "asian", "latina", "african", "indian", "middle_eastern", "mixed"],),
-                "body_type": (["slim", "athletic", "curvy", "petite", "voluptuous", "average"],),
-                "hair_color": (["blonde", "brunette", "black", "red", "platinum", "ombre"],),
-                "hair_style": (["long_straight", "long_wavy", "long_curly", "medium", "short", "ponytail", "updo"],),
-                "eye_color": (["blue", "green", "brown", "hazel", "gray"],),
-                "breast_size": (["small", "medium", "large", "very_large"],),
+                "age_range": (["18-22", "23-28", "29-35", "36-45", "46-55"],),
+                "ethnicity": ([
+                    "caucasian", "asian_east", "asian_southeast", "japanese", "korean", "chinese",
+                    "latina", "african", "african_american", "indian", "middle_eastern", "arabic",
+                    "mediterranean", "scandinavian", "slavic", "mixed_asian", "mixed_latina", "mixed_african"
+                ],),
+                "face_shape": (["oval", "round", "square", "heart", "oblong", "diamond"],),
+                "body_type": (["slim", "athletic", "curvy", "petite", "voluptuous", "hourglass", "pear", "average"],),
+                "hair_color": (["blonde", "platinum_blonde", "strawberry_blonde", "brunette", "light_brown", "black", "red", "auburn", "ginger", "silver", "ombre", "balayage", "pink", "purple", "blue"],),
+                "hair_style": (["long_straight", "long_wavy", "long_curly", "medium_straight", "medium_wavy", "medium_curly", "short_pixie", "short_bob", "lob", "ponytail", "high_ponytail", "braids", "bun", "messy_bun", "updo", "half_up", "pigtails", "bangs_straight", "bangs_curtain"],),
+                "hair_length": (["very_long", "long", "medium", "short", "pixie", "buzz"],),
+                "eye_color": (["blue", "light_blue", "green", "emerald", "brown", "dark_brown", "hazel", "gray", "amber", "violet"],),
+                "breast_size": (["flat", "small", "medium", "large", "very_large", "huge"],),
+                "height": (["petite_short", "average", "tall", "very_tall"],),
             }
         }
 
@@ -165,56 +172,112 @@ class CompleteCharacterBuilder:
     FUNCTION = "build"
     CATEGORY = "Mason's Nodes/Master Control"
 
-    def build(self, gender, age_range, ethnicity, body_type, hair_color, hair_style, eye_color, breast_size):
+    def build(self, gender, age_range, ethnicity, face_shape, body_type, hair_color, hair_style, hair_length, eye_color, breast_size, height):
         age_map = {
             "18-22": "young adult, early twenties, youthful",
             "23-28": "mid twenties, young woman, prime age",
             "29-35": "late twenties to early thirties, mature beauty",
             "36-45": "mature, sophisticated, confident",
+            "46-55": "middle aged, distinguished, experienced beauty",
         }
         
         ethnicity_map = {
-            "caucasian": "caucasian, european features",
-            "asian": "asian, east asian features",
-            "latina": "latina, hispanic features",
+            "caucasian": "caucasian, european features, fair skin",
+            "asian_east": "east asian, asian features, smooth skin",
+            "asian_southeast": "southeast asian, thai or filipino features",
+            "japanese": "japanese, japanese features, delicate features",
+            "korean": "korean, korean features, porcelain skin",
+            "chinese": "chinese, chinese features, refined features",
+            "latina": "latina, hispanic features, olive skin",
             "african": "african, dark skin, african features",
-            "indian": "indian, south asian features",
-            "middle_eastern": "middle eastern, arabic features",
-            "mixed": "mixed ethnicity, multiracial",
+            "african_american": "african american, dark skin, american features",
+            "indian": "indian, south asian features, brown skin",
+            "middle_eastern": "middle eastern, arabic features, olive skin",
+            "arabic": "arabic, arabian features, exotic beauty",
+            "mediterranean": "mediterranean, greek or italian features, olive skin",
+            "scandinavian": "scandinavian, nordic features, pale skin, high cheekbones",
+            "slavic": "slavic, eastern european features, high cheekbones",
+            "mixed_asian": "mixed asian, eurasian features, exotic blend",
+            "mixed_latina": "mixed latina, multiracial, latin blend",
+            "mixed_african": "mixed african, multiracial, diverse heritage",
+        }
+        
+        face_map = {
+            "oval": "oval face shape, balanced proportions",
+            "round": "round face, soft features, full cheeks",
+            "square": "square face, strong jaw, angular features",
+            "heart": "heart shaped face, wide forehead, pointed chin",
+            "oblong": "oblong face, long face, elegant proportions",
+            "diamond": "diamond face shape, prominent cheekbones",
         }
         
         body_map = {
             "slim": "slim body, slender",
-            "athletic": "athletic body, toned, fit",
+            "athletic": "athletic body, toned, fit, muscular definition",
             "curvy": "curvy body, hourglass figure",
             "petite": "petite, small frame",
             "voluptuous": "voluptuous, full figure",
+            "hourglass": "hourglass figure, balanced bust and hips, narrow waist",
+            "pear": "pear shaped body, wider hips than bust",
             "average": "average build, natural body",
         }
         
         breast_map = {
-            "small": "small breasts, perky",
-            "medium": "medium breasts, natural",
-            "large": "large breasts, ample bust",
-            "very_large": "very large breasts, huge bust",
+            "flat": "flat chest, no breasts",
+            "small": "small breasts, perky, A-cup",
+            "medium": "medium breasts, natural, B-cup",
+            "large": "large breasts, ample bust, C-cup to D-cup",
+            "very_large": "very large breasts, huge bust, DD-cup",
+            "huge": "huge breasts, massive bust, extremely large",
+        }
+        
+        height_map = {
+            "petite_short": "petite height, short, under 5 feet 2 inches",
+            "average": "average height, 5 feet 4 to 5 feet 7",
+            "tall": "tall, 5 feet 8 to 5 feet 11, long legs",
+            "very_tall": "very tall, over 6 feet, model height, statuesque",
         }
         
         hair_style_map = {
-            "long_straight": "long straight hair",
-            "long_wavy": "long wavy hair",
-            "long_curly": "long curly hair",
-            "medium": "medium length hair",
-            "short": "short hair",
-            "ponytail": "ponytail",
-            "updo": "hair in updo, elegant hairstyle",
+            "long_straight": "long straight hair, sleek",
+            "long_wavy": "long wavy hair, flowing waves",
+            "long_curly": "long curly hair, ringlets",
+            "medium_straight": "medium length straight hair",
+            "medium_wavy": "medium length wavy hair",
+            "medium_curly": "medium length curly hair",
+            "short_pixie": "pixie cut, short cropped",
+            "short_bob": "bob haircut, chin length",
+            "lob": "lob haircut, long bob, shoulder length",
+            "ponytail": "ponytail, pulled back",
+            "high_ponytail": "high ponytail, sporty",
+            "braids": "braided hair, intricate braids",
+            "bun": "hair in bun, neat updo",
+            "messy_bun": "messy bun, casual updo",
+            "updo": "elegant updo, formal hairstyle",
+            "half_up": "half up half down hairstyle",
+            "pigtails": "pigtails, twin tails",
+            "bangs_straight": "straight bangs, fringe",
+            "bangs_curtain": "curtain bangs, parted fringe",
+        }
+        
+        hair_length_map = {
+            "very_long": "very long hair, past waist",
+            "long": "long hair, past shoulders",
+            "medium": "medium length hair, shoulder length",
+            "short": "short hair, above shoulders",
+            "pixie": "pixie length, very short",
+            "buzz": "buzz cut, nearly shaved",
         }
         
         parts = [
             f"beautiful {gender}",
             age_map.get(age_range, ""),
             ethnicity_map.get(ethnicity, ""),
+            face_map.get(face_shape, ""),
             body_map.get(body_type, ""),
+            height_map.get(height, ""),
             f"{hair_color} hair",
+            hair_length_map.get(hair_length, ""),
             hair_style_map.get(hair_style, ""),
             f"{eye_color} eyes",
             breast_map.get(breast_size, ""),
@@ -270,35 +333,69 @@ class UltimatePoseMaster:
         "standing_casual": "standing casually, relaxed pose, natural stance",
         "standing_sexy": "standing seductively, hip cocked, alluring pose, one hand on hip",
         "standing_back_view": "standing with back to camera, looking over shoulder, back view",
+        "standing_contrapposto": "standing in contrapposto, classical pose, weight on one leg, artistic stance",
+        "standing_tiptoe": "standing on tiptoes, elongated figure, ballet stance",
+        "standing_leaning": "leaning against wall, casual lean, relaxed stance",
         
         # Sitting poses
         "sitting_elegant": "sitting elegantly, legs crossed, refined posture",
         "sitting_casual": "sitting casually, relaxed, natural pose",
         "sitting_floor": "sitting on floor, legs extended, ground level",
         "sitting_knees_up": "sitting with knees pulled up, hugging knees",
+        "sitting_lotus": "sitting in lotus position, cross-legged, meditation pose",
+        "sitting_straddle": "sitting with legs straddled, wide seated position",
+        "sitting_side_saddle": "sitting side saddle, legs to one side, elegant",
         
         # Lying poses
         "lying_on_back": "lying on back, supine position, looking up",
         "lying_on_side": "lying on side, propped on elbow, side view",
         "lying_on_stomach": "lying on stomach, prone position, looking at camera",
         "lying_sensual": "lying sensually, seductive pose, stretched out",
+        "lying_fetal": "lying in fetal position, curled up, vulnerable",
+        "lying_spread_eagle": "lying spread eagle, arms and legs extended, open position",
         
         # Kneeling poses
         "kneeling_upright": "kneeling upright, straight posture",
         "kneeling_sitting_back": "kneeling sitting back on heels",
         "on_all_fours": "on all fours, hands and knees position, arched back",
+        "kneeling_one_knee": "kneeling on one knee, proposal pose, gallant",
         
         # Action poses
         "walking_toward": "walking toward camera, mid-stride, approaching",
         "dancing": "dancing, dynamic pose, movement, graceful",
         "stretching": "stretching, arms raised, full body stretch",
         "bending_over": "bending over, bent at waist, rear view prominence",
+        "running": "running pose, mid-stride, athletic motion, dynamic",
+        "jumping": "jumping pose, airborne, dynamic leap, energetic",
         
         # Intimate poses
         "covering_modestly": "covering modestly, hands covering, demure",
         "arms_above_head": "arms raised above head, exposed, vulnerable",
         "touching_self": "hands on body, self-touch, sensual",
         "spread_pose": "spread pose, open position, inviting",
+        "arched_back": "arched back, curved spine, sensual arch",
+        "hip_thrust": "hips thrust forward, provocative stance, curved posture",
+        
+        # Yoga poses
+        "yoga_downward_dog": "downward dog pose, yoga position, inverted V, flexible",
+        "yoga_warrior": "warrior pose, yoga stance, strong legs, arms extended",
+        "yoga_cobra": "cobra pose, yoga position, raised upper body, floor stretch",
+        "yoga_child_pose": "child's pose, yoga position, kneeling forward fold, resting",
+        "yoga_tree": "tree pose, yoga stance, one foot on thigh, balanced",
+        "yoga_bridge": "bridge pose, yoga position, hips raised, back arch",
+        
+        # Sports poses
+        "tennis_serve": "tennis serve pose, athletic stance, arm raised, sports motion",
+        "golf_swing": "golf swing pose, mid-swing, athletic rotation",
+        "swimming": "swimming pose, freestyle stroke, athletic motion",
+        "volleyball_spike": "volleyball spike pose, jumping attack, athletic",
+        "surfing": "surfing pose, board stance, balanced, athletic",
+        
+        # Modeling poses
+        "model_runway": "runway model pose, walking stride, confident, high fashion",
+        "model_editorial": "editorial pose, high fashion, artistic, magazine style",
+        "model_catalog": "catalog pose, commercial, approachable, product focused",
+        "model_glamour": "glamour pose, alluring, sensual, beauty focused",
     }
     
     @classmethod

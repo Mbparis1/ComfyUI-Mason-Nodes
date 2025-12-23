@@ -173,7 +173,7 @@ class AgeController:
 
 
 class BodyTypeSelector:
-    """Select body type presets"""
+    """Select body type presets with detailed options"""
     
     BODY_TYPES = {
         "slim": "slim body, slender figure, thin waist, lean build",
@@ -184,6 +184,32 @@ class BodyTypeSelector:
         "muscular": "muscular body, defined muscles, strong build, powerful physique",
         "voluptuous": "voluptuous body, full figure, generous curves, ample proportions",
         "average": "average body type, normal proportions, natural figure",
+        "hourglass": "hourglass figure, balanced bust and hips, narrow waist, classic proportions",
+        "pear": "pear shaped body, wider hips, narrow shoulders, full bottom",
+        "apple": "apple shaped body, full midsection, slim legs",
+        "rectangle": "rectangular body, straight figure, balanced proportions",
+        "inverted_triangle": "inverted triangle body, broad shoulders, narrow hips",
+        "thick": "thick body, full figure, generous curves all over",
+        "skinny": "skinny body, very thin, bony, extremely slim",
+        "plus_size": "plus size body, full figured, curvy, generous proportions",
+    }
+    
+    BREAST_SIZES = {
+        "flat": "flat chest, no breasts visible",
+        "A_cup": "A-cup breasts, small perky breasts, petite bust",
+        "B_cup": "B-cup breasts, natural modest bust, proportional",
+        "C_cup": "C-cup breasts, medium breasts, noticeable bust",
+        "D_cup": "D-cup breasts, large breasts, full bust, ample cleavage",
+        "DD_cup": "DD-cup breasts, very large breasts, heavy bust",
+        "E_cup_plus": "E-cup or larger, huge breasts, extremely large bust, massive",
+    }
+    
+    HEIGHTS = {
+        "very_short": "very short, under 5 feet, petite stature",
+        "short": "short, 5 feet to 5 feet 3 inches, petite",
+        "average": "average height, 5 feet 4 to 5 feet 6, normal height",
+        "tall": "tall, 5 feet 7 to 5 feet 10, long legs",
+        "very_tall": "very tall, over 5 feet 10, model height, statuesque, long limbs",
     }
     
     @classmethod
@@ -192,6 +218,8 @@ class BodyTypeSelector:
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
                 "body_type": (list(cls.BODY_TYPES.keys()),),
+                "breast_size": (list(cls.BREAST_SIZES.keys()),),
+                "height": (list(cls.HEIGHTS.keys()),),
             }
         }
 
@@ -200,9 +228,11 @@ class BodyTypeSelector:
     FUNCTION = "select"
     CATEGORY = "Mason's Nodes/Content Quality"
 
-    def select(self, prompt, body_type):
+    def select(self, prompt, body_type, breast_size, height):
         body_desc = self.BODY_TYPES.get(body_type, "")
-        return (f"{prompt}, {body_desc}",)
+        breast_desc = self.BREAST_SIZES.get(breast_size, "")
+        height_desc = self.HEIGHTS.get(height, "")
+        return (f"{prompt}, {body_desc}, {breast_desc}, {height_desc}",)
 
 
 NODE_CLASS_MAPPINGS = {
