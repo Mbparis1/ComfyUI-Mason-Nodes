@@ -36,6 +36,27 @@ Explosive expansion to **~340 total nodes** — covering LoRA emulation, micro-d
 | `micro_detail_nodes.py` | 8 | Eyelashes, lip gloss, film grain |
 | `accessory_detail_nodes.py` | 6 | Jewelry, nails, piercings |
 
+### 4. Automation & Ease of Use (Session 3)
+
+| Module | Nodes | Purpose |
+|--------|-------|---------|
+| `dynamic_prompt_nodes.py` | 4 | Wildcards `{red|blue}`, Cyclers, Randomization |
+| `pose_preset_nodes.py` | 2 | **50+ Pre-Configured Poses** (Dropdown menu) |
+| `workflow_utils_nodes.py` | 4 | Project structure, State saving, **Concatenation** |
+
+### 5. Drag-and-Drop Workflow Library (`/workflows`)
+
+| Filename | Description |
+|----------|-------------|
+| `Mason_Omni_Creator.json` | **The Master Workflow.** Connects Emulators, Pose Presets, Oral Mechanics, and Dynamics into ONE prompt. |
+| `Mason_Basic_Setup.json` | Simple portrait setup with Wildcard support. |
+| `Mason_NSFW_Boudoir.json` | Specialized for lingerie, oils, and sensual lighting. |
+| `Mason_Animation_Setup.json` | For generating consistent frame sequences. |
+| `Mason_FullBody_Glamour.json` | Full body shots with clothing fit and body shape controls. |
+| `Mason_Artistic_Style.json` | Painting/Anime styles without realism focus. |
+| `Mason_Wet_Scene.json` | Pool/Shower scenes with water droplets and reflections. |
+| `Mason_Visual_Pose_Verify.json` | Use this to SEE the stick figure before you generate. |
+
 ---
 
 ## Strategy for Low VRAM Quality
