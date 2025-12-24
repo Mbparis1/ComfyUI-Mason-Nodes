@@ -115,7 +115,6 @@ Achieve LoRA-level quality through pure prompt engineering with no VRAM overhead
   - [x] PromptTemplateStarter
   - [x] ComprehensiveNegativeBuilder
 
-
 ## Phase 6: Deep Anatomical & Act Mechanics
 
 - [x] **NSFW Mechanics** (nsfw_mechanics_nodes.py)
@@ -127,7 +126,7 @@ Achieve LoRA-level quality through pure prompt engineering with no VRAM overhead
 
 ## Phase 7: Integration
 
-- [x] Update __init__.py with all new modules
+- [x] Update **__init__.py** with all new modules
 - [x] Syntax validation (all compiled)
 - [x] Git commit & push
 

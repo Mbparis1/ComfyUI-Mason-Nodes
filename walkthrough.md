@@ -56,7 +56,7 @@ Explosive expansion to **~340 total nodes** — covering LoRA emulation, micro-d
 
 | Module | Nodes | Purpose |
 |--------|-------|---------|
-| `dynamic_prompt_nodes.py` | 4 | Wildcards `{red|blue}`, Cyclers, Randomization |
+| `dynamic_prompt_nodes.py` | 4 | Wildcards `{red\|blue}`, Cyclers, Randomization |
 | `pose_preset_nodes.py` | 2 | **50+ Pre-Configured Poses** (Dropdown menu) |
 | `workflow_utils_nodes.py` | 4 | Project structure, State saving, **Concatenation** |
 
