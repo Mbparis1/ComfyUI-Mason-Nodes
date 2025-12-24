@@ -36,6 +36,16 @@ Explosive expansion to **~340 total nodes** — covering LoRA emulation, micro-d
 | `micro_detail_nodes.py` | 8 | Eyelashes, lip gloss, film grain |
 | `accessory_detail_nodes.py` | 6 | Jewelry, nails, piercings |
 
+### 6. Phase 10 - The Master's Touch (Advanced Realism)
+
+| Module | Nodes | Purpose |
+|--------|-------|---------|
+| `aesthetic_nodes.py` | 2 | Mood Director (Noir, Cyberpunk), Color Grading |
+| `interaction_nodes.py` | 3 | **Physics:** Skin pressure, fabric stretch, fluid pooling |
+| `expression_nodes.py` | 3 | **Micro-Expressions:** Eye rolls, lip biting, flushed skin |
+| `narrative_nodes.py` | 2 | Scenario Architects (Secret Affair, Office Scandal) |
+| `extreme_nsfw_nodes.py` | 4 | **The Dirtiest:** Extreme fluids, anatomical precision, messy rooms |
+
 ### 4. Automation & Ease of Use (Session 3)
 
 | Module | Nodes | Purpose |

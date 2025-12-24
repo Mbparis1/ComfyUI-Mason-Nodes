@@ -1,31 +1,17 @@
 """
-Mason's Interaction Nodes for ComfyUI
-Pose interactions and reactions - SD 1.5 optimized
+Mason's Surface Physics & Interaction Nodes
+Logic for physical contact and material reactions - SD 1.5 optimized
 """
 
-
-class TwoPersonInteraction:
-    """Define poses for two people interacting"""
+class SkinInteractionMaster:
+    """Controls visual cues for physical touch and pressure on skin"""
     
     INTERACTIONS = {
-        "embracing": "two people embracing, hugging, arms around each other, intimate embrace",
-        "kissing": "two people kissing, lips touching, romantic kiss, intimate",
-        "dancing": "two people dancing, dance partners, close dancing, romantic dance",
-        "holding_hands": "two people holding hands, hand in hand, fingers intertwined",
-        "back_to_back": "two people back to back, leaning on each other",
-        "face_to_face": "two people face to face, looking at each other, eye contact",
-        "spooning": "two people spooning, cuddling, lying together, intimate position",
-        "piggyback": "piggyback ride, one person carrying another, playful",
-        "leaning_on": "one person leaning on another, resting head on shoulder",
-        "wrestling": "two people wrestling, playful struggle, tangled",
-    }
-    
-    RELATIONSHIP = {
-        "romantic": "romantic couple, lovers, intimate relationship, passion",
-        "playful": "playful interaction, fun, lighthearted, teasing",
-        "sensual": "sensual interaction, seductive, intimate, passionate",
-        "tender": "tender moment, gentle, caring, soft interaction",
-        "intense": "intense interaction, passionate, powerful, dramatic",
+        "gentle_touch": "light touch on skin, gentle contact, fingers resting on skin",
+        "firm_press": "firm pressure on skin, skin indentation, fingers pressing into skin",
+        "squeezing": "squeezing skin, skin deformation, firm grip, visible pressure",
+        "indentation": "deep skin indentation, finger marks on skin, pressure points",
+        "skin_pinch": "skin being pinched, small skin fold, fingers grasping skin",
     }
     
     @classmethod
@@ -34,46 +20,32 @@ class TwoPersonInteraction:
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
                 "interaction": (list(cls.INTERACTIONS.keys()),),
-                "relationship": (list(cls.RELATIONSHIP.keys()),),
+                "intensity": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 2.0, "step": 0.1}),
             }
         }
 
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("interaction_prompt",)
-    FUNCTION = "build"
-    CATEGORY = "Mason's Nodes/Interactions"
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Physics"
 
-    def build(self, prompt, interaction, relationship):
-        inter = self.INTERACTIONS.get(interaction, "")
-        rel = self.RELATIONSHIP.get(relationship, "")
-        return (f"{prompt}, {inter}, {rel}",)
+    def apply(self, prompt, interaction, intensity):
+        i = self.INTERACTIONS.get(interaction, "")
+        if intensity > 1.2:
+            i = f"heavy {i}, extreme pressure"
+        elif intensity < 0.8:
+            i = f"slight {i}, subtle contact"
+        return (f"{prompt}, {i}",)
 
-
-class ObjectInteraction:
-    """Define interaction with objects/props"""
+class FabricDynamics:
+    """Controls how clothing interacts with the body and movement"""
     
-    OBJECTS = {
-        "phone": "holding phone, looking at smartphone, texting, selfie",
-        "drink": "holding drink, cocktail glass, wine glass, beverage",
-        "mirror": "looking in mirror, reflection, self-admiring, vanity",
-        "camera": "posing for camera, being photographed, model pose",
-        "book": "holding book, reading, intellectual, relaxed",
-        "flower": "holding flower, smelling flower, romantic prop",
-        "cigarette": "holding cigarette, smoking, moody, noir",
-        "fan": "holding fan, fanning self, elegant, mysterious",
-        "umbrella": "holding umbrella, parasol, stylish accessory",
-        "hat": "holding hat, adjusting hat, playful with hat",
-        "sunglasses": "wearing sunglasses, adjusting glasses, cool",
-        "towel": "holding towel, wrapped in towel, post-shower",
-        "pillow": "holding pillow, hugging pillow, cozy",
-    }
-    
-    ACTION = {
-        "holding": "holding, grasping, carrying",
-        "using": "actively using, interacting with",
-        "playing_with": "playing with, fiddling with, toying with",
-        "admiring": "admiring, looking at, examining",
-        "putting_down": "putting down, setting aside, releasing",
+    EFFECTS = {
+        "tight_stretch": "fabric stretching over body, tight fit, material tension, fabric straining",
+        "form_hug": "form-fitting fabric, hugging every curve, material following body contours",
+        "pulling": "fabric being pulled, material tension from grasp, strained seams",
+        "sheer_cling": "sheer fabric clinging to wet skin, material sticking to body, translucent wet look",
+        "loose_drape": "loose fabric draping, material hanging naturally, soft folds",
     }
     
     @classmethod
@@ -81,37 +53,28 @@ class ObjectInteraction:
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "object": (list(cls.OBJECTS.keys()),),
-                "action": (list(cls.ACTION.keys()),),
+                "effect": (list(cls.EFFECTS.keys()),),
             }
         }
 
     RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("object_prompt",)
-    FUNCTION = "build"
-    CATEGORY = "Mason's Nodes/Interactions"
+    RETURN_NAMES = ("fabric_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Physics"
 
-    def build(self, prompt, object, action):
-        obj = self.OBJECTS.get(object, "")
-        act = self.ACTION.get(action, "")
-        return (f"{prompt}, {obj}, {act}",)
+    def apply(self, prompt, effect):
+        e = self.EFFECTS.get(effect, "")
+        return (f"{prompt}, {e}",)
 
-
-class LookingAtCamera:
-    """Control eye contact and camera awareness"""
+class FluidInterfacer:
+    """How fluids interact with and coat surfaces"""
     
-    GAZE_TYPES = {
-        "direct": "looking directly at camera, direct eye contact, engaging viewer",
-        "seductive": "seductive gaze at camera, bedroom eyes, alluring look",
-        "shy": "shy glance at camera, coy look, bashful, looking away slightly",
-        "confident": "confident stare, strong eye contact, powerful gaze",
-        "dreamy": "dreamy look, soft gaze, distant eyes, wistful",
-        "playful": "playful look at camera, mischievous eyes, teasing glance",
-        "intense": "intense stare, piercing eyes, dramatic eye contact",
-        "candid": "candid moment, caught off guard, natural unposed look",
-        "looking_away": "looking away from camera, profile view, not engaging",
-        "eyes_closed": "eyes closed, peaceful expression, serene",
-        "over_shoulder": "looking over shoulder at camera, glancing back",
+    INTERACTIONS = {
+        "pooling": "fluid pooling in crevices, liquid gathering on surface, thick coating",
+        "dripping": "fluid dripping down skin, liquid trails, slow drips",
+        "smeared": "smeared fluid on skin, messy coating, liquid spread across surface",
+        "splattered": "fluid splatter, liquid droplets on skin, messy splatter pattern",
+        "glistening_wet": "glistening wet surface, thin film of liquid, glossy sheen",
     }
     
     @classmethod
@@ -119,75 +82,27 @@ class LookingAtCamera:
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "gaze": (list(cls.GAZE_TYPES.keys()),),
+                "interaction": (list(cls.INTERACTIONS.keys()),),
             }
         }
 
     RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("gaze_prompt",)
-    FUNCTION = "build"
-    CATEGORY = "Mason's Nodes/Interactions"
+    RETURN_NAMES = ("fluid_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Physics"
 
-    def build(self, prompt, gaze):
-        g = self.GAZE_TYPES.get(gaze, "")
-        return (f"{prompt}, {g}",)
-
-
-class ReactionPoses:
-    """Define reaction expressions and poses"""
-    
-    REACTIONS = {
-        "surprised": "surprised expression, wide eyes, open mouth, shocked, startled",
-        "laughing": "laughing, genuine laughter, happy, joyful expression, smiling wide",
-        "shy": "shy expression, blushing, looking down, bashful, demure",
-        "confident": "confident expression, self-assured, powerful stance, proud",
-        "flirty": "flirty expression, teasing smile, playful wink, coquettish",
-        "serious": "serious expression, stern, focused, intense, no smile",
-        "curious": "curious expression, interested, head tilted, questioning look",
-        "sleepy": "sleepy expression, drowsy, tired eyes, yawning, relaxed",
-        "excited": "excited expression, enthusiastic, energetic, animated",
-        "thoughtful": "thoughtful expression, contemplative, pensive, thinking",
-        "embarrassed": "embarrassed expression, blushing, covering face, flustered",
-        "pleased": "pleased expression, satisfied smile, content, happy",
-    }
-    
-    INTENSITY = {
-        "subtle": "subtle expression, slight, understated, natural",
-        "moderate": "moderate expression, clear, visible, natural intensity",
-        "exaggerated": "exaggerated expression, dramatic, over the top, theatrical",
-    }
-    
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "prompt": ("STRING", {"default": "", "multiline": True}),
-                "reaction": (list(cls.REACTIONS.keys()),),
-                "intensity": (list(cls.INTENSITY.keys()),),
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("reaction_prompt",)
-    FUNCTION = "build"
-    CATEGORY = "Mason's Nodes/Interactions"
-
-    def build(self, prompt, reaction, intensity):
-        react = self.REACTIONS.get(reaction, "")
-        intense = self.INTENSITY.get(intensity, "")
-        return (f"{prompt}, {react}, {intense}",)
-
+    def apply(self, prompt, interaction):
+        i = self.INTERACTIONS.get(interaction, "")
+        return (f"{prompt}, {i}",)
 
 NODE_CLASS_MAPPINGS = {
-    "TwoPersonInteraction": TwoPersonInteraction,
-    "ObjectInteraction": ObjectInteraction,
-    "LookingAtCamera": LookingAtCamera,
-    "ReactionPoses": ReactionPoses,
+    "SkinInteractionMaster": SkinInteractionMaster,
+    "FabricDynamics": FabricDynamics,
+    "FluidInterfacer": FluidInterfacer,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "TwoPersonInteraction": "👫 Two Person Interaction",
-    "ObjectInteraction": "🎁 Object Interaction",
-    "LookingAtCamera": "👁️ Looking At Camera",
-    "ReactionPoses": "😮 Reaction Poses",
+    "SkinInteractionMaster": "🤝 Skin Interaction Master",
+    "FabricDynamics": "👕 Fabric Dynamics",
+    "FluidInterfacer": "💧 Fluid Interfacer",
 }
