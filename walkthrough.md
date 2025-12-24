@@ -88,4 +88,4 @@ Explosive expansion to **~340 total nodes** — covering LoRA emulation, micro-d
 
 All pushed to: [ComfyUI-Mason-Nodes](https://github.com/Mbparis1/ComfyUI-Mason-Nodes)
 
-## Total: ~357 nodes
+## Total: ~362 nodes
