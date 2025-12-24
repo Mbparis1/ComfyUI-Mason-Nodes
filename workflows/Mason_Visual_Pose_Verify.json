@@ -1,0 +1,60 @@
+{
+  "last_node_id": 20,
+  "last_link_id": 20,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "PosePresetLoader",
+      "pos": [50, 50],
+      "size": [300, 100],
+      "widgets_values": ["Standing_Neutral"]
+    },
+    {
+      "id": 2,
+      "type": "PoseVisualizer",
+      "pos": [400, 50],
+      "size": [400, 400],
+      "inputs": [
+        {"name": "upper_body", "type": "STRING", "link": 11},
+        {"name": "lower_body", "type": "STRING", "link": 12},
+        {"name": "head_neck", "type": "STRING", "link": 13},
+        {"name": "hand_pose", "type": "STRING", "link": 14}
+      ]
+    },
+    {
+      "id": 3,
+      "type": "SaveImage",
+      "pos": [850, 50],
+      "size": [300, 300],
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 15}]
+    },
+    {
+      "id": 4,
+      "type": "PoseStringAssembler",
+      "pos": [50, 400],
+      "size": [300, 200],
+      "inputs": [
+        {"name": "upper_body", "type": "STRING", "link": 11},
+        {"name": "lower_body", "type": "STRING", "link": 12},
+        {"name": "head_neck", "type": "STRING", "link": 13},
+        {"name": "hand_pose", "type": "STRING", "link": 14}
+      ]
+    },
+    {
+      "id": 5,
+      "type": "SimpleTextNode",
+      "pos": [50, 650],
+      "size": [300, 100],
+      "widgets_values": ["Connect the output of PoseStringAssembler to your main prompt to match what you see!"]
+    }
+  ],
+  "links": [
+    [11, 1, 0, 2, 0, "STRING-Upper"],
+    [12, 1, 1, 2, 1, "STRING-Lower"],
+    [13, 1, 2, 2, 2, "STRING-Head"],
+    [14, 1, 3, 2, 3, "STRING-Hand"],
+    
+    [15, 2, 0, 3, 0, "IMAGE"]
+  ],
+  "version": 0.4
+}

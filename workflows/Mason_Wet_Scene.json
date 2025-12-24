@@ -1,0 +1,122 @@
+{
+  "last_node_id": 20,
+  "last_link_id": 20,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [50, 50],
+      "size": [315, 98],
+      "widgets_values": ["v1-5-pruned-emaonly.ckpt"]
+    },
+    {
+      "id": 10,
+      "type": "WetClothingController",
+      "pos": [50, 200],
+      "size": [300, 100],
+      "widgets_values": ["soaking_wet", 1.0]
+    },
+    {
+      "id": 11,
+      "type": "SkinShineController",
+      "pos": [50, 350],
+      "size": [300, 100],
+      "widgets_values": ["water_droplets", 1.0]
+    },
+    {
+      "id": 12,
+      "type": "ReflectionController",
+      "pos": [50, 500],
+      "size": [300, 100],
+      "widgets_values": ["water_reflection", "pool_surface"]
+    },
+    {
+      "id": 13,
+      "type": "StringConcatenator",
+      "pos": [450, 200],
+      "size": [300, 200],
+      "inputs": [
+        {"name": "text_a", "type": "STRING", "link": 101},
+        {"name": "text_b", "type": "STRING", "link": 111},
+        {"name": "text_c", "type": "STRING", "link": 121},
+        {"name": "text_d", "type": "STRING", "link": 141}
+      ]
+    },
+    {
+      "id": 14,
+      "type": "SimpleTextNode",
+      "pos": [50, 650],
+      "size": [300, 100],
+      "widgets_values": ["woman swimming, pool scene, summer"]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [800, 200],
+      "size": [300, 100],
+      "inputs": [
+        {"name": "clip", "type": "CLIP", "link": 1},
+        {"name": "text", "type": "STRING", "link": 131}
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [800, 350],
+      "size": [300, 100],
+      "inputs": [{"name": "clip", "type": "CLIP", "link": 1}],
+      "widgets_values": ["dry, desert, matte skin"]
+    },
+    {
+      "id": 4,
+      "type": "KSampler",
+      "pos": [1200, 50],
+      "size": [300, 300],
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 2},
+        {"name": "positive", "type": "CONDITIONING", "link": 3},
+        {"name": "negative", "type": "CONDITIONING", "link": 4},
+        {"name": "latent_image", "type": "LATENT", "link": 5}
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [800, 500],
+      "size": [300, 100],
+      "widgets_values": [512, 768, 1]
+    },
+    {
+      "id": 6,
+      "type": "VAEDecode",
+      "pos": [1600, 50],
+      "size": [200, 100],
+      "inputs": [{"name": "samples", "type": "LATENT", "link": 6}, {"name": "vae", "type": "VAE", "link": 7}]
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [1900, 50],
+      "size": [300, 300],
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 8}]
+    }
+  ],
+  "links": [
+    [1, 1, 1, 2, 0, "CLIP"],
+    [2, 1, 0, 4, 0, "MODEL"],
+    [3, 2, 0, 4, 1, "CONDITIONING-Pos"],
+    [4, 3, 0, 4, 2, "CONDITIONING-Neg"],
+    [5, 5, 0, 4, 3, "LATENT"],
+    [6, 4, 0, 6, 0, "LATENT"],
+    [7, 1, 2, 6, 1, "VAE"],
+    [8, 6, 0, 7, 0, "IMAGE"],
+    
+    [101, 10, 0, 13, 0, "STRING-Wet"],
+    [111, 11, 0, 13, 1, "STRING-Skin"],
+    [121, 12, 0, 13, 2, "STRING-Reflect"],
+    [141, 14, 0, 13, 3, "STRING-Main"],
+    
+    [131, 13, 0, 2, 1, "STRING-Final"]
+  ],
+  "version": 0.4
+}

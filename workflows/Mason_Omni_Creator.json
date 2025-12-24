@@ -1,0 +1,165 @@
+{
+  "last_node_id": 30,
+  "last_link_id": 50,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [50, 50],
+      "size": [315, 98],
+      "widgets_values": ["v1-5-pruned-emaonly.ckpt"]
+    },
+    {
+      "id": 12,
+      "type": "UltimateLoRAEmulator",
+      "pos": [50, 200],
+      "size": [400, 400],
+      "widgets_values": ["", "photorealistic", "high", "flawless", "model", "captivating", "silky", "curvy", "sensual", "studio", "glamour", "soft"]
+    },
+    {
+      "id": 13,
+      "type": "PosePresetLoader",
+      "pos": [500, 200],
+      "size": [300, 50],
+      "widgets_values": ["Doggystyle_Arch"]
+    },
+    {
+      "id": 14,
+      "type": "PoseStringAssembler",
+      "pos": [500, 300],
+      "size": [300, 200],
+      "inputs": [
+        {"name": "upper_body", "type": "STRING", "link": 131},
+        {"name": "lower_body", "type": "STRING", "link": 132},
+        {"name": "head_neck", "type": "STRING", "link": 133},
+        {"name": "hand_pose", "type": "STRING", "link": 134}
+      ]
+    },
+    {
+      "id": 15,
+      "type": "OralTechniqueMaster",
+      "pos": [500, 550],
+      "size": [300, 100],
+      "widgets_values": ["", "none", "neutral"]
+    },
+    {
+      "id": 16,
+      "type": "SexualDynamicsMaster",
+      "pos": [500, 700],
+      "size": [300, 100],
+      "widgets_values": ["", "romantic_passionate", "stifled_moans"]
+    },
+    {
+      "id": 17,
+      "type": "SimpleTextNode",
+      "pos": [500, 50],
+      "size": [400, 100],
+      "widgets_values": ["blonde woman, wearing red lingerie"]
+    },
+    {
+      "id": 18,
+      "type": "StringConcatenator",
+      "pos": [900, 200],
+      "size": [300, 250],
+      "inputs": [
+        {"name": "text_a", "type": "STRING", "link": 121},
+        {"name": "text_b", "type": "STRING", "link": 141},
+        {"name": "text_c", "type": "STRING", "link": 151},
+        {"name": "text_d", "type": "STRING", "link": 161},
+        {"name": "text_e", "type": "STRING", "link": 171}
+      ]
+    },
+    {
+      "id": 22,
+      "type": "ComprehensiveNegativeBuilder",
+      "pos": [900, 500],
+      "size": [300, 200],
+      "inputs": [
+        {"name": "existing_negative", "type": "STRING", "link": 122}
+      ],
+      "widgets_values": ["", true, true, true, true, false, true]
+    },
+    {
+      "id": 20,
+      "type": "CLIPTextEncode",
+      "pos": [1300, 200],
+      "size": [300, 100],
+      "inputs": [
+        {"name": "clip", "type": "CLIP", "link": 2},
+        {"name": "text", "type": "STRING", "link": 181}
+      ]
+    },
+    {
+      "id": 21,
+      "type": "CLIPTextEncode",
+      "pos": [1300, 500],
+      "size": [300, 100],
+      "inputs": [
+        {"name": "clip", "type": "CLIP", "link": 2},
+        {"name": "text", "type": "STRING", "link": 221}
+      ]
+    },
+    {
+      "id": 4,
+      "type": "KSampler",
+      "pos": [1700, 200],
+      "size": [300, 300],
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 1},
+        {"name": "positive", "type": "CONDITIONING", "link": 201},
+        {"name": "negative", "type": "CONDITIONING", "link": 211},
+        {"name": "latent_image", "type": "LATENT", "link": 5}
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [1300, 50],
+      "size": [300, 100],
+      "widgets_values": [512, 768, 1]
+    },
+    {
+      "id": 6,
+      "type": "VAEDecode",
+      "pos": [2100, 200],
+      "size": [200, 100],
+      "inputs": [{"name": "samples", "type": "LATENT", "link": 6}, {"name": "vae", "type": "VAE", "link": 3}]
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [2400, 200],
+      "size": [300, 300],
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 7}]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 4, 0, "MODEL"],
+    [2, 1, 1, 20, 0, "CLIP"],
+    [3, 1, 1, 21, 0, "CLIP"],
+    [4, 1, 2, 6, 1, "VAE"],
+    [5, 5, 0, 4, 3, "LATENT"],
+    [6, 4, 0, 6, 0, "LATENT"],
+    [7, 6, 0, 7, 0, "IMAGE"],
+    
+    [121, 12, 0, 18, 0, "STRING-Pos"],
+    [122, 12, 1, 22, 0, "STRING-Neg"],
+    
+    [131, 13, 0, 14, 0, "STRING-Upper"],
+    [132, 13, 1, 14, 1, "STRING-Lower"],
+    [133, 13, 2, 14, 2, "STRING-Head"],
+    [134, 13, 3, 14, 3, "STRING-Hand"],
+    
+    [141, 14, 0, 18, 1, "STRING-Pose"],
+    [151, 15, 0, 18, 2, "STRING-Oral"],
+    [161, 16, 0, 18, 3, "STRING-Dynamics"],
+    [171, 17, 0, 18, 4, "STRING-Main"],
+    
+    [181, 18, 0, 20, 1, "STRING-FinalPos"],
+    [221, 22, 0, 21, 1, "STRING-FinalNeg"],
+    
+    [201, 20, 0, 4, 1, "CONDITIONING-Pos"],
+    [211, 21, 0, 4, 2, "CONDITIONING-Neg"]
+  ],
+  "version": 0.4
+}
