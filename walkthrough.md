@@ -46,6 +46,12 @@ Explosive expansion to **~340 total nodes** — covering LoRA emulation, micro-d
 | `narrative_nodes.py` | 2 | Scenario Architects (Secret Affair, Office Scandal) |
 | `extreme_nsfw_nodes.py` | 4 | **The Dirtiest:** Extreme fluids, anatomical precision, messy rooms |
 
+### 7. Phase 11 - Act Perfection (Precision Act Masters)
+
+| Module | Nodes | Purpose |
+|--------|-------|---------|
+| `nsfw_act_perfection_nodes.py` | 5 | **Perfection:** Deep Throat (gagging), Groping (squeeze), Anal, Vaginal, Manual |
+
 ### 4. Automation & Ease of Use (Session 3)
 
 | Module | Nodes | Purpose |
@@ -67,6 +73,7 @@ Explosive expansion to **~340 total nodes** — covering LoRA emulation, micro-d
 | `Mason_Wet_Scene.json` | Pool/Shower scenes with water droplets and reflections. |
 | `Mason_Visual_Pose_Verify.json` | Use this to SEE the stick figure before you generate. |
 | `Mason_Extreme_Acts.json` | **The Absolute Limit.** Uses Fluid Dynamics, Anatomical Detail, and Pleasure Expressions for maximum intensity. |
+| `Mason_Perfect_Acts.json` | **Act Precision.** Specialized for Deep Throat, Groping, and Finger Play with realistic anatomical cues. |
 
 ---
 
