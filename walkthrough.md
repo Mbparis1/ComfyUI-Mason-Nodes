@@ -66,6 +66,7 @@ Explosive expansion to **~340 total nodes** — covering LoRA emulation, micro-d
 | `Mason_Artistic_Style.json` | Painting/Anime styles without realism focus. |
 | `Mason_Wet_Scene.json` | Pool/Shower scenes with water droplets and reflections. |
 | `Mason_Visual_Pose_Verify.json` | Use this to SEE the stick figure before you generate. |
+| `Mason_Extreme_Acts.json` | **The Absolute Limit.** Uses Fluid Dynamics, Anatomical Detail, and Pleasure Expressions for maximum intensity. |
 
 ---
 

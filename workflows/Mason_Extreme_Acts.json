@@ -1,0 +1,177 @@
+{
+  "last_node_id": 40,
+  "last_link_id": 60,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [50, 50],
+      "size": [315, 98],
+      "widgets_values": ["v1-5-pruned-emaonly.ckpt"]
+    },
+    {
+      "id": 10,
+      "type": "UltimateLoRAEmulator",
+      "pos": [50, 200],
+      "size": [400, 400],
+      "widgets_values": ["", "ultimate", "extreme", "hyperreal", "model", "sultry", "silky", "voluptuous", "sensual", "dramatic", "smoky", "boudoir"]
+    },
+    {
+      "id": 11,
+      "type": "ScenarioArchitect",
+      "pos": [500, 50],
+      "size": [300, 100],
+      "widgets_values": ["", "secret_affair"]
+    },
+    {
+      "id": 12,
+      "type": "SkinInteractionMaster",
+      "pos": [500, 200],
+      "size": [300, 100],
+      "widgets_values": ["", "firm_press", 1.5]
+    },
+    {
+      "id": 13,
+      "type": "PleasureExpressionPro",
+      "pos": [500, 350],
+      "size": [300, 100],
+      "widgets_values": ["", "eye_roll", 1.8]
+    },
+    {
+      "id": 14,
+      "type": "ExtremeFluidDynamics",
+      "pos": [500, 500],
+      "size": [300, 100],
+      "widgets_values": ["", "thick_creamy", 2.5]
+    },
+    {
+      "id": 15,
+      "type": "AnatomicalDetailMax",
+      "pos": [500, 650],
+      "size": [300, 100],
+      "widgets_values": ["", "extreme_dilation"]
+    },
+    {
+      "id": 16,
+      "type": "EnvironmentArousal",
+      "pos": [500, 800],
+      "size": [300, 100],
+      "widgets_values": ["", "messy_sheets"]
+    },
+    {
+      "id": 30,
+      "type": "StringConcatenator",
+      "pos": [900, 200],
+      "size": [300, 300],
+      "inputs": [
+        {"name": "text_a", "type": "STRING", "link": 101},
+        {"name": "text_b", "type": "STRING", "link": 111},
+        {"name": "text_c", "type": "STRING", "link": 121},
+        {"name": "text_d", "type": "STRING", "link": 131},
+        {"name": "text_e", "type": "STRING", "link": 141}
+      ]
+    },
+    {
+      "id": 31,
+      "type": "StringConcatenator",
+      "pos": [900, 550],
+      "size": [300, 200],
+      "inputs": [
+        {"name": "text_a", "type": "STRING", "link": 301},
+        {"name": "text_b", "type": "STRING", "link": 151},
+        {"name": "text_c", "type": "STRING", "link": 161}
+      ]
+    },
+    {
+      "id": 20,
+      "type": "CLIPTextEncode",
+      "pos": [1300, 200],
+      "size": [300, 100],
+      "inputs": [
+        {"name": "clip", "type": "CLIP", "link": 2},
+        {"name": "text", "type": "STRING", "link": 311}
+      ]
+    },
+    {
+      "id": 21,
+      "type": "ComprehensiveNegativeBuilder",
+      "pos": [1300, 400],
+      "size": [300, 200],
+      "inputs": [
+        {"name": "existing_negative", "type": "STRING", "link": 102}
+      ],
+      "widgets_values": ["", true, true, true, true, false, true]
+    },
+    {
+      "id": 22,
+      "type": "CLIPTextEncode",
+      "pos": [1700, 400],
+      "size": [300, 100],
+      "inputs": [
+        {"name": "clip", "type": "CLIP", "link": 2},
+        {"name": "text", "type": "STRING", "link": 211}
+      ]
+    },
+    {
+      "id": 4,
+      "type": "KSampler",
+      "pos": [1700, 50],
+      "size": [300, 300],
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 1},
+        {"name": "positive", "type": "CONDITIONING", "link": 201},
+        {"name": "negative", "type": "CONDITIONING", "link": 221},
+        {"name": "latent_image", "type": "LATENT", "link": 5}
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [1300, 50],
+      "size": [300, 100],
+      "widgets_values": [512, 768, 1]
+    },
+    {
+      "id": 6,
+      "type": "VAEDecode",
+      "pos": [2100, 50],
+      "size": [200, 100],
+      "inputs": [{"name": "samples", "type": "LATENT", "link": 6}, {"name": "vae", "type": "VAE", "link": 3}]
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [2400, 50],
+      "size": [300, 300],
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 7}]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 4, 0, "MODEL"],
+    [2, 1, 1, 20, 0, "CLIP"],
+    [2, 1, 1, 22, 0, "CLIP"],
+    [3, 1, 2, 6, 1, "VAE"],
+    [5, 5, 0, 4, 3, "LATENT"],
+    [6, 4, 0, 6, 0, "LATENT"],
+    [7, 6, 0, 7, 0, "IMAGE"],
+    
+    [101, 10, 0, 30, 0, "STRING-Pos"],
+    [102, 10, 1, 21, 0, "STRING-Neg"],
+    
+    [111, 11, 0, 30, 1, "STRING-Scenario"],
+    [121, 12, 0, 30, 2, "STRING-Interaction"],
+    [131, 13, 0, 30, 3, "STRING-Expression"],
+    [141, 14, 0, 30, 4, "STRING-Fluid"],
+    
+    [301, 30, 0, 31, 0, "STRING-Combined1"],
+    [151, 15, 0, 31, 1, "STRING-Anatomical"],
+    [161, 16, 0, 31, 2, "STRING-Env"],
+    
+    [311, 31, 0, 20, 1, "STRING-FinalPos"],
+    [211, 21, 0, 22, 1, "STRING-FinalNeg"],
+    
+    [201, 20, 0, 4, 1, "CONDITIONING-Pos"],
+    [221, 22, 0, 4, 2, "CONDITIONING-Neg"]
+  ],
+  "version": 0.4
+}
