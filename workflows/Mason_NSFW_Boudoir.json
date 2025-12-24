@@ -1,0 +1,97 @@
+{
+  "last_node_id": 20,
+  "last_link_id": 20,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [50, 50],
+      "size": [315, 98],
+      "widgets_values": ["v1-5-pruned-emaonly.ckpt"]
+    },
+    {
+      "id": 10,
+      "type": "LingerieSelector",
+      "pos": [50, 200],
+      "size": [300, 100],
+      "widgets_values": ["black_lace", "sheer", "stockings"]
+    },
+    {
+      "id": 11,
+      "type": "PosePresetLoader",
+      "pos": [50, 350],
+      "size": [300, 100],
+      "widgets_values": ["Lying_Back_Spread"]
+    },
+    {
+      "id": 12,
+      "type": "SkinShineController",
+      "pos": [50, 500],
+      "size": [300, 100],
+      "widgets_values": ["oiled_skin", 0.8]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [500, 50],
+      "size": [400, 200],
+      "inputs": [
+        {"name": "clip", "type": "CLIP", "link": 1},
+        {"name": "text", "type": "STRING", "link": 12, "widget": {"name": "text"}}
+      ],
+      "widgets_values": [""]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [500, 300],
+      "size": [400, 100],
+      "inputs": [{"name": "clip", "type": "CLIP", "link": 1}],
+      "widgets_values": ["bad anatomy, blurry, low quality"]
+    },
+    {
+      "id": 4,
+      "type": "KSampler",
+      "pos": [1000, 50],
+      "size": [300, 300],
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 2},
+        {"name": "positive", "type": "CONDITIONING", "link": 3},
+        {"name": "negative", "type": "CONDITIONING", "link": 4},
+        {"name": "latent_image", "type": "LATENT", "link": 5}
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [600, 450],
+      "size": [300, 100],
+      "widgets_values": [512, 768, 1]
+    },
+    {
+      "id": 6,
+      "type": "VAEDecode",
+      "pos": [1400, 50],
+      "size": [200, 100],
+      "inputs": [{"name": "samples", "type": "LATENT", "link": 6}, {"name": "vae", "type": "VAE", "link": 7}]
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [1700, 50],
+      "size": [300, 300],
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 8}]
+    }
+  ],
+  "links": [
+    [1, 1, 1, 2, 0, "CLIP"],
+    [2, 1, 0, 4, 0, "MODEL"],
+    [3, 2, 0, 4, 1, "CONDITIONING"],
+    [4, 3, 0, 4, 2, "CONDITIONING"],
+    [5, 5, 0, 4, 3, "LATENT"],
+    [6, 4, 0, 6, 0, "LATENT"],
+    [7, 1, 2, 6, 1, "VAE"],
+    [8, 6, 0, 7, 0, "IMAGE"]
+  ],
+  "version": 0.4
+}
