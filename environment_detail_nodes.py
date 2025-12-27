@@ -1,123 +1,27 @@
 """
-Mason's Environment Detail Nodes for ComfyUI
-Replace scene/environment LoRAs with prompt engineering - SD 1.5 optimized
+Mason's Environment & Atmosphere Detail Nodes for ComfyUI
+Temperature, time of day, and age refinement - SD 1.5 optimized
 """
 
 
-class SurfaceController:
-    """Control surface textures in scenes"""
+class TemperatureSweatController:
+    """Controls temperature-related visual effects on the subject"""
     
-    SURFACES = {
-        "marble": "marble surface, polished marble, veined stone, luxurious marble",
-        "wood": "wooden surface, wood grain, natural wood texture, timber",
-        "concrete": "concrete surface, cement texture, industrial concrete",
-        "metal": "metal surface, metallic texture, brushed metal, cold steel",
-        "glass": "glass surface, transparent glass, reflective glass, clear",
-        "fabric": "fabric surface, textile, cloth texture, soft material",
-        "leather": "leather surface, leather texture, genuine leather, supple",
-        "tile": "tile surface, ceramic tiles, bathroom tiles, mosaic",
-        "brick": "brick surface, red brick, exposed brick wall, rustic",
-        "sand": "sandy surface, beach sand, fine sand texture, grainy",
-        "grass": "grass surface, green grass, lawn, soft grass",
+    TEMPERATURE = {
+        "cold": "cold environment, visible breath, pink cheeks and nose, shivering slightly",
+        "cool": "cool environment, comfortable, slight chill",
+        "neutral": "",
+        "warm": "warm environment, relaxed, comfortable warmth",
+        "hot": "hot environment, heavy sweating, flushed skin, overheated",
+        "steamy": "steamy environment, condensation, sauna-like heat, glistening",
     }
     
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "prompt": ("STRING", {"default": "", "multiline": True}),
-                "surface": (list(cls.SURFACES.keys()),),
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("surface_prompt",)
-    FUNCTION = "apply"
-    CATEGORY = "Mason's Nodes/Environment Detail"
-
-    def apply(self, prompt, surface):
-        sur = self.SURFACES.get(surface, "")
-        return (f"{prompt}, {sur}",)
-
-
-class ReflectionController:
-    """Control reflections in scenes"""
-    
-    REFLECTIONS = {
-        "none": "no reflections, matte surfaces, non-reflective",
-        "subtle": "subtle reflections, slight mirror, faint reflection",
-        "mirror": "mirror reflection, clear reflection, reflective surface",
-        "water": "water reflection, rippling reflection, pool reflection",
-        "glass": "glass reflection, window reflection, transparent reflection",
-        "wet_floor": "wet floor reflection, puddle reflection, shiny wet surface",
-        "chrome": "chrome reflection, metallic mirror, distorted reflection",
-    }
-    
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "prompt": ("STRING", {"default": "", "multiline": True}),
-                "reflection": (list(cls.REFLECTIONS.keys()),),
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("reflection_prompt",)
-    FUNCTION = "apply"
-    CATEGORY = "Mason's Nodes/Environment Detail"
-
-    def apply(self, prompt, reflection):
-        ref = self.REFLECTIONS.get(reflection, "")
-        return (f"{prompt}, {ref}",)
-
-
-class FogHazeController:
-    """Control atmospheric fog and haze"""
-    
-    ATMOSPHERICS = {
-        "clear": "clear atmosphere, no fog, sharp visibility, crisp air",
-        "light_haze": "light haze, subtle atmospheric haze, soft atmosphere",
-        "misty": "misty atmosphere, light mist, foggy, romantic fog",
-        "fog": "fog, foggy environment, thick mist, low visibility",
-        "heavy_fog": "heavy fog, dense fog, mysterious atmosphere, obscured",
-        "smoke": "smoke in air, smoky atmosphere, haze from smoke",
-        "dust": "dusty atmosphere, dust particles, hazy dust, desert dust",
-    }
-    
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "prompt": ("STRING", {"default": "", "multiline": True}),
-                "atmosphere": (list(cls.ATMOSPHERICS.keys()),),
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("fog_prompt",)
-    FUNCTION = "apply"
-    CATEGORY = "Mason's Nodes/Environment Detail"
-
-    def apply(self, prompt, atmosphere):
-        atm = self.ATMOSPHERICS.get(atmosphere, "")
-        return (f"{prompt}, {atm}",)
-
-
-class ParticleController:
-    """Control particles in the air"""
-    
-    PARTICLES = {
+    SWEAT_LEVELS = {
         "none": "",
-        "dust_motes": "dust motes in air, floating particles, visible dust in light",
-        "snow": "falling snow, snowflakes, winter snow, gentle snowfall",
-        "rain": "rain, raindrops, falling rain, rainy weather",
-        "sparkles": "sparkles in air, glitter, magical particles, fairy dust",
-        "petals": "flower petals in air, falling petals, romantic petals",
-        "leaves": "falling leaves, autumn leaves, floating leaves",
-        "embers": "glowing embers, fire particles, floating sparks",
-        "bubbles": "bubbles, soap bubbles, floating bubbles, iridescent",
-        "confetti": "confetti, falling confetti, celebration particles",
+        "light_glow": "light sheen on skin, subtle glow",
+        "perspiring": "perspiring, sweat on forehead, damp skin",
+        "heavy_sweat": "heavy sweating, sweat dripping, completely drenched in sweat",
+        "post_workout": "post-workout sweat, athletic perspiration, exhausted and sweaty",
     }
     
     @classmethod
@@ -125,36 +29,39 @@ class ParticleController:
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "particle": (list(cls.PARTICLES.keys()),),
+                "temperature": (list(cls.TEMPERATURE.keys()),),
+                "sweat_level": (list(cls.SWEAT_LEVELS.keys()),),
             }
         }
 
     RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("particle_prompt",)
+    RETURN_NAMES = ("temp_prompt",)
     FUNCTION = "apply"
-    CATEGORY = "Mason's Nodes/Environment Detail"
+    CATEGORY = "Mason's Nodes/Environment"
 
-    def apply(self, prompt, particle):
-        part = self.PARTICLES.get(particle, "")
-        if part:
-            return (f"{prompt}, {part}",)
-        return (prompt,)
+    def apply(self, prompt, temperature, sweat_level):
+        parts = [prompt]
+        if temperature != "neutral":
+            parts.append(self.TEMPERATURE.get(temperature, ""))
+        if sweat_level != "none":
+            parts.append(self.SWEAT_LEVELS.get(sweat_level, ""))
+        return (", ".join([p for p in parts if p]),)
 
 
-class TimeOfDayEnhancer:
-    """Enhanced time of day control"""
+class TimeOfDayLighting:
+    """Specific time-of-day lighting conditions"""
     
     TIMES = {
-        "dawn": "dawn light, early morning, pink sky, soft morning light, sunrise colors",
-        "morning": "morning light, fresh daylight, bright morning, soft shadows",
-        "midday": "midday sun, harsh overhead light, strong shadows, noon",
-        "afternoon": "afternoon light, warm afternoon, angled sunlight, soft golden",
-        "golden_hour": "golden hour, warm golden light, sunset glow, magic hour",
-        "sunset": "sunset light, orange sky, dramatic sunset, evening colors",
-        "blue_hour": "blue hour, twilight, deep blue sky, cool evening light",
-        "dusk": "dusk, fading light, evening twilight, dark blue sky",
-        "night": "night time, dark, moonlight, night scene, low light",
-        "midnight": "midnight, deep night, very dark, starlit",
+        "dawn": "dawn lighting, early morning light, soft pink sky, first light",
+        "morning": "morning light, fresh daylight, bright and clean, new day",
+        "golden_hour_morning": "golden hour morning, warm early sunlight, long shadows",
+        "midday": "midday sun, harsh overhead light, minimal shadows, bright",
+        "afternoon": "afternoon light, warm sunlight, relaxed atmosphere",
+        "golden_hour_evening": "golden hour evening, warm sunset glow, romantic lighting",
+        "dusk": "dusk lighting, purple sky, fading light, twilight",
+        "blue_hour": "blue hour, cool blue tones, magical atmosphere, post-sunset",
+        "night": "night time, artificial lighting, dark environment, nighttime",
+        "midnight": "midnight, low light, intimate darkness, late night",
     }
     
     @classmethod
@@ -162,30 +69,38 @@ class TimeOfDayEnhancer:
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "time": (list(cls.TIMES.keys()),),
+                "time_of_day": (list(cls.TIMES.keys()),),
             }
         }
 
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("time_prompt",)
     FUNCTION = "apply"
-    CATEGORY = "Mason's Nodes/Environment Detail"
+    CATEGORY = "Mason's Nodes/Environment"
 
-    def apply(self, prompt, time):
-        t = self.TIMES.get(time, "")
-        return (f"{prompt}, {t}",)
+    def apply(self, prompt, time_of_day):
+        t = self.TIMES.get(time_of_day, "")
+        if t:
+            return (f"{prompt}, {t}",)
+        return (prompt,)
 
 
-class SeasonController:
-    """Control seasonal appearance"""
+class AgeAppearanceRefinement:
+    """Fine control over perceived age and maturity"""
     
-    SEASONS = {
-        "spring": "spring season, blooming flowers, fresh green, spring atmosphere, new growth",
-        "summer": "summer season, bright sun, lush green, hot weather, summer vibes",
-        "autumn": "autumn season, fall colors, orange leaves, warm tones, cozy autumn",
-        "winter": "winter season, cold weather, bare trees, snow, winter atmosphere",
-        "tropical": "tropical setting, palm trees, humid, tropical paradise",
-        "desert": "desert environment, arid, sandy, hot and dry, desert landscape",
+    AGE_RANGES = {
+        "young_adult": "young adult, early twenties, youthful energy, fresh faced",
+        "mid_twenties": "mid twenties, prime of youth, confident beauty",
+        "late_twenties": "late twenties, mature beauty, refined features",
+        "early_thirties": "early thirties, sophisticated, elegant maturity",
+        "milf": "milf aesthetic, attractive mature woman, confident older woman",
+        "cougar": "cougar aesthetic, sexy older woman, experienced beauty, distinguished",
+    }
+    
+    MATURITY_CUES = {
+        "youthful_skin": "youthful skin, no wrinkles, smooth complexion",
+        "light_lines": "light expression lines, subtle maturity, lived-in beauty",
+        "distinguished": "distinguished features, graceful aging, elegant lines",
     }
     
     @classmethod
@@ -193,34 +108,31 @@ class SeasonController:
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "season": (list(cls.SEASONS.keys()),),
+                "age_range": (list(cls.AGE_RANGES.keys()),),
+                "maturity_cues": (list(cls.MATURITY_CUES.keys()),),
             }
         }
 
     RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("season_prompt",)
+    RETURN_NAMES = ("age_prompt",)
     FUNCTION = "apply"
-    CATEGORY = "Mason's Nodes/Environment Detail"
+    CATEGORY = "Mason's Nodes/Environment"
 
-    def apply(self, prompt, season):
-        s = self.SEASONS.get(season, "")
-        return (f"{prompt}, {s}",)
+    def apply(self, prompt, age_range, maturity_cues):
+        parts = [prompt]
+        parts.append(self.AGE_RANGES.get(age_range, ""))
+        parts.append(self.MATURITY_CUES.get(maturity_cues, ""))
+        return (", ".join([p for p in parts if p]),)
 
 
 NODE_CLASS_MAPPINGS = {
-    "SurfaceController": SurfaceController,
-    "ReflectionController": ReflectionController,
-    "FogHazeController": FogHazeController,
-    "ParticleController": ParticleController,
-    "TimeOfDayEnhancer": TimeOfDayEnhancer,
-    "SeasonController": SeasonController,
+    "TemperatureSweatController": TemperatureSweatController,
+    "TimeOfDayLighting": TimeOfDayLighting,
+    "AgeAppearanceRefinement": AgeAppearanceRefinement,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "SurfaceController": "🧱 Surface Controller",
-    "ReflectionController": "🪞 Reflection Controller",
-    "FogHazeController": "🌫️ Fog/Haze Controller",
-    "ParticleController": "✨ Particle Controller",
-    "TimeOfDayEnhancer": "🌅 Time of Day Enhancer",
-    "SeasonController": "🍂 Season Controller",
+    "TemperatureSweatController": "🌡️ Temperature & Sweat Controller",
+    "TimeOfDayLighting": "🌅 Time of Day Lighting",
+    "AgeAppearanceRefinement": "👩 Age Appearance Refinement",
 }
