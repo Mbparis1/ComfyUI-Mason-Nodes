@@ -165,14 +165,53 @@ class AircraftPro:
         return (", ".join([p for p in parts if p]),)
 
 
+class MechSuitPro:
+    """Mecha, power suits, and giant robots"""
+    
+    MECH_TYPE = {
+        "gundam": "Gundam style mech, Japanese mecha, mobile suit, anime robot",
+        "titan": "Titan style mech, western mech, heavy armor, Titanfall",
+        "power_armor": "power armor, Iron Man style, wearable exoskeleton",
+        "kaiju_scale": "kaiju scale robot, building sized, Pacific Rim Jaeger",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "mech_type": (list(cls.MECH_TYPE.keys()),),
+                "state": (["standing", "combat", "damaged", "construction"],),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("mech_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Vehicles"
+
+    def apply(self, prompt, mech_type, state):
+        m = self.MECH_TYPE.get(mech_type, "")
+        s_map = {
+            "standing": "standing ready, heroic pose",
+            "combat": "in combat, weapons firing, explosions",
+            "damaged": "battle damaged, sparking, limping",
+            "construction": "under construction, scaffolding, being built",
+        }
+        s = s_map.get(state, "")
+        return (f"{prompt}, {m}, {s}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "LandVehiclePro": LandVehiclePro,
     "SeaVehiclePro": SeaVehiclePro,
     "AircraftPro": AircraftPro,
+    "MechSuitPro": MechSuitPro,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "LandVehiclePro": "🚗 Land Vehicle Pro",
     "SeaVehiclePro": "🚢 Sea Vehicle Pro",
     "AircraftPro": "✈️ Aircraft Pro",
+    "MechSuitPro": "🤖 Mech Suit Pro",
 }

@@ -150,14 +150,53 @@ class CharacterInteraction:
         return (", ".join([p for p in parts if p]),)
 
 
+class PositionMapper:
+    """Maps characters to specific spatial positions"""
+    
+    HORIZONTAL = {
+        "left": "subject on left side of frame",
+        "center": "subject in center of frame",
+        "right": "subject on right side of frame",
+    }
+    
+    VERTICAL = {
+        "top": "subject in upper portion of frame",
+        "middle": "subject in middle of frame",
+        "bottom": "subject in lower portion of frame",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "character_label": ("STRING", {"default": "character A"}),
+                "h_position": (list(cls.HORIZONTAL.keys()),),
+                "v_position": (list(cls.VERTICAL.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("positioned_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Multi-Character"
+
+    def apply(self, prompt, character_label, h_position, v_position):
+        h = self.HORIZONTAL.get(h_position, "")
+        v = self.VERTICAL.get(v_position, "")
+        return (f"{prompt}, {character_label} {h}, {v}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "DualCharacterPose": DualCharacterPose,
     "GroupSceneComposer": GroupSceneComposer,
     "CharacterInteraction": CharacterInteraction,
+    "PositionMapper": PositionMapper,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "DualCharacterPose": "👥 Dual Character Pose",
     "GroupSceneComposer": "👨‍👩‍👧‍👦 Group Scene Composer",
     "CharacterInteraction": "🤝 Character Interaction",
+    "PositionMapper": "📍 Position Mapper",
 }

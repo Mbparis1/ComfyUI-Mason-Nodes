@@ -1,6 +1,6 @@
 {
-  "last_node_id": 60,
-  "last_link_id": 120,
+  "last_node_id": 100,
+  "last_link_id": 200,
   "nodes": [
     {
       "id": 1,
@@ -11,58 +11,50 @@
     },
     {
       "id": 10,
-      "type": "DeepThroatMaster",
+      "type": "MegaPromptBuilder",
       "pos": [50, 200],
-      "size": [400, 200],
-      "widgets_values": ["", "gag_reflex", "tears"]
+      "size": [450, 250],
+      "widgets_values": ["1girl, beautiful woman, detailed face", "photorealistic, 8k, RAW photo", "studio lighting, dark background", "masterpiece, best quality, ultra detailed", "", "", ""]
     },
     {
       "id": 11,
-      "type": "AnalSpecialist",
-      "pos": [50, 450],
+      "type": "PositionMapper",
+      "pos": [550, 200],
       "size": [400, 200],
-      "widgets_values": ["", "insertion_start", "lube_shine"]
+      "widgets_values": ["", "main subject", "center", "middle"]
     },
     {
       "id": 12,
-      "type": "CreamPieMechanic",
-      "pos": [500, 200],
+      "type": "GlassMaterialPro",
+      "pos": [550, 450],
       "size": [400, 200],
-      "widgets_values": ["", "leaking", "thick"]
+      "widgets_values": ["", "clear", "dramatic"]
     },
     {
       "id": 13,
-      "type": "FacialFinishPro",
-      "pos": [500, 450],
+      "type": "MechSuitPro",
+      "pos": [1000, 200],
       "size": [400, 200],
-      "widgets_values": ["", "eyes_sealed", "surprise"]
+      "widgets_values": ["", "power_armor", "standing"]
     },
     {
       "id": 14,
-      "type": "PhysicsInteractionEngine",
-      "pos": [950, 200],
+      "type": "ShieldArmorPro",
+      "pos": [1000, 450],
       "size": [400, 200],
-      "widgets_values": ["", "breast_squish", "heavy"]
-    },
-    {
-      "id": 15,
-      "type": "BoneManipulator",
-      "pos": [950, 450],
-      "size": [400, 300],
-      "widgets_values": [0.0, 0.0, 90.0, 90.0, 0.0, 60.0]
+      "widgets_values": ["", "energy_shield", "energy"]
     },
     {
       "id": 30,
       "type": "StringConcatenator",
-      "pos": [1400, 200],
-      "size": [300, 400],
+      "pos": [1450, 200],
+      "size": [300, 350],
       "inputs": [
         {"name": "text_a", "type": "STRING", "link": 10},
         {"name": "text_b", "type": "STRING", "link": 11},
         {"name": "text_c", "type": "STRING", "link": 12},
         {"name": "text_d", "type": "STRING", "link": 13},
-        {"name": "text_e", "type": "STRING", "link": 14},
-        {"name": "text_f", "type": "STRING", "link": 25}
+        {"name": "text_e", "type": "STRING", "link": 14}
       ]
     },
     {
@@ -77,44 +69,58 @@
     },
     {
       "id": 21,
+      "type": "NegativePromptHelper",
+      "pos": [1450, 600],
+      "size": [300, 150],
+      "widgets_values": ["photorealistic", ""]
+    },
+    {
+      "id": 22,
       "type": "CLIPTextEncode",
       "pos": [1800, 400],
       "size": [300, 100],
       "inputs": [
         {"name": "clip", "type": "CLIP", "link": 2},
-        {"name": "text", "type": "STRING", "widgets_values": ["bad quality, worst quality, lowres, ugly, deformed, bad anatomy"]}
+        {"name": "text", "type": "STRING", "link": 21}
       ]
+    },
+    {
+      "id": 31,
+      "type": "OneClickPresets",
+      "pos": [50, 500],
+      "size": [300, 150],
+      "widgets_values": ["high_quality"]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [2200, 50],
+      "size": [300, 100],
+      "widgets_values": [512, 768, 1]
     },
     {
       "id": 4,
       "type": "KSampler",
-      "pos": [2200, 50],
-      "size": [300, 300],
+      "pos": [2200, 200],
+      "size": [300, 350],
       "inputs": [
         {"name": "model", "type": "MODEL", "link": 1},
-        {"name": "positive", "type": "CONDITIONING", "link": 21},
+        {"name": "positive", "type": "CONDITIONING", "link": 20},
         {"name": "negative", "type": "CONDITIONING", "link": 22},
         {"name": "latent_image", "type": "LATENT", "link": 5}
       ]
     },
     {
-      "id": 5,
-      "type": "EmptyLatentImage",
-      "pos": [1800, 50],
-      "size": [300, 100],
-      "widgets_values": [512, 768, 1]
-    },
-    {
       "id": 6,
       "type": "VAEDecode",
-      "pos": [2600, 50],
+      "pos": [2600, 200],
       "size": [200, 100],
       "inputs": [{"name": "samples", "type": "LATENT", "link": 6}, {"name": "vae", "type": "VAE", "link": 3}]
     },
     {
       "id": 7,
       "type": "SaveImage",
-      "pos": [2900, 50],
+      "pos": [2900, 200],
       "size": [300, 300],
       "inputs": [{"name": "images", "type": "IMAGE", "link": 7}]
     }
@@ -122,23 +128,23 @@
   "links": [
     [1, 1, 0, 4, 0, "MODEL"],
     [2, 1, 1, 20, 0, "CLIP"],
-    [30, 1, 1, 21, 0, "CLIP"],
+    [2, 1, 1, 22, 0, "CLIP"],
     [3, 1, 2, 6, 1, "VAE"],
     [5, 5, 0, 4, 3, "LATENT"],
     [6, 4, 0, 6, 0, "LATENT"],
     [7, 6, 0, 7, 0, "IMAGE"],
     
-    [10, 10, 0, 30, 0, "STRING-Throat"],
-    [11, 11, 0, 30, 1, "STRING-Anal"],
-    [12, 12, 0, 30, 2, "STRING-Pie"],
-    [13, 13, 0, 30, 3, "STRING-Facial"],
-    [14, 14, 0, 30, 4, "STRING-Phys"],
-    [25, 15, 0, 30, 5, "STRING-Bone"],
+    [10, 10, 0, 30, 0, "STRING-Mega"],
+    [11, 11, 0, 30, 1, "STRING-Position"],
+    [12, 12, 0, 30, 2, "STRING-Glass"],
+    [13, 13, 0, 30, 3, "STRING-Mech"],
+    [14, 14, 0, 30, 4, "STRING-Shield"],
+
+    [30, 30, 0, 20, 1, "STRING-FinalPos"],
+    [21, 21, 0, 22, 1, "STRING-Neg"],
     
-    [30, 30, 0, 20, 1, "STRING"],
-    
-    [21, 20, 0, 4, 1, "CONDITIONING"],
-    [22, 21, 0, 4, 2, "CONDITIONING"]
+    [20, 20, 0, 4, 1, "CONDITIONING"],
+    [22, 22, 0, 4, 2, "CONDITIONING"]
   ],
   "version": 0.4
 }

@@ -148,14 +148,56 @@ class HistoricalClothingMaster:
         return (", ".join([p for p in parts if p]),)
 
 
+class FantasyCostumeMaster:
+    """Sci-fi, alien, and high fantasy costumes"""
+    
+    FANTASY = {
+        "elvish": "elvish clothing, ethereal, flowing robes, leaf motifs, Lord of the Rings",
+        "dwarven": "dwarven armor, heavy, runic, beard-friendly, mining aesthetic",
+        "orc": "orc war gear, brutal, spikes, skulls, savage",
+        "space_marine": "power armor, space marine, futuristic soldier, heavy plating",
+        "alien": "alien clothing, otherworldly, non-human, bioluminescent",
+        "cybernetic": "cybernetic implants, tech wear, wired, augmented",
+        "jedi": "jedi robes, simple, earth tones, lightsaber belt",
+        "witcher": "witcher armor, monster hunter, silver swords, medallion",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "fantasy_type": (list(cls.FANTASY.keys()),),
+                "condition": (["pristine", "battle_worn", "ancient", "enchanted"],),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("fantasy_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Costumes"
+
+    def apply(self, prompt, fantasy_type, condition):
+        f = self.FANTASY.get(fantasy_type, "")
+        c_map = {
+            "battle_worn": "battle worn, damaged, veteran",
+            "ancient": "ancient artifact, legendary gear",
+            "enchanted": "enchanted gear, glowing runes, magical",
+        }
+        c = c_map.get(condition, "")
+        return (f"{prompt}, {f}, {c}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "PirateCostumePro": PirateCostumePro,
     "MedievalArmorPro": MedievalArmorPro,
     "HistoricalClothingMaster": HistoricalClothingMaster,
+    "FantasyCostumeMaster": FantasyCostumeMaster,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "PirateCostumePro": "🏴‍☠️ Pirate Costume Pro",
     "MedievalArmorPro": "⚔️ Medieval Armor Pro",
     "HistoricalClothingMaster": "👑 Historical Clothing Master",
+    "FantasyCostumeMaster": "🧙 Fantasy Costume Master",
 }

@@ -205,11 +205,45 @@ class HollywoodColorGrade:
         return (", ".join([p for p in parts if p]),)
 
 
+class DirectorToolkit:
+    """Director-level scene composition and style"""
+    
+    DIRECTOR = {
+        "nolan": "Christopher Nolan style, practical effects, IMAX, epic scale, temporal",
+        "tarantino": "Quentin Tarantino style, dialogue heavy, low angles, trunk shot, stylized violence",
+        "villeneuve": "Denis Villeneuve style, slow burn, vast landscapes, minimal dialogue, atmospheric",
+        "fincher": "David Fincher style, muted colors, precise framing, rain, green tint",
+        "spielberg": "Steven Spielberg style, magical realism, lens flare, adventure, wonder",
+        "kubrick": "Stanley Kubrick style, symmetry, one-point perspective, cold, clinical",
+        "snyder": "Zack Snyder style, speed ramping, desaturated, epic poses, high contrast",
+        "anderson": "Wes Anderson style, centered, pastel colors, whimsical, symmetrical",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "director_style": (list(cls.DIRECTOR.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("director_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Cinematic"
+
+    def apply(self, prompt, director_style):
+        d = self.DIRECTOR.get(director_style, "")
+        return (f"{prompt}, {d}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "CinematicFraming": CinematicFraming,
     "FilmGrainPro": FilmGrainPro,
     "LensEffectsPro": LensEffectsPro,
     "HollywoodColorGrade": HollywoodColorGrade,
+    "DirectorToolkit": DirectorToolkit,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -217,4 +251,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "FilmGrainPro": "🎞️ Film Grain Pro",
     "LensEffectsPro": "📷 Lens Effects Pro",
     "HollywoodColorGrade": "🎥 Hollywood Color Grade",
+    "DirectorToolkit": "🧑‍🎨 Director Toolkit",
 }

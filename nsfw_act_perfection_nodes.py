@@ -1,296 +1,222 @@
 """
-Mason's NSFW Act Perfection Nodes
-The absolute peak of act-specific accuracy - SD 1.5 optimized
+Mason's NSFW Act Perfection Nodes for ComfyUI
+Specialized "Master" nodes for specific acts with fluid and physics logic.
 """
 
-class DeepThroatPerfection:
-    """Perfects the deep throat blowjob act with all micro-details"""
+class DeepThroatMaster:
+    """Advanced control for oral depth and reactions"""
+    
+    DEPTH = {
+        "gag_reflex": "gagging, eyes watering, visible strain, choking, throat bulge",
+        "deep_take": "taking it deep, throat fucking, balls deep in mouth, seamless deepthroat",
+        "training": "practicing deepthroat, mouth stretched wide, resisting gag",
+        "extreme_push": "face pushed into crotch, nose pressed against skin, muffled noises",
+    }
+    
+    FLUID_INTERACTION = {
+        "drool_mess": "thick saliva strings, slobber, wet chin, messy face",
+        "tears": "tearing up, crying from depth, mascara running",
+        "choking_cough": "coughing, sputtering, red face",
+        "clean": "clean execution, professional, enthusiastic",
+    }
     
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "depth": (["shallow", "medium", "deep", "balls_deep"],),
-                "gag_reflex": (["none", "slight", "heavy_gagging", "drooling"],),
-                "hand_interaction": (["none", "hand_on_back_of_head", "fingers_in_mouth", "double_handjob_combo"],),
-                "throat_detail": ("BOOLEAN", {"default": True}),
-                "eye_state": (["neutral", "watering_eyes", "rolled_back", "pleading_look"],),
+                "depth_mechanic": (list(cls.DEPTH.keys()),),
+                "reaction": (list(cls.FLUID_INTERACTION.keys()),),
             }
         }
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("act_prompt",)
-    FUNCTION = "apply"
+    RETURN_TYPES = ("STRING", "STRING")
+    RETURN_NAMES = ("positive_prompt", "negative_addition")
+    FUNCTION = "generate"
     CATEGORY = "Mason's Nodes/Act Perfection"
 
-    def apply(self, prompt, depth, gag_reflex, hand_interaction, throat_detail, eye_state):
-        parts = [prompt, "deep throat blowjob"]
+    def generate(self, prompt, depth_mechanic, reaction):
+        d = self.DEPTH.get(depth_mechanic, "")
+        r = self.FLUID_INTERACTION.get(reaction, "")
         
-        # Depth
-        depth_map = {
-            "shallow": "tip only, oral focus",
-            "medium": "taking half, mouth full",
-            "deep": "deep penetration into throat, mouth wide open",
-            "balls_deep": "extreme deepthroat, balls pressing against chin, full length in throat",
-        }
-        parts.append(depth_map[depth])
+        positive = f"{prompt}, {d}, {r}"
+        negative = "dry mouth, boring, bad anatomy"
         
-        # Gagging
-        if gag_reflex == "slight":
-            parts.append("slight gagging, heavy breathing")
-        elif gag_reflex == "heavy_gagging":
-            parts.append("intense gagging, throat reflex, struggling to breath")
-        elif gag_reflex == "drooling":
-            parts.append("messy drooling, saliva dripping from mouth, wet face")
-            
-        # Hands
-        if hand_interaction == "hand_on_back_of_head":
-            parts.append("hand on back of head, pushing down, dominant hand placement")
-        elif hand_interaction == "fingers_in_mouth":
-            parts.append("fingers in mouth beside penis, stretching mouth, messy")
-        elif hand_interaction == "double_handjob_combo":
-            parts.append("hand stroking base, double hand interaction")
-            
-        # Throat
-        if throat_detail:
-            parts.append("visible throat bulge, neck muscles straining, realistic swallowing")
-            
-        # Eyes
-        eye_map = {
-            "watering_eyes": "eyes watering, tears from gagging, glistening eyes",
-            "rolled_back": "eyes rolling back in ecstasy, whites showing",
-            "pleading_look": "looking up with pleading eyes, submissive gaze",
-        }
-        if eye_state != "neutral":
-            parts.append(eye_map[eye_state])
-            
-        return (", ".join(parts),)
+        return (positive, negative)
 
-class GropingPerfection:
-    """Perfects the act of groping and physical handling"""
+
+class AnalSpecialist:
+    """Specialized control for anal acts"""
+    
+    ACTION = {
+        "insertion_start": "anal insertion, tip just inside, tight sphincter, stretching ring",
+        "full_depth": "balls deep anal, ass swallowing cock, fully inserted",
+        "gaping": "gaping anus, rosebud, stretched hole, after anal",
+        "double_anal": "double anal, two dicks one hole, extreme stretching",
+        "ass_to_mouth": "ass to mouth, atm, tasting ass",
+    }
+    
+    DETAIL = {
+        "lube_shine": "shiny lube, wet anus, dripping lube, oil",
+        "rough_texture": "goosebumps on ass, red slap marks, gripped cheeks",
+        "straining": "straining muscles, toes curled, arching back",
+        "pleasure": "ahegao, eyes rolled back, drooling, immense pleasure",
+    }
     
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "target_area": (["breasts", "buttocks", "thighs", "waist"],),
-                "grip_intensity": (["soft", "firm", "hard_squeeze", "rough_grabbing"],),
-                "finger_placement": (["flat_palm", "fingertips_digging_in", "spreading"],),
-                "skin_reaction": ("BOOLEAN", {"default": True}),
+                "action": (list(cls.ACTION.keys()),),
+                "detail": (list(cls.DETAIL.keys()),),
             }
         }
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("groping_prompt",)
-    FUNCTION = "apply"
+    RETURN_TYPES = ("STRING", "STRING")
+    RETURN_NAMES = ("positive_prompt", "negative_addition")
+    FUNCTION = "generate"
     CATEGORY = "Mason's Nodes/Act Perfection"
 
-    def apply(self, prompt, target_area, grip_intensity, finger_placement, skin_reaction):
-        parts = [prompt, f"groping {target_area}"]
+    def generate(self, prompt, action, detail):
+        a = self.ACTION.get(action, "")
+        d = self.DETAIL.get(detail, "")
         
-        # Grip
-        grip_map = {
-            "soft": "gentle touch, palm on skin",
-            "firm": "firm grip, holding securely",
-            "hard_squeeze": "hard squeeze, fingers pressing deep",
-            "rough_grabbing": "rough grabbing, aggressive handling, intense grip",
-        }
-        parts.append(grip_map[grip_intensity])
+        positive = f"{prompt}, {a}, {d}"
+        negative = "vaginal, wrong hole, bad anatomy"
         
-        # Fingers
-        if finger_placement == "fingertips_digging_in":
-            parts.append("fingertips digging into flesh, visible pressure points")
-        elif finger_placement == "spreading":
-            parts.append(f"fingers spreading the {target_area} apart, showcasing")
-            
-        # Skin
-        if skin_reaction:
-            parts.append("skin indentation, flesh being displaced, realistic physical contact, skin compression")
-            
-        return (", ".join(parts),)
+        return (positive, negative)
 
-class AnalPerfection:
-    """Perfects anal penetration with anatomical accuracy"""
+
+class CreamPieMechanic:
+    """Internal fluids and leakage logic"""
+    
+    TYPE = {
+        "leaking": "leaking creampie, dripping cum, mess between legs",
+        "overflowing": "overflowing creampie, cum gushing out, massive load",
+        "filled": "stuffed with cum, belly bulge, full",
+        "dried": "dried cum on thighs, crusty, aftercare",
+    }
+    
+    VISCOSITY = {
+        "thick": "thick white cum, opaque liquid, heavy texture",
+        "runny": "runny cum, translucent mix, wet mess",
+        "frothy": "frothy cum, bubbly, mixed fluids",
+    }
     
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "phase": (["insertion", "mid_thrust", "balls_pressing", "aftermath_gaping"],),
-                "stretching": (["natural", "wide_stretching", "extreme_diameter", "gaping"],),
-                "lubrication": (["dry_look", "wet_glistening", "messy_lube", "dripping"],),
-                "sphincter_detail": ("BOOLEAN", {"default": True}),
+                "type": (list(cls.TYPE.keys()),),
+                "viscosity": (list(cls.VISCOSITY.keys()),),
             }
         }
 
     RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("anal_prompt",)
-    FUNCTION = "apply"
+    RETURN_NAMES = ("fluid_prompt",)
+    FUNCTION = "generate"
     CATEGORY = "Mason's Nodes/Act Perfection"
 
-    def apply(self, prompt, phase, stretching, lubrication, sphincter_detail):
-        parts = [prompt, "anal sex"]
-        
-        # Phase
-        phase_map = {
-            "insertion": "initial insertion, stretching point, tight fit",
-            "mid_thrust": "full penetration, rhythmic movement, high friction",
-            "balls_pressing": "balls pressing against anus, full depth, extreme penetration",
-            "aftermath_gaping": "freshly used, gaping anus, open and stretched, red and flushed",
-        }
-        parts.append(phase_map[phase])
-        
-        # Stretching
-        stretch_map = {
-            "wide_stretching": "wide stretching, skin taut, extreme diameter",
-            "extreme_diameter": "extreme stretching, pushing limits, massive fit",
-            "gaping": "gaping open, unable to close, circular stretch",
-        }
-        if stretching != "natural":
-            parts.append(stretch_map[stretching])
-            
-        # Lube
-        lube_map = {
-            "wet_glistening": "wet glistening skin, light lubrication",
-            "messy_lube": "messy lubricant, white streaks, heavy lube",
-            "dripping": "lube dripping down, very wet and messy",
-        }
-        if lubrication != "dry_look":
-            parts.append(lube_map[lubrication])
-            
-        # Detail
-        if sphincter_detail:
-            parts.append("detailed sphincter texture, wrinkled skin, realistic anatomical detail, reddened rim")
-            
-        return (", ".join(parts),)
+    def generate(self, prompt, type, viscosity):
+        t = self.TYPE.get(type, "")
+        v = self.VISCOSITY.get(viscosity, "")
+        return (f"{prompt}, {t}, {v}",)
 
-class VaginalPerfection:
-    """Perfects vaginal penetration and pussy play"""
+
+class FacialFinishPro:
+    """Precision facial cumshot control"""
+    
+    TARGET = {
+        "eyes_sealed": "cum sealing eyes shut, covered eyes, blinded by cum",
+        "mouth_full": "mouth full of cum, leaking from corners, chipmunk cheeks",
+        "hair_matted": "cum in hair, matted hair, sticky strands",
+        "glazed_face": "glazed face, full face coating, bukkake aftermath",
+        "glasses_covered": "cum on glasses, blinded, messy eyewear",
+    }
+    
+    REACTION = {
+        "surprise": "surprised expression, eyes wide, mouth open",
+        "disgust": "disgusted face, tongue out, scrunching nose",
+        "enjoyment": "licking lips, tasting, happy smile, thumbs up",
+        "dazed": "dazed expression, thousand yard stare, mind break",
+    }
     
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "depth": (["insertion", "mid", "deep_bottoming_out"],),
-                "labia_state": (["closed", "spreading", "pulled_open", "swollen"],),
-                "fluid_type": (["natural_moisture", "dripping_wet", "creampie_leakage", "foamy"],),
-                "friction_visual": ("BOOLEAN", {"default": True}),
+                "target": (list(cls.TARGET.keys()),),
+                "reaction": (list(cls.REACTION.keys()),),
             }
         }
 
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("vaginal_prompt",)
-    FUNCTION = "apply"
+    RETURN_TYPES = ("STRING", "STRING")
+    RETURN_NAMES = ("positive_prompt", "negative_addition")
+    FUNCTION = "generate"
     CATEGORY = "Mason's Nodes/Act Perfection"
 
-    def apply(self, prompt, depth, labia_state, fluid_type, friction_visual):
-        parts = [prompt, "vaginal penetration"]
+    def generate(self, prompt, target, reaction):
+        t = self.TARGET.get(target, "")
+        r = self.REACTION.get(reaction, "")
         
-        # Depth
-        depth_map = {
-            "insertion": "initial entry, stretching opening",
-            "mid": "rhythmic thrusting, wet friction",
-            "deep_bottoming_out": "bottoming out, deep penetration, internal focus",
-        }
-        parts.append(depth_map[depth])
+        positive = f"{prompt}, {t}, {r}"
+        negative = "clean face, no cum"
         
-        # Labia
-        labia_map = {
-            "spreading": "labia spreading wide, showcasing entrance",
-            "pulled_open": "fingers pulling labia open, extreme exposure",
-            "swollen": "swollen labia, heavily aroused, engorged tissue",
-        }
-        if labia_state != "closed":
-            parts.append(labia_map[labia_state])
-            
-        # Fluids
-        fluid_map = {
-            "dripping_wet": "dripping wet pussy, soaked, liquid trails",
-            "creampie_leakage": "creampie leaking out, thick white fluid, messy",
-            "foamy": "foamy white friction, air bubbles in lube, messy sex",
-        }
-        if fluid_type != "natural_moisture":
-            parts.append(fluid_map[fluid_type])
-            
-        # Friction
-        if friction_visual:
-            parts.append("visible friction, skin flushing, wet sounds visual, intense contact")
-            
-        return (", ".join(parts),)
+        return (positive, negative)
 
-class ManualPlayPerfection:
-    """Perfects fingering and handplay acts"""
+
+class PhysicsInteractionEngine:
+    """Simulates physical mesh deformations via prompts"""
+    
+    INTERACTION = {
+        "cheek_press": "cheek pressed against surface, squished face, glass press",
+        "breast_squish": "breasts pressed together, cleavage squeeze, hands squeezing boobs",
+        "butt_squeeze": "grabbing ass, fingers sinking into skin, firm grip",
+        "thigh_compression": "thighs squished, sitting on thighs, crossed legs pressure",
+    }
+    
+    SEVERITY = {
+        "light": "light touch, slight indentation",
+        "medium": "firm pressure, visible deformation",
+        "heavy": "extreme pressure, flattened, distorted by force",
+    }
     
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
                 "prompt": ("STRING", {"default": "", "multiline": True}),
-                "act_type": (["fingering", "pussy_rubbing", "clit_play", "spreading_wide", "penis_stroking"],),
-                "hand_count": (["single_hand", "both_hands"],),
-                "digit_count": (["one_finger", "two_fingers", "three_fingers", "whole_fist"],),
-                "moisture_level": (["damp", "soaked", "stringy_saliva", "messy_lube"],),
+                "interaction": (list(cls.INTERACTION.keys()),),
+                "severity": (list(cls.SEVERITY.keys()),),
             }
         }
 
     RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("manual_prompt",)
-    FUNCTION = "apply"
+    RETURN_NAMES = ("phys_prompt",)
+    FUNCTION = "generate"
     CATEGORY = "Mason's Nodes/Act Perfection"
 
-    def apply(self, prompt, act_type, hand_count, digit_count, moisture_level):
-        parts = [prompt]
-        
-        # Act
-        act_map = {
-            "fingering": "fingering pussy, fingers inside",
-            "pussy_rubbing": "rubbing pussy, clitoral stimulation",
-            "clit_play": "intense clit play, focused stimulation",
-            "spreading_wide": "fingers spreading pussy wide, extreme exposure",
-            "penis_stroking": "handjob, stroking penis, firm grip",
-        }
-        parts.append(act_map[act_type])
-        
-        # Digits
-        if act_type in ["fingering", "spreading_wide"]:
-            digit_map = {
-                "one_finger": "one finger inside, tight",
-                "two_fingers": "two fingers inside, stretching",
-                "three_fingers": "three fingers inside, wide stretch",
-                "whole_fist": "fisting, extreme penetration, huge stretching",
-            }
-            parts.append(digit_map[digit_count])
-            
-        # Moisture
-        moisture_map = {
-            "soaked": "completely soaked, dripping wet",
-            "stringy_saliva": "stringy saliva, wet mouth-like moisture",
-            "messy_lube": "messy lube, white streaks, ultra wet",
-        }
-        if moisture_level != "damp":
-            parts.append(moisture_map[moisture_level])
-            
-        if hand_count == "both_hands":
-            parts.append("using both hands, dual interaction")
-            
-        return (", ".join(parts),)
+    def generate(self, prompt, interaction, severity):
+        i = self.INTERACTION.get(interaction, "")
+        s = self.SEVERITY.get(severity, "")
+        return (f"{prompt}, {i}, {s}",)
+
 
 NODE_CLASS_MAPPINGS = {
-    "DeepThroatPerfection": DeepThroatPerfection,
-    "GropingPerfection": GropingPerfection,
-    "AnalPerfection": AnalPerfection,
-    "VaginalPerfection": VaginalPerfection,
-    "ManualPlayPerfection": ManualPlayPerfection,
+    "DeepThroatMaster": DeepThroatMaster,
+    "AnalSpecialist": AnalSpecialist,
+    "CreamPieMechanic": CreamPieMechanic,
+    "FacialFinishPro": FacialFinishPro,
+    "PhysicsInteractionEngine": PhysicsInteractionEngine,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "DeepThroatPerfection": "👅 Deep Throat Perfection",
-    "GropingPerfection": "🤲 Groping Perfection",
-    "AnalPerfection": "🍑 Anal Perfection",
-    "VaginalPerfection": "🌸 Vaginal Perfection",
-    "ManualPlayPerfection": "🤚 Manual Play Perfection",
+    "DeepThroatMaster": "😮 Deep Throat Master",
+    "AnalSpecialist": "🍩 Anal Specialist",
+    "CreamPieMechanic": "🥧 Cream Pie Mechanic",
+    "FacialFinishPro": "💦 Facial Finish Pro",
+    "PhysicsInteractionEngine": "🤲 Physics Engine",
 }

@@ -180,14 +180,56 @@ class CreatureTexturePro:
         return (", ".join([p for p in parts if p]),)
 
 
+class EpicScaleMaster:
+    """Create large-scale epic creature scenes"""
+    
+    SCALE = {
+        "single": "single creature, focus on one beast",
+        "pack": "pack of creatures, small group, coordinated",
+        "horde": "horde of creatures, massive numbers, army",
+        "titan": "titan creature, colossal, building-sized, epic scale",
+        "swarm": "swarm of creatures, countless, filling the sky",
+    }
+    
+    SCENE = {
+        "battle": "epic battle, war, conflict, destruction",
+        "migration": "animal migration, journey, majestic movement",
+        "hunting": "creatures hunting, predator and prey, chase",
+        "guarding": "guardian creature, protecting, sentinel",
+        "sleeping": "sleeping creature, peaceful, lair, nesting",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "scale": (list(cls.SCALE.keys()),),
+                "scene_type": (list(cls.SCENE.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("epic_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Creatures"
+
+    def apply(self, prompt, scale, scene_type):
+        s = self.SCALE.get(scale, "")
+        sc = self.SCENE.get(scene_type, "")
+        return (f"{prompt}, {s}, {sc}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "RealisticAnimalPro": RealisticAnimalPro,
     "FantasyCreatureMaster": FantasyCreatureMaster,
     "CreatureTexturePro": CreatureTexturePro,
+    "EpicScaleMaster": EpicScaleMaster,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "RealisticAnimalPro": "🦁 Realistic Animal Pro",
     "FantasyCreatureMaster": "🐉 Fantasy Creature Master",
     "CreatureTexturePro": "🎨 Creature Texture Pro",
+    "EpicScaleMaster": "⚔️ Epic Scale Master",
 }

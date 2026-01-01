@@ -125,14 +125,63 @@ class AgeAppearanceRefinement:
         return (", ".join([p for p in parts if p]),)
 
 
+class DynamicWeatherPro:
+    """Advanced weather control system"""
+    
+    TYPE = {
+        "clear": "clear skies, blue sky, sunny",
+        "cloudy": "cloudy sky, overcast, grey clouds, gloomy",
+        "rain": "raining, rainfall, wet ground, puddles, storm",
+        "snow": "snowing, snowflakes, snow covered ground, winter",
+        "storm": "thunderstorm, lightning, dark clouds, heavy rain",
+        "fog": "foggy, mist, haze, low visibility",
+        "windy": "windy, blowing wind, hair blowing, leaves blowing",
+    }
+    
+    INTENSITY = {
+        "light": "light, gentle, subtle",
+        "moderate": "moderate, steady",
+        "heavy": "heavy, intense, severe, extreme",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "weather_type": (list(cls.TYPE.keys()),),
+                "intensity": (list(cls.INTENSITY.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("weather_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Environment"
+
+    def apply(self, prompt, weather_type, intensity):
+        w = self.TYPE.get(weather_type, "")
+        i = self.INTENSITY.get(intensity, "")
+        
+        # Simple combinator logic
+        if intensity == "heavy":
+            w = f"heavy {w}"
+        elif intensity == "light":
+            w = f"light {w}"
+            
+        return (f"{prompt}, {w}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "TemperatureSweatController": TemperatureSweatController,
     "TimeOfDayLighting": TimeOfDayLighting,
     "AgeAppearanceRefinement": AgeAppearanceRefinement,
+    "DynamicWeatherPro": DynamicWeatherPro,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "TemperatureSweatController": "🌡️ Temperature & Sweat Controller",
     "TimeOfDayLighting": "🌅 Time of Day Lighting",
     "AgeAppearanceRefinement": "👩 Age Appearance Refinement",
+    "DynamicWeatherPro": "⛈️ Dynamic Weather Pro",
 }

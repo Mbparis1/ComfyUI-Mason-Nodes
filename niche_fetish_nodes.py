@@ -139,14 +139,96 @@ class ClothingDestruction:
         return (", ".join([p for p in parts if p]),)
 
 
+class FetishMaterialMaster:
+    """Specialized rendering for fetish materials"""
+    
+    MATERIAL = {
+        "latex": "latex, latex clothing, high gloss rubber, tightness, reflective",
+        "pvc": "pvc, vinyl outfit, plastic shine, synthetic fabric",
+        "leather": "leather, black leather, textured leather, studded leather",
+        "nylon": "nylon, sheer fabric, pantyhose, denier, silky",
+        "spandex": "spandex, lycra, gym wear, shiny fabric, stretching",
+    }
+    
+    QUALITY = {
+        "matte": "matte finish, dull",
+        "satin": "satin finish, soft sheeen",
+        "glossy": "glossy, wet look, shiny",
+        "mirror": "mirror polish, high reflection, chrome finish",
+        "oiled": "oiled surface, slick, lubricant",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "material": (list(cls.MATERIAL.keys()),),
+                "quality": (list(cls.QUALITY.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("material_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Niche"
+
+    def apply(self, prompt, material, quality):
+        m = self.MATERIAL.get(material, "")
+        q = self.QUALITY.get(quality, "")
+        return (f"{prompt}, {m}, {q}",)
+
+
+class ArmpitFetishSpecialist:
+    """Specific controls for armpit content"""
+    
+    POSE = {
+        "arms_up": "arms raised high, exposing armpits, stretching arms",
+        "behind_head": "hands behind head, elbows back, armpits open",
+        "wiping_sweat": "wiping sweat from forehead, arm lifted",
+        "presenting": "presenting armpit close to camera, close up",
+    }
+    
+    DETAIL = {
+        "smooth": "smooth armpits, shaved, clean skin",
+        "stubble": "stubble, slight hair growth, shadow",
+        "hairy": "natural armpit hair, hairy armpits, unshaven",
+        "sweaty": "sweaty armpits, wet patch, glistening sweat",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "pose": (list(cls.POSE.keys()),),
+                "detail": (list(cls.DETAIL.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("armpit_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Niche"
+
+    def apply(self, prompt, pose, detail):
+        p = self.POSE.get(pose, "")
+        d = self.DETAIL.get(detail, "")
+        return (f"{prompt}, {p}, {d}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "FootFocusPro": FootFocusPro,
     "BodyPartWorship": BodyPartWorship,
     "ClothingDestruction": ClothingDestruction,
+    "FetishMaterialMaster": FetishMaterialMaster,
+    "ArmpitFetishSpecialist": ArmpitFetishSpecialist,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "FootFocusPro": "🦶 Foot Focus Pro",
     "BodyPartWorship": "💋 Body Part Worship",
     "ClothingDestruction": "👔 Clothing Destruction",
+    "FetishMaterialMaster": "🖤 Fetish Material Master",
+    "ArmpitFetishSpecialist": "💪 Armpit Specialist",
 }

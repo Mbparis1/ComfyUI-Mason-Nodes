@@ -11,54 +11,64 @@
     },
     {
       "id": 10,
-      "type": "BatchVariationGenerator",
+      "type": "FantasyCreatureMaster",
       "pos": [50, 200],
       "size": [400, 200],
-      "widgets_values": ["", "pose", 0, false]
+      "widgets_values": ["", "undead_pirate", "dark_fantasy", "hyper_detailed"]
     },
     {
       "id": 11,
-      "type": "FetishMaterialMaster",
+      "type": "EpicScaleMaster",
       "pos": [50, 450],
       "size": [400, 200],
-      "widgets_values": ["", "latex", "glossy"]
+      "widgets_values": ["", "horde", "battle"]
     },
     {
       "id": 12,
-      "type": "DynamicWeatherPro",
+      "type": "DirectorToolkit",
       "pos": [500, 200],
       "size": [400, 200],
-      "widgets_values": ["", "storm", "heavy"]
+      "widgets_values": ["", "villeneuve"]
     },
     {
       "id": 13,
-      "type": "OneClickPresets",
+      "type": "FantasyCostumeMaster",
       "pos": [500, 450],
       "size": [400, 200],
-      "widgets_values": ["balanced"]
+      "widgets_values": ["", "witcher", "battle_worn"]
     },
     {
       "id": 14,
-      "type": "ResolutionCalculator",
+      "type": "ApocalypseFX",
+      "pos": [950, 200],
+      "size": [400, 200],
+      "widgets_values": ["", "meteor", "peak"]
+    },
+    {
+      "id": 15,
+      "type": "MagicEffectsPro",
       "pos": [950, 450],
-      "size": [300, 150],
-      "widgets_values": ["9:16 Mobile"]
+      "size": [400, 200],
+      "widgets_values": ["", "arcane", "powerful", "ambient"]
     },
     {
       "id": 30,
       "type": "StringConcatenator",
-      "pos": [950, 200],
-      "size": [300, 200],
+      "pos": [1400, 200],
+      "size": [300, 400],
       "inputs": [
         {"name": "text_a", "type": "STRING", "link": 10},
         {"name": "text_b", "type": "STRING", "link": 11},
-        {"name": "text_c", "type": "STRING", "link": 12}
+        {"name": "text_c", "type": "STRING", "link": 12},
+        {"name": "text_d", "type": "STRING", "link": 13},
+        {"name": "text_e", "type": "STRING", "link": 14},
+        {"name": "text_f", "type": "STRING", "link": 15}
       ]
     },
     {
       "id": 20,
       "type": "CLIPTextEncode",
-      "pos": [1350, 200],
+      "pos": [1800, 200],
       "size": [300, 100],
       "inputs": [
         {"name": "clip", "type": "CLIP", "link": 2},
@@ -68,59 +78,43 @@
     {
       "id": 21,
       "type": "CLIPTextEncode",
-      "pos": [1350, 400],
+      "pos": [1800, 400],
       "size": [300, 100],
       "inputs": [
         {"name": "clip", "type": "CLIP", "link": 2},
-        {"name": "text", "type": "STRING", "widgets_values": ["bad quality, worst quality"]}
-      ]
-    },
-    {
-      "id": 5,
-      "type": "EmptyLatentImage",
-      "pos": [1350, 50],
-      "size": [300, 100],
-      "inputs": [
-        {"name": "width", "type": "INT", "link": 141},
-        {"name": "height", "type": "INT", "link": 142}
+        {"name": "text", "type": "STRING", "widgets_values": ["bad quality, worst quality, lowres, ugly, deformed, cartoon, anime"]}
       ]
     },
     {
       "id": 4,
       "type": "KSampler",
-      "pos": [1750, 50],
+      "pos": [2200, 50],
       "size": [300, 300],
       "inputs": [
         {"name": "model", "type": "MODEL", "link": 1},
         {"name": "positive", "type": "CONDITIONING", "link": 21},
         {"name": "negative", "type": "CONDITIONING", "link": 22},
-        {"name": "latent_image", "type": "LATENT", "link": 5},
-        {"name": "steps", "type": "INT", "link": 131},
-        {"name": "cfg", "type": "FLOAT", "link": 132},
-        {"name": "sampler_name", "type": "STRING", "link": 133}
+        {"name": "latent_image", "type": "LATENT", "link": 5}
       ]
     },
     {
-      "id": 15,
-      "type": "SeedLogger",
-      "pos": [2150, 400],
-      "size": [300, 150],
-      "inputs": [
-          {"name": "seed", "type": "INT", "link": 41},
-          {"name": "prompt", "type": "STRING", "link": 30}
-      ]
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [1800, 50],
+      "size": [300, 100],
+      "widgets_values": [768, 512, 1]
     },
     {
       "id": 6,
       "type": "VAEDecode",
-      "pos": [2150, 50],
+      "pos": [2600, 50],
       "size": [200, 100],
       "inputs": [{"name": "samples", "type": "LATENT", "link": 6}, {"name": "vae", "type": "VAE", "link": 3}]
     },
     {
       "id": 7,
       "type": "SaveImage",
-      "pos": [2450, 50],
+      "pos": [2900, 50],
       "size": [300, 300],
       "inputs": [{"name": "images", "type": "IMAGE", "link": 7}]
     }
@@ -134,23 +128,17 @@
     [6, 4, 0, 6, 0, "LATENT"],
     [7, 6, 0, 7, 0, "IMAGE"],
     
-    [10, 10, 0, 30, 0, "STRING-Batch"],
-    [11, 11, 0, 30, 1, "STRING-Fetish"],
-    [12, 12, 0, 30, 2, "STRING-Weather"],
+    [10, 10, 0, 30, 0, "STRING-Creature"],
+    [11, 11, 0, 30, 1, "STRING-Scale"],
+    [12, 12, 0, 30, 2, "STRING-Director"],
+    [13, 13, 0, 30, 3, "STRING-Costume"],
+    [14, 14, 0, 30, 4, "STRING-Apocalypse"],
+    [15, 15, 0, 30, 5, "STRING-Magic"],
     
-    [30, 30, 0, 20, 1, "STRING-FinalPos"],
+    [30, 30, 0, 20, 1, "STRING"],
     
     [21, 20, 0, 4, 1, "CONDITIONING"],
-    [22, 21, 0, 4, 2, "CONDITIONING"],
-    
-    [131, 13, 0, 4, 4, "INT-Steps"],
-    [132, 13, 1, 4, 5, "FLOAT-CFG"],
-    [133, 13, 2, 4, 6, "STRING-Sampler"],
-    
-    [141, 14, 0, 5, 0, "INT-W"],
-    [142, 14, 1, 5, 1, "INT-H"],
-    
-    [41, 4, 0, 15, 0, "INT-Seed"]
+    [22, 21, 0, 4, 2, "CONDITIONING"]
   ],
   "version": 0.4
 }

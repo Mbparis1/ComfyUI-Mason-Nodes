@@ -210,11 +210,51 @@ class MagicEffectsPro:
         return (", ".join([p for p in parts if p]),)
 
 
+class ApocalypseFX:
+    """Catastrophic and end-of-world environmental effects"""
+    
+    DISASTER = {
+        "meteor": "meteor impact, asteroid strike, fiery sky, extinction event",
+        "eruption": "volcanic eruption, lava flow, pyroclastic cloud, ash sky",
+        "flood": "great flood, rising waters, drowned city, biblical deluge",
+        "nuclear": "nuclear blast, mushroom cloud, radiation, fallout",
+        "zombie": "zombie apocalypse, abandoned city, overrun, survival horror",
+        "alien_invasion": "alien invasion, mothership, beams from sky, war of the worlds",
+        "plague": "plague, empty streets, quarantine, pandemic",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "disaster": (list(cls.DISASTER.keys()),),
+                "stage": (["beginning", "peak", "aftermath"],),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("apocalypse_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Environmental FX"
+
+    def apply(self, prompt, disaster, stage):
+        d = self.DISASTER.get(disaster, "")
+        s_map = {
+            "beginning": "first signs, ominous, calm before the storm",
+            "peak": "full scale disaster, chaos, destruction, maximum impact",
+            "aftermath": "ruins, post-apocalyptic, survivors, desolation",
+        }
+        s = s_map.get(stage, "")
+        return (f"{prompt}, {d}, {s}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "OceanEffectsPro": OceanEffectsPro,
     "FireMagicFX": FireMagicFX,
     "ParticleAtmosphere": ParticleAtmosphere,
     "MagicEffectsPro": MagicEffectsPro,
+    "ApocalypseFX": ApocalypseFX,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -222,4 +262,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "FireMagicFX": "🔥 Fire & Magic FX",
     "ParticleAtmosphere": "✨ Particle Atmosphere",
     "MagicEffectsPro": "🔮 Magic Effects Pro",
+    "ApocalypseFX": "☄️ Apocalypse FX",
 }

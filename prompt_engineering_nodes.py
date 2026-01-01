@@ -132,11 +132,47 @@ class PromptCombinerPro:
         return (sep.join(parts),)
 
 
+class MegaPromptBuilder:
+    """Builds a comprehensive one-liner prompt from core components"""
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "subject": ("STRING", {"default": "1girl, beautiful woman", "multiline": False}),
+                "style": ("STRING", {"default": "photorealistic, 8k", "multiline": False}),
+                "environment": ("STRING", {"default": "studio lighting, simple background", "multiline": False}),
+                "quality_tags": ("STRING", {"default": "masterpiece, best quality, ultra detailed", "multiline": False}),
+            },
+            "optional": {
+                "pose": ("STRING", {"default": "", "multiline": False}),
+                "clothing": ("STRING", {"default": "", "multiline": False}),
+                "expression": ("STRING", {"default": "", "multiline": False}),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("mega_prompt",)
+    FUNCTION = "build"
+    CATEGORY = "Mason's Nodes/Prompt Engineering"
+
+    def build(self, subject, style, environment, quality_tags, pose="", clothing="", expression=""):
+        # Priority order: Quality, Subject, Style, Clothing, Pose, Expression, Environment
+        parts = [quality_tags, subject, style]
+        if clothing: parts.append(clothing)
+        if pose: parts.append(pose)
+        if expression: parts.append(expression)
+        parts.append(environment)
+        
+        return (", ".join([p.strip() for p in parts if p.strip()]),)
+
+
 NODE_CLASS_MAPPINGS = {
     "PromptWeightingHelper": PromptWeightingHelper,
     "TokenCountAnalyzer": TokenCountAnalyzer,
     "PromptOptimizer": PromptOptimizer,
     "PromptCombinerPro": PromptCombinerPro,
+    "MegaPromptBuilder": MegaPromptBuilder,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -144,4 +180,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "TokenCountAnalyzer": "📊 Token Count Analyzer",
     "PromptOptimizer": "✨ Prompt Optimizer",
     "PromptCombinerPro": "🔗 Prompt Combiner Pro",
+    "MegaPromptBuilder": "🧠 Mega Prompt Builder",
 }

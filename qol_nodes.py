@@ -3,7 +3,8 @@ Mason's Quality of Life Nodes for ComfyUI
 One-click presets and prompt conflict detection - SD 1.5 optimized
 """
 
-
+import os
+import datetime
 class OneClickPresets:
     """One-click optimal settings for common use cases"""
     
@@ -157,14 +158,85 @@ class NegativePromptHelper:
         return (base,)
 
 
+class ResolutionCalculator:
+    """Calculates optimal resolution based on Aspect Ratio"""
+    
+    RATIOS = {
+        "1:1 Square": (512, 512),
+        "3:4 Portrait": (512, 682), # approx
+        "4:3 Landscape": (682, 512),
+        "9:16 Mobile": (512, 910),
+        "16:9 Cinema": (910, 512),
+        "2:3 Classic": (512, 768),
+        "3:2 Classic": (768, 512),
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "aspect_ratio": (list(cls.RATIOS.keys()),),
+            }
+        }
+
+    RETURN_TYPES = ("INT", "INT")
+    RETURN_NAMES = ("width", "height")
+    FUNCTION = "calculate"
+    CATEGORY = "Mason's Nodes/QoL"
+
+    def calculate(self, aspect_ratio):
+        width, height = self.RATIOS.get(aspect_ratio, (512, 512))
+        return (width, height)
+
+
+class SeedLogger:
+    """Logs generation metadata to a localized file"""
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+                "prompt": ("STRING", {"forceInput": True}),
+                "log_enabled": ("BOOLEAN", {"default": True}),
+            }
+        }
+
+    RETURN_TYPES = ("INT",)
+    RETURN_NAMES = ("seed_passthrough",)
+    FUNCTION = "log_seed"
+    OUTPUT_NODE = True
+    CATEGORY = "Mason's Nodes/QoL"
+
+    def log_seed(self, seed, prompt, log_enabled):
+        if log_enabled:
+            # Append to 'generation_log.txt' in directory
+            try:
+                log_path = os.path.join(os.path.dirname(__file__), "generation_log.txt")
+                timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                sep = "-" * 40
+                entry = f"{sep}\nTime: {timestamp}\nSeed: {seed}\nPrompt: {prompt}\n"
+                
+                with open(log_path, "a", encoding="utf-8") as f:
+                    f.write(entry)
+            except Exception as e:
+                print(f"SeedLogger Error: {e}")
+                
+        return (seed,)
+
+
 NODE_CLASS_MAPPINGS = {
     "OneClickPresets": OneClickPresets,
     "PromptConflictDetector": PromptConflictDetector,
     "NegativePromptHelper": NegativePromptHelper,
+    "ResolutionCalculator": ResolutionCalculator,
+    "SeedLogger": SeedLogger,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "OneClickPresets": "⚡ One-Click Presets",
     "PromptConflictDetector": "🔍 Prompt Conflict Detector",
     "NegativePromptHelper": "🚫 Negative Prompt Helper",
+    "ResolutionCalculator": "📐 Resolution Calculator",
+    "SeedLogger": "📝 Seed Logger",
 }

@@ -158,14 +158,54 @@ class OrganicMaterialPro:
         return (", ".join([p for p in parts if p]),)
 
 
+class GlassMaterialPro:
+    """Glass, ice, and transparent materials"""
+    
+    GLASS_TYPE = {
+        "clear": "crystal clear glass, perfectly transparent, no distortion",
+        "frosted": "frosted glass, translucent, diffused light, privacy glass",
+        "stained": "stained glass, colorful, church windows, artistic",
+        "ice": "ice, frozen water, cold, crystalline, slippery",
+        "diamond": "diamond facets, brilliant cut, sparkling, precious",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "glass_type": (list(cls.GLASS_TYPE.keys()),),
+                "lighting": (["back_lit", "side_lit", "ambient", "dramatic"],),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("glass_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Materials"
+
+    def apply(self, prompt, glass_type, lighting):
+        g = self.GLASS_TYPE.get(glass_type, "")
+        l_map = {
+            "back_lit": "backlit, light shining through, silhouette",
+            "side_lit": "side lighting, caustics, light patterns",
+            "ambient": "ambient lighting, soft reflections",
+            "dramatic": "dramatic lighting, strong reflections, high contrast",
+        }
+        l = l_map.get(lighting, "")
+        return (f"{prompt}, {g}, {l}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "FabricMaterialPro": FabricMaterialPro,
     "MetalMaterialPro": MetalMaterialPro,
     "OrganicMaterialPro": OrganicMaterialPro,
+    "GlassMaterialPro": GlassMaterialPro,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "FabricMaterialPro": "🧵 Fabric Material Pro",
     "MetalMaterialPro": "⚙️ Metal Material Pro",
     "OrganicMaterialPro": "🌿 Organic Material Pro",
+    "GlassMaterialPro": "💎 Glass Material Pro",
 }

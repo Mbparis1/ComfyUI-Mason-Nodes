@@ -166,14 +166,54 @@ class MagicalItemPro:
         return (", ".join([p for p in parts if p]),)
 
 
+class ShieldArmorPro:
+    """Shields, armor pieces, and defensive equipment"""
+    
+    DEFENSE = {
+        "tower_shield": "tall tower shield, full body coverage, knight's defense",
+        "round_shield": "round shield, Viking, boss center, painted",
+        "buckler": "small buckler, parrying shield, duelist",
+        "energy_shield": "energy shield, sci-fi, force field, glowing barrier",
+        "magic_barrier": "magic barrier, arcane shield, spell protection",
+    }
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "prompt": ("STRING", {"default": "", "multiline": True}),
+                "defense": (list(cls.DEFENSE.keys()),),
+                "material": (["steel", "wood", "enchanted", "energy"],),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("shield_prompt",)
+    FUNCTION = "apply"
+    CATEGORY = "Mason's Nodes/Props"
+
+    def apply(self, prompt, defense, material):
+        d = self.DEFENSE.get(defense, "")
+        m_map = {
+            "steel": "steel construction, metal, strong",
+            "wood": "wooden shield, leather straps, natural",
+            "enchanted": "enchanted, glowing runes, magical protection",
+            "energy": "pure energy, glowing, sci-fi tech",
+        }
+        m = m_map.get(material, "")
+        return (f"{prompt}, {d}, {m}",)
+
+
 NODE_CLASS_MAPPINGS = {
     "MeleeWeaponPro": MeleeWeaponPro,
     "RangedWeaponPro": RangedWeaponPro,
     "MagicalItemPro": MagicalItemPro,
+    "ShieldArmorPro": ShieldArmorPro,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "MeleeWeaponPro": "⚔️ Melee Weapon Pro",
     "RangedWeaponPro": "🏹 Ranged Weapon Pro",
     "MagicalItemPro": "🔮 Magical Item Pro",
+    "ShieldArmorPro": "🛡️ Shield Armor Pro",
 }

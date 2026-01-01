@@ -85,9 +85,67 @@ class WorkflowStateSaver:
         return {}
 
 
+class StringConcatenator:
+    """Concatenates up to 5 strings into one prompt"""
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "separator": ("STRING", {"default": ", "}),
+            },
+            "optional": {
+                "text_a": ("STRING", {"forceInput": True}),
+                "text_b": ("STRING", {"forceInput": True}),
+                "text_c": ("STRING", {"forceInput": True}),
+                "text_d": ("STRING", {"forceInput": True}),
+                "text_e": ("STRING", {"forceInput": True}),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("concatenated_text",)
+    FUNCTION = "concatenate"
+    CATEGORY = "Mason's Nodes/Automation"
+
+    def concatenate(self, separator=", ", text_a="", text_b="", text_c="", text_d="", text_e=""):
+        parts = [t for t in [text_a, text_b, text_c, text_d, text_e] if t and t.strip()]
+        return (separator.join(parts),)
+
+
+class SimpleTextNode:
+    """Simple text box that outputs a string (useful for workflow organization)"""
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "text": ("STRING", {"default": "", "multiline": True}),
+            }
+        }
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("text_out",)
+    FUNCTION = "output_text"
+    CATEGORY = "Mason's Nodes/Automation"
+
+    def output_text(self, text):
+        return (text,)
+
+
+
 NODE_CLASS_MAPPINGS = {
     "ProjectFolderCreator": ProjectFolderCreator,
     "WorkflowStateSaver": WorkflowStateSaver,
+    "StringConcatenator": StringConcatenator,
+    "SimpleTextNode": SimpleTextNode,
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "ProjectFolderCreator": "📁 Project Folder Creator",
+    "WorkflowStateSaver": "💾 Workflow State Saver",
+    "StringConcatenator": "🔗 String Concatenator",
+    "SimpleTextNode": "📝 Simple Text Node",
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
