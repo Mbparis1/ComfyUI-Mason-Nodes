@@ -1,235 +1,205 @@
 """
-Mason's Utility Nodes for ComfyUI
-Enhanced workflow automation nodes
+Mason Nodes - Utility Nodes
+Text combination, prompt building, and workflow helper nodes
 """
 
-import random
-import os
-import json
-from datetime import datetime
-
-
-class PromptRandomizer:
-    """Adds random variations to prompts for variety"""
+class MasonTextCombine:
+    """Combine multiple text strings with a separator for building prompts."""
     
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "base_prompt": ("STRING", {"default": "beautiful woman", "multiline": True}),
-                "variations": ("STRING", {"default": "blonde hair, brunette, redhead\nblue eyes, green eyes, brown eyes\nsmiling, serious, playful", "multiline": True}),
-                "num_variations": ("INT", {"default": 1, "min": 1, "max": 5}),
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("randomized_prompt",)
-    FUNCTION = "randomize"
-    CATEGORY = "Mason's Nodes/Utility"
-
-    def randomize(self, base_prompt, variations, num_variations):
-        lines = [line.strip() for line in variations.split('\n') if line.strip()]
-        selected = []
-        for line in lines:
-            options = [opt.strip() for opt in line.split(',')]
-            if options:
-                selected.append(random.choice(options))
-        
-        result = base_prompt
-        if selected:
-            result = f"{base_prompt}, {', '.join(selected[:num_variations])}"
-        return (result,)
-
-
-class AutoNegative:
-    """Automatically generates comprehensive negative prompts"""
-    
-    PRESETS = {
-        "realistic": "ugly, deformed, blurry, bad anatomy, bad hands, missing fingers, extra fingers, disfigured, low quality, worst quality, watermark, text, signature, jpeg artifacts, cropped, out of frame",
-        "artistic": "ugly, blurry, low quality, watermark, text, signature, cropped",
-        "anime": "ugly, bad anatomy, blurry, low quality, worst quality, watermark, text, extra limbs, missing limbs, cropped",
-        "portrait": "ugly, deformed, blurry, bad anatomy, bad hands, bad face, asymmetrical face, low quality, worst quality, watermark, text, cropped, out of frame, extra limbs",
-        "nsfw": "ugly, deformed, blurry, bad anatomy, bad hands, missing fingers, extra fingers, disfigured, low quality, worst quality, watermark, text, signature, child, underage, minor, censored, clothed"
-    }
-    
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "preset": (list(cls.PRESETS.keys()),),
-                "additional_negatives": ("STRING", {"default": "", "multiline": True}),
-            }
-        }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("negative_prompt",)
-    FUNCTION = "generate"
-    CATEGORY = "Mason's Nodes/Utility"
-
-    def generate(self, preset, additional_negatives):
-        base = self.PRESETS.get(preset, self.PRESETS["realistic"])
-        if additional_negatives.strip():
-            return (f"{base}, {additional_negatives.strip()}",)
-        return (base,)
-
-
-class BatchSaver:
-    """Saves images with custom naming scheme and metadata"""
-    
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "images": ("IMAGE",),
-                "prefix": ("STRING", {"default": "generation"}),
-                "include_date": ("BOOLEAN", {"default": True}),
-                "include_seed": ("BOOLEAN", {"default": True}),
+                "separator": ("STRING", {"default": ", ", "multiline": False}),
             },
             "optional": {
-                "seed": ("INT", {"default": 0}),
+                "text1": ("STRING", {"forceInput": True}),
+                "text2": ("STRING", {"forceInput": True}),
+                "text3": ("STRING", {"forceInput": True}),
+                "text4": ("STRING", {"forceInput": True}),
+                "text5": ("STRING", {"forceInput": True}),
             }
         }
-
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("filename",)
-    FUNCTION = "save"
-    CATEGORY = "Mason's Nodes/Utility"
-    OUTPUT_NODE = True
-
-    def save(self, images, prefix, include_date, include_seed, seed=0):
-        parts = [prefix]
-        if include_date:
-            parts.append(datetime.now().strftime("%Y%m%d_%H%M%S"))
-        if include_seed and seed:
-            parts.append(f"seed{seed}")
-        
-        filename = "_".join(parts)
-        return (filename,)
-
-
-class ResolutionCalculator:
-    """Calculates optimal resolutions for different aspect ratios"""
     
-    PRESETS = {
-        "square_512": (512, 512),
-        "portrait_512x768": (512, 768),
-        "landscape_768x512": (768, 512),
-        "portrait_512x640": (512, 640),
-        "landscape_640x512": (640, 512),
-        "small_square_384": (384, 384),
-        "tiny_256": (256, 256),
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("combined_text",)
+    FUNCTION = "combine"
+    CATEGORY = "Mason/Utilities"
+    
+    def combine(self, separator=", ", text1="", text2="", text3="", text4="", text5=""):
+        # Collect all non-empty texts
+        texts = []
+        for text in [text1, text2, text3, text4, text5]:
+            if text and text.strip():
+                texts.append(text.strip())
+        
+        # Combine with separator
+        return (separator.join(texts),)
+
+
+class MasonPromptBuilder:
+    """Build complete prompts with structured sections for optimal generation."""
+    
+    SUBJECT_TEMPLATES = {
+        "Portrait": "1 person, portrait, face focus, head and shoulders",
+        "Full Body": "1 person, full body, standing pose",
+        "Half Body": "1 person, upper body, waist up",
+        "Group": "multiple people, group shot",
+        "Action": "1 person, dynamic pose, action shot",
+        "Custom": "",
+    }
+    
+    QUALITY_BASES = {
+        "Ultra Quality": "masterpiece, best quality, ultra detailed, extremely detailed, professional, 8k uhd, sharp focus, intricate details, perfect anatomy",
+        "High Quality": "best quality, highly detailed, sharp, professional",
+        "Standard": "good quality, detailed",
+        "RAW Photo": "raw photo, dslr, film grain, natural lighting, candid",
     }
     
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "preset": (list(cls.PRESETS.keys()),),
+                "quality_base": (list(cls.QUALITY_BASES.keys()), {"default": "Ultra Quality"}),
+                "subject_type": (list(cls.SUBJECT_TEMPLATES.keys()), {"default": "Portrait"}),
+            },
+            "optional": {
+                "character_prompt": ("STRING", {"forceInput": True}),
+                "style_prompt": ("STRING", {"forceInput": True}),
+                "lighting_prompt": ("STRING", {"forceInput": True}),
+                "additional": ("STRING", {"default": "", "multiline": True}),
             }
         }
-
-    RETURN_TYPES = ("INT", "INT")
-    RETURN_NAMES = ("width", "height")
-    FUNCTION = "calculate"
-    CATEGORY = "Mason's Nodes/Utility"
-
-    def calculate(self, preset):
-        width, height = self.PRESETS.get(preset, (512, 512))
-        return (width, height)
-
-
-class SeedLogger:
-    """Logs seeds of good generations for reuse"""
     
-    LOG_FILE = os.path.expanduser("~/AI/ComfyUI/output/seed_log.json")
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("full_prompt",)
+    FUNCTION = "build"
+    CATEGORY = "Mason/Utilities"
     
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "seed": ("INT", {"default": 0}),
-                "prompt": ("STRING", {"default": "", "multiline": True}),
-                "rating": (["5_stars", "4_stars", "3_stars", "2_stars", "1_star"],),
-                "save_seed": ("BOOLEAN", {"default": False}),
-            }
-        }
-
-    RETURN_TYPES = ("INT",)
-    RETURN_NAMES = ("seed",)
-    FUNCTION = "log_seed"
-    CATEGORY = "Mason's Nodes/Utility"
-
-    def log_seed(self, seed, prompt, rating, save_seed):
-        if save_seed:
-            try:
-                if os.path.exists(self.LOG_FILE):
-                    with open(self.LOG_FILE, 'r') as f:
-                        data = json.load(f)
-                else:
-                    data = []
-                
-                entry = {
-                    "seed": seed,
-                    "prompt": prompt[:100],
-                    "rating": rating,
-                    "timestamp": datetime.now().isoformat()
-                }
-                data.append(entry)
-                
-                with open(self.LOG_FILE, 'w') as f:
-                    json.dump(data, f, indent=2)
-                print(f"[SeedLogger] Saved seed {seed} with rating {rating}")
-            except Exception as e:
-                print(f"[SeedLogger] Error saving: {e}")
+    def build(self, quality_base, subject_type, character_prompt="", style_prompt="", lighting_prompt="", additional=""):
+        parts = []
         
-        return (seed,)
+        # Quality first
+        if self.QUALITY_BASES[quality_base]:
+            parts.append(self.QUALITY_BASES[quality_base])
+        
+        # Subject template
+        if subject_type != "Custom" and self.SUBJECT_TEMPLATES[subject_type]:
+            parts.append(self.SUBJECT_TEMPLATES[subject_type])
+        
+        # Character from selector node
+        if character_prompt and character_prompt.strip():
+            parts.append(character_prompt.strip())
+        
+        # Style 
+        if style_prompt and style_prompt.strip():
+            parts.append(style_prompt.strip())
+        
+        # Lighting
+        if lighting_prompt and lighting_prompt.strip():
+            parts.append(lighting_prompt.strip())
+        
+        # Additional details
+        if additional and additional.strip():
+            parts.append(additional.strip())
+        
+        return (", ".join(parts),)
 
 
-class LoRASwitcher:
-    """Randomly selects a LoRA from a list"""
+class MasonNegativeBuilder:
+    """Build comprehensive negative prompts for different content types."""
+    
+    PRESETS = {
+        "Photorealistic": "deformed, distorted, disfigured, bad anatomy, wrong anatomy, extra limbs, missing limbs, floating limbs, mutated hands, extra fingers, missing fingers, fused fingers, too many fingers, long neck, mutation, poorly drawn face, poorly drawn hands, bad proportions, gross proportions, malformed limbs, cross-eyed, blurry, low quality, jpeg artifacts, signature, watermark, username, artist name, ugly, tiling, out of frame, text, logo",
+        "Anime": "deformed, distorted, disfigured, bad anatomy, wrong anatomy, extra limbs, missing limbs, floating limbs, mutated hands, extra fingers, missing fingers, long neck, mutation, poorly drawn face, poorly drawn hands, bad proportions, malformed limbs, cross-eyed, blurry, low quality, signature, watermark, text, 3d, realistic, photo",
+        "NSFW Safe": "child, underage, minor, censored, bar censor, mosaic, pixelated, blurry, deformed, bad anatomy, missing limbs, extra limbs, mutated hands, extra fingers",
+        "Maximum Quality": "worst quality, low quality, normal quality, lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, jpeg artifacts, signature, watermark, username, blurry, artist name, deformed, distorted, disfigured",
+        "Minimal": "low quality, blurry, bad anatomy",
+        "Custom": "",
+    }
     
     @classmethod
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "lora_list": ("STRING", {"default": "add_detail.safetensors\ndetail_tweaker.safetensors\nskin_hands.safetensors", "multiline": True}),
-                "strength": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.05}),
-                "randomize": ("BOOLEAN", {"default": True}),
+                "preset": (list(cls.PRESETS.keys()), {"default": "Photorealistic"}),
+            },
+            "optional": {
+                "additional_negatives": ("STRING", {"default": "", "multiline": True}),
+                "character_negative": ("STRING", {"forceInput": True}),
             }
         }
-
-    RETURN_TYPES = ("STRING", "FLOAT")
-    RETURN_NAMES = ("lora_name", "strength")
-    FUNCTION = "select"
-    CATEGORY = "Mason's Nodes/Utility"
-
-    def select(self, lora_list, strength, randomize):
-        loras = [l.strip() for l in lora_list.split('\n') if l.strip()]
-        if not loras:
-            return ("", 0.0)
+    
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("negative_prompt",)
+    FUNCTION = "build"
+    CATEGORY = "Mason/Utilities"
+    
+    def build(self, preset, additional_negatives="", character_negative=""):
+        parts = []
         
-        if randomize:
-            selected = random.choice(loras)
-        else:
-            selected = loras[0]
+        # Preset negative
+        if preset != "Custom" and self.PRESETS[preset]:
+            parts.append(self.PRESETS[preset])
         
-        return (selected, strength)
+        # Character selector's negative (if provided)
+        if character_negative and character_negative.strip():
+            parts.append(character_negative.strip())
+        
+        # Additional
+        if additional_negatives and additional_negatives.strip():
+            parts.append(additional_negatives.strip())
+        
+        # Remove duplicates while preserving order
+        seen = set()
+        unique_parts = []
+        for part in ", ".join(parts).split(", "):
+            part = part.strip()
+            if part and part.lower() not in seen:
+                seen.add(part.lower())
+                unique_parts.append(part)
+        
+        return (", ".join(unique_parts),)
+
+
+class MasonSeedGenerator:
+    """Generate or display seeds for reproducible generation."""
+    
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+                "mode": (["fixed", "random", "increment"], {"default": "random"}),
+            }
+        }
+    
+    RETURN_TYPES = ("INT", "STRING")
+    RETURN_NAMES = ("seed", "seed_string")
+    FUNCTION = "generate"
+    CATEGORY = "Mason/Utilities"
+    
+    def generate(self, seed, mode):
+        import random
+        if mode == "random":
+            seed = random.randint(0, 0xffffffffffffffff)
+        elif mode == "increment":
+            seed = seed + 1
+        # fixed keeps the same seed
+        
+        return (seed, str(seed))
 
 
 NODE_CLASS_MAPPINGS = {
-    "PromptRandomizer": PromptRandomizer,
-    "AutoNegative": AutoNegative,
-    "BatchSaver": BatchSaver,
-    "ResolutionCalculator": ResolutionCalculator,
-    "SeedLogger": SeedLogger,
-    "LoRASwitcher": LoRASwitcher,
+    "MasonTextCombine": MasonTextCombine,
+    "MasonPromptBuilder": MasonPromptBuilder,
+    "MasonNegativeBuilder": MasonNegativeBuilder,
+    "MasonSeedGenerator": MasonSeedGenerator,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "PromptRandomizer": "Prompt Randomizer",
-    "AutoNegative": "Auto Negative Prompt",
-    "BatchSaver": "Batch Saver",
-    "ResolutionCalculator": "Resolution Calculator",
-    "SeedLogger": "Seed Logger",
-    "LoRASwitcher": "LoRA Switcher",
+    "MasonTextCombine": "🔗 Text Combine (Multi-Prompt)",
+    "MasonPromptBuilder": "📝 Prompt Builder (Structured)",
+    "MasonNegativeBuilder": "❌ Negative Prompt Builder",
+    "MasonSeedGenerator": "🎲 Seed Generator",
 }
