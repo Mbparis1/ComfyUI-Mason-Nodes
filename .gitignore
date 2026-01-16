@@ -6,3 +6,4 @@ __pycache__/
 .eggs/
 ollama_node.py
 private_nodes.py
+private/

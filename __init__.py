@@ -714,3 +714,12 @@ from .nsfw_enhancement_nodes import NODE_CLASS_MAPPINGS as NSFW_MAPPINGS
 from .nsfw_enhancement_nodes import NODE_DISPLAY_NAME_MAPPINGS as NSFW_DISPLAY_MAPPINGS
 NODE_CLASS_MAPPINGS.update(NSFW_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(NSFW_DISPLAY_MAPPINGS)
+
+# Import Private Nodes (if folder exists - not tracked by git)
+try:
+    from .private import NODE_CLASS_MAPPINGS as PRIVATE_MAPPINGS
+    from .private import NODE_DISPLAY_NAME_MAPPINGS as PRIVATE_DISPLAY_MAPPINGS
+    NODE_CLASS_MAPPINGS.update(PRIVATE_MAPPINGS)
+    NODE_DISPLAY_NAME_MAPPINGS.update(PRIVATE_DISPLAY_MAPPINGS)
+except ImportError:
+    pass  # Private folder doesn't exist or has import errors
