@@ -564,12 +564,13 @@ class AnimeCharacterSelectorV2:
     }
     
     QUALITY_PRESETS = {
-        "Ultra Detailed": "masterpiece, best quality, ultra detailed, extremely detailed face, perfect anatomy, 8k uhd, intricate details, sharp focus, professional lighting, volumetric lighting, ray tracing, subsurface scattering, accurate character design, perfect likeness, recognizable character, iconic appearance",
-        "High Quality Anime": "masterpiece, best quality, highly detailed, perfect anatomy, sharp focus, beautiful anime art, professional, vibrant colors, accurate character, recognizable",
-        "Anime Style": "masterpiece, best quality, anime style, detailed anime face, beautiful anime art, vibrant saturated colors, clean crisp lines, cel shaded, anime key visual, accurate character design",
-        "Semi-Realistic": "masterpiece, best quality, semi-realistic, detailed, beautiful, realistic anime, 3d render quality, accurate features, recognizable character",
-        "Cartoon Style": "cartoon style, animated, clean lines, vibrant colors, cel shaded, best quality, detailed, accurate character design, recognizable",
-        "Maximum Accuracy": "extremely detailed, perfect character likeness, accurate character design, recognizable iconic character, same character, exact match, canonical appearance, official art style, perfect anatomy, masterpiece, best quality, 8k uhd",
+        "Ultra Detailed": "masterpiece, best quality, ultra detailed, extremely detailed face, perfect anatomy, 8k uhd, intricate details, sharp focus, professional lighting, volumetric lighting, ray tracing, subsurface scattering, accurate character design, perfect likeness, recognizable character, iconic appearance, same character, exact match",
+        "High Quality Anime": "masterpiece, best quality, highly detailed, perfect anatomy, sharp focus, beautiful anime art, professional, vibrant colors, accurate character, recognizable, same design, canonical appearance",
+        "Anime Style": "masterpiece, best quality, anime style, detailed anime face, beautiful anime art, vibrant saturated colors, clean crisp lines, cel shaded, anime key visual, accurate character design, official art style",
+        "Semi-Realistic": "masterpiece, best quality, semi-realistic, detailed, beautiful, realistic anime, 3d render quality, accurate features, recognizable character, same person",
+        "Cartoon Style": "cartoon style, animated, clean lines, vibrant colors, cel shaded, best quality, detailed, accurate character design, recognizable, on-model",
+        "Maximum Accuracy": "extremely detailed, perfect character likeness, accurate character design, recognizable iconic character, same character, exact match, canonical appearance, official art style, perfect anatomy, masterpiece, best quality, 8k uhd, same hair color, same eye color, same outfit colors",
+        "PERFECT MATCH": "EXACT CHARACTER, IDENTICAL DESIGN, PERFECT CHARACTER MATCH, same exact character design, same hair style and color, same eye shape and color, same outfit design, same color scheme, on-model, official art style, canonical appearance, indistinguishable from reference, perfect reproduction, masterpiece, best quality, 8k uhd, accurate proportions",
     }
     
     CLOTHING_OPTIONS = {
@@ -594,8 +595,8 @@ class AnimeCharacterSelectorV2:
         "Custom": "",
     }
     
-    # Comprehensive negative prompt for anime/cartoon
-    NEGATIVE_PROMPT = "deformed, distorted, disfigured, bad anatomy, wrong anatomy, extra limbs, missing limbs, floating limbs, mutated hands, extra fingers, missing fingers, fused fingers, too many fingers, long neck, mutation, poorly drawn face, poorly drawn hands, bad proportions, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, cross-eyed, blurry, low quality, jpeg artifacts, signature, watermark, username, artist name, wrong character, different character, off-model, inaccurate design, wrong colors, wrong hair color, wrong eye color, wrong outfit, unrecognizable"
+    # Comprehensive negative prompt for anime/cartoon character accuracy
+    NEGATIVE_PROMPT = "deformed, distorted, disfigured, bad anatomy, wrong anatomy, extra limbs, missing limbs, floating limbs, mutated hands, extra fingers, missing fingers, fused fingers, too many fingers, long neck, mutation, poorly drawn face, poorly drawn hands, bad proportions, gross proportions, malformed limbs, cross-eyed, blurry, low quality, jpeg artifacts, signature, watermark, WRONG CHARACTER, DIFFERENT CHARACTER, OFF-MODEL, inaccurate design, WRONG HAIR COLOR, WRONG EYE COLOR, wrong outfit, unrecognizable, wrong color scheme, different art style, merged characters, mixed design, wrong proportions, different series style, not the same character"
     
     @classmethod
     def INPUT_TYPES(cls):

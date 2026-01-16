@@ -426,12 +426,13 @@ class CelebritySelectorV2:
     }
     
     QUALITY_PRESETS = {
-        "Ultra Photorealistic": "photorealistic, hyperrealistic, 8k uhd, dslr quality, raw photo, realistic skin texture with pores, realistic detailed eyes with reflections, sharp focus, professional photography, studio lighting, subsurface scattering, volumetric lighting, cinematic, award winning photo, highly detailed face, perfect likeness, accurate facial features",
-        "High Quality Photo": "photorealistic, high resolution, extremely detailed face, realistic, professional photo, natural lighting, 4k uhd, sharp focus, accurate likeness, detailed eyes, skin texture",
-        "Artistic Portrait": "artistic portrait, painterly style, professional lighting, beautiful, elegant, studio portrait, detailed face, expressive, masterpiece, best quality",
-        "Glamour Shot": "glamour photography, professional studio lighting, magazine cover quality, perfect makeup, styled hair, studio background, fashion photography, detailed face, polished",
-        "Casual/Candid": "candid photography, natural lighting, realistic, casual, authentic moment, unposed, street photography, detailed face, 4k",
-        "Maximum Likeness": "extremely detailed face, perfect likeness, accurate facial features, photorealistic portrait, celebrity lookalike, recognizable, identical features, same person, exact match, hyperdetailed face, studio portrait, 8k uhd, sharp focus",
+        "Ultra Photorealistic": "photorealistic, hyperrealistic, 8k uhd, dslr quality, raw photo, realistic skin texture with pores, realistic detailed eyes with reflections, sharp focus, professional photography, studio lighting, subsurface scattering, volumetric lighting, cinematic, award winning photo, highly detailed face, perfect likeness, accurate facial features, identical to reference, same exact person",
+        "High Quality Photo": "photorealistic, high resolution, extremely detailed face, realistic, professional photo, natural lighting, 4k uhd, sharp focus, accurate likeness, detailed eyes, skin texture, recognizable person, same face",
+        "Artistic Portrait": "artistic portrait, painterly style, professional lighting, beautiful, elegant, studio portrait, detailed face, expressive, masterpiece, best quality, accurate likeness",
+        "Glamour Shot": "glamour photography, professional studio lighting, magazine cover quality, perfect makeup, styled hair, studio background, fashion photography, detailed face, polished, recognizable celebrity",
+        "Casual/Candid": "candid photography, natural lighting, realistic, casual, authentic moment, unposed, street photography, detailed face, 4k, same person",
+        "Maximum Likeness": "extremely detailed face, perfect likeness, accurate facial features, photorealistic portrait, celebrity lookalike, recognizable, identical features, same person, exact match, hyperdetailed face, studio portrait, 8k uhd, sharp focus, face match, identical face structure, same bone structure, same eye shape, same nose, same lips",
+        "PERFECT CLONE": "EXACT LIKENESS, IDENTICAL PERSON, PERFECT FACE MATCH, same exact facial features, same bone structure, same eye shape and color, same nose shape, same lip shape, same face proportions, photorealistic clone, indistinguishable from reference, carbon copy, perfect reproduction, 8k uhd, hyperdetailed face, studio lighting, masterpiece, best quality",
     }
     
     CLOTHING_OPTIONS = {
@@ -452,8 +453,8 @@ class CelebritySelectorV2:
         "Custom": "",
     }
     
-    # Comprehensive negative prompt for quality
-    NEGATIVE_PROMPT = "deformed, distorted, disfigured, bad anatomy, wrong anatomy, extra limbs, missing limbs, floating limbs, mutated hands, extra fingers, missing fingers, fused fingers, too many fingers, long neck, mutation, poorly drawn face, poorly drawn hands, bad proportions, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, cross-eyed, blurry, low quality, jpeg artifacts, signature, watermark, username, artist name, bad-hands-5, easynegative, ng_deepnegative, bad face, ugly face, wrong face, different person, different face, not the same person, unrecognizable, wrong identity, bad likeness, inaccurate features"
+    # Comprehensive negative prompt for quality AND likeness accuracy
+    NEGATIVE_PROMPT = "deformed, distorted, disfigured, bad anatomy, wrong anatomy, extra limbs, missing limbs, floating limbs, mutated hands, extra fingers, missing fingers, fused fingers, too many fingers, long neck, mutation, poorly drawn face, poorly drawn hands, bad proportions, gross proportions, malformed limbs, cross-eyed, blurry, low quality, jpeg artifacts, signature, watermark, bad face, ugly face, WRONG FACE, DIFFERENT PERSON, DIFFERENT FACE, NOT THE SAME PERSON, unrecognizable, wrong identity, bad likeness, inaccurate features, wrong eye color, wrong hair color, wrong skin tone, wrong nose shape, wrong lip shape, merged faces, mixed features, hybrid face, composite face, wrong bone structure, different ethnicity than reference, age mismatch, wrong facial structure"
     
     @classmethod
     def INPUT_TYPES(cls):
