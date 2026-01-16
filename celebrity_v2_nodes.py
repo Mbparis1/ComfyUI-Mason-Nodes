@@ -188,6 +188,150 @@ class CelebritySelectorV2:
         "Cindy Crawford": "cindy crawford, woman, long brown hair, brown eyes, beauty mark above lip signature, tall supermodel figure, fair skin, 1990s supermodel era, all american beauty, iconic",
         "Claudia Schiffer": "claudia schiffer, woman, long blonde hair, blue eyes, tall supermodel figure, german features, fair skin, 1990s supermodel icon, classic blonde bombshell, guess girl",
         "Naomi Campbell": "naomi campbell, woman, long black hair, brown eyes, black british features, tall supermodel figure, age varies depicted, legendary supermodel, fierce runway walk, iconic beauty",
+        
+        # ============================================
+        # ADULT CONTENT CREATORS / PERFORMERS
+        # ============================================
+        "Mia Khalifa": "mia khalifa, woman, long dark brown hair with glasses often, brown eyes, lebanese american features, curvy busty figure large bust, age early 30s, controversial former adult performer now sports commentator influencer, middle eastern beauty",
+        "Lana Rhoades": "lana rhoades amara maple, woman, long brown hair (or blonde), blue-green eyes, fair skin, very curvy enhanced figure large bust, full lips, age late 20s, former adult actress now influencer, beautiful all american enhanced",
+        "Riley Reid": "riley reid, woman, brown hair varies, brown eyes, petite very small figure, fair skin, age early 30s, famous adult performer, girl next door look, playful expression, small frame",
+        "Abella Danger": "abella danger, woman, brown hair, hazel brown eyes, jewish ukrainian heritage, curvy athletic figure, age late 20s, adult performer, expressive, fit dancer body",
+        "Angela White": "angela white, woman, long dark brown hair, brown hazel eyes, australian, very curvaceous busty natural figure, fair skin, age late 30s, adult performer producer, intelligent beautiful",
+        "Mia Malkova": "mia malkova, woman, long blonde hair, blue eyes, fair skin, fit athletic figure, age early 30s, adult performer, dancer flexibility, all american blonde beauty",
+        "Adriana Chechik": "adriana chechik, woman, long dark brown hair, brown eyes, mixed heritage, athletic petite figure, age early 30s, former adult performer now twitch streamer gamer, energetic",
+        "Nicole Aniston": "nicole aniston, woman, long blonde hair, brown eyes, fair skin, athletic toned figure enhanced bust, age early 40s, adult performer, california girl aesthetic",
+        "Madison Ivy": "madison ivy, woman, red hair (varies), hazel eyes, petite very fit figure enhanced bust, age late 30s, adult performer, athletic small frame, distinctive look",
+        "Asa Akira": "asa akira, woman, long black hair, brown eyes, japanese american features, petite slender figure, age late 30s, adult performer author, asian beauty, articulate",
+        "Lisa Ann": "lisa ann, woman, long dark brown hair, brown eyes, italian heritage, curvaceous mature figure, age early 50s, legendary milf performer, mature beauty",
+        "Brandi Love": "brandi love, woman, blonde hair, blue eyes, fair skin, fit toned mature figure, age early 50s, adult performer, mature elegant, fitness focused",
+        "Kendra Lust": "kendra lust, woman, long dark brown hair, brown eyes, fit athletic muscular figure, age mid 40s, adult performer, gym physique, milf category",
+        "Eva Lovia": "eva lovia, woman, long dark brown hair, brown eyes, mixed japanese spanish heritage, petite curvy figure, age early 30s, former adult performer, exotic beautiful",
+        "Dani Daniels": "dani daniels, woman, long brown hair, brown eyes, fair skin, fit athletic figure, age mid 30s, adult performer artist, tomboy aesthetic, natural beauty",
+        "Sasha Grey": "sasha grey, woman, dark brown hair short or long, grey-blue eyes, fair skin, slender figure, age mid 30s, former adult performer now actress dj, alternative edgy, intelligent",
+        "Jenna Jameson": "jenna jameson, woman, platinum blonde hair, blue eyes, fair skin, curvaceous enhanced figure, age depicted 1990s-2000s prime, legendary adult performer, iconic",
+        "Tera Patrick": "tera patrick, woman, long dark brown hair, brown eyes, mixed thai heritage, tall curvaceous figure, age depicted 2000s prime, legendary adult performer, exotic bombshell",
+        "Jesse Jane": "jesse jane, woman, blonde hair, blue eyes, fair skin, curvaceous enhanced figure, age depicted 2000s prime, adult performer, barbie-like, all american blonde",
+        "Kayden Kross": "kayden kross, woman, long blonde hair, blue eyes, slender athletic figure, fair skin, age mid 30s, adult performer director, elegant beauty, intelligent",
+        "Stoya": "stoya, woman, dark brown hair pale skin gothic aesthetic, blue eyes, slender petite figure, age mid 30s, adult performer writer, alternative intellectual, striking pale beauty",
+        "Janice Griffith": "janice griffith, woman, dark brown hair, brown eyes, petite small figure, fair skin, age late 20s, adult performer, alternative look, tattoos",
+        "Elsa Jean": "elsa jean, woman, long blonde hair, blue eyes, very petite small figure, fair skin, age late 20s, adult performer, innocent look, tiny blonde",
+        "Piper Perri": "piper perri, woman, blonde hair, blue eyes, extremely petite very small figure, fair skin, age late 20s, adult performer, tiny frame",
+        "Gabbie Carter": "gabbie carter, woman, long brown hair, brown eyes, curvy busty natural figure very large bust, age early 20s, adult performer, natural curves, girl next door",
+        "Autumn Falls": "autumn falls, woman, long dark brown hair, brown eyes, latina features, very curvy busty natural figure, age early 20s, adult performer, young curvy latina",
+        "Emily Willis": "emily willis, woman, long dark brown hair, brown eyes, argentine heritage, petite fit figure, age early 20s, adult performer, energetic exotic",
+        "Lena Paul": "lena paul, woman, long red-brown hair, blue eyes, curvy natural figure large natural bust, fair skin, age late 20s, adult performer, natural redhead curves",
+        "Natasha Nice": "natasha nice, woman, long brown hair, brown eyes, french heritage, curvy busty natural figure, age mid 30s, adult performer, natural voluptuous french beauty",
+        "Valentina Nappi": "valentina nappi, woman, long dark brown hair, brown eyes, italian features, curvy figure, olive skin, age early 30s, adult performer, italian beauty, athletic",
+        "Eva Elfie": "eva elfie, woman, long blonde hair, blue eyes, russian features, petite slender figure, fair skin, age early 20s, adult performer influencer, russian blonde, cute innocent look",
+        "Lexi Luna": "lexi luna, woman, short dark hair, brown eyes, petite curvy busty figure, age mid 30s, adult performer, milf aesthetic, approachable",
+        "Reagan Foxx": "reagan foxx, woman, long dark brown hair, brown eyes, fit toned mature figure, age mid 40s, adult performer, milf fitness, sophisticated",
+        "Skylar Vox": "skylar vox, woman, brown hair, brown eyes, very busty curvy young figure, age early 20s, adult performer, young natural curves",
+        "LaSirena69": "lasirena69, woman, long dark hair, brown eyes, venezuelan latina features, extremely curvy busty figure, tan skin, age early 30s, adult performer, exotic latina curves",
+        "Kendra Sunderland": "kendra sunderland, woman, long blonde hair, blue eyes, tall busty figure, fair skin, age late 20s, adult performer, library girl fame, blonde bombshell",
+        "Haley Reed": "haley reed, woman, blonde hair, blue eyes, petite slender figure, fair skin, age late 20s, adult performer, girl next door blonde",
+        
+        # ============================================
+        # ONLYFANS / SOCIAL MEDIA ADULT CREATORS
+        # ============================================
+        "Amouranth": "amouranth kaitlyn siragusa, woman, long red hair, green eyes, fair skin, fit curvy figure, age early 30s, twitch streamer onlyfans creator, cosplay, gamer girl, beautiful redhead",
+        "Mia Malkova": "mia malkova, woman, long blonde hair, blue eyes, athletic fit figure dancer body, age early 30s, adult performer onlyfans, flexibility, all american blonde",
+        "Alinity": "alinity natalia mogollon, woman, long dark brown hair, brown eyes, colombian heritage, slender figure, age early 30s, twitch streamer, latina beauty",
+        "Indiefoxx": "indiefoxx, woman, long dark brown hair, brown eyes, hispanic features, curvy figure, age late 20s, streamer onlyfans, asmr content",
+        "Bhad Bhabie": "bhad bhabie danielle bregoli, woman, brown hair often blonde, brown eyes, fair skin, petite figure, age early 20s, rapper onlyfans, controversial, cash me outside fame",
+        "Iggy Azalea": "iggy azalea, woman, long blonde hair, blue eyes, australian, curvy enhanced figure, age early 30s, rapper onlyfans, tall statuesque, australian accent",
+        "Blac Chyna": "blac chyna, woman, varies hair colors often blonde or colorful, brown eyes, black american features, very curvaceous enhanced figure, age mid 30s, model onlyfans, exaggerated curves",
+        "Tana Mongeau": "tana mongeau, woman, long blonde hair, blue eyes, fair skin, curvy figure, age mid 20s, youtuber onlyfans, influencer, bold personality",
+        "Trisha Paytas": "trisha paytas, woman, long blonde hair, brown eyes, curvy plus size figure, age mid 30s, youtuber onlyfans, controversial, dramatic",
+        
+        # ============================================
+        # RISING STARS / NEWER ACTRESSES
+        # ============================================
+        "Madelyn Cline": "madelyn cline, woman, long blonde hair, blue eyes, fair skin, slender fit figure, age late 20s, outer banks actress, beach vibes, southern beauty",
+        "Chase Sui Wonders": "chase sui wonders, woman, long dark hair, brown eyes, mixed asian heritage, slender figure, age late 20s, actress singer, unique beauty",
+        "Rachel Zegler": "rachel zegler, woman, long dark brown hair, brown eyes, colombian heritage, slender figure, age early 20s, west side story snow white, rising star, powerful voice",
+        "Sadie Sink": "sadie sink, woman, long red hair, blue eyes, fair skin freckles, slender figure, age early 20s, stranger things max, striking redhead, expressive",
+        "Millie Bobby Brown": "millie bobby brown, woman, brown hair varies, brown eyes, british, petite figure, age early 20s, stranger things eleven, young star grown up",
+        "Hunter Schafer": "hunter schafer, woman, long blonde hair, blue eyes, very tall slender model figure, fair skin, age mid 20s, euphoria jules, model actress, androgynous beauty",
+        "Maude Apatow": "maude apatow, woman, dark curly hair, brown eyes, fair skin, slender figure, age late 20s, euphoria lexi, nepotism baby turned talent, natural beauty",
+        "Alexa Demie": "alexa demie, woman, dark hair often styled dramatically, brown eyes, latina features, slender figure, age early 30s, euphoria maddy, dramatic makeup iconic, stunning",
+        "Barbie Ferreira": "barbie ferreira, woman, brown hair, brown eyes, brazilian heritage, plus size curvy figure, age late 20s, euphoria kat, body positive, beautiful curves",
+        "Storm Reid": "storm reid, woman, brown hair varies, brown eyes, black american features, slender figure, age early 20s, euphoria rue's sister, rising star",
+        "Maitreyi Ramakrishnan": "maitreyi ramakrishnan, woman, long dark brown hair, brown eyes, tamil canadian heritage, slender figure, age early 20s, never have i ever, south asian representation",
+        "Lana Condor": "lana condor, woman, long dark hair, brown eyes, vietnamese heritage, petite figure, age late 20s, to all the boys, asian american beauty",
+        "Isabela Merced": "isabela merced, woman, long dark brown hair, brown eyes, peruvian heritage, petite curvy figure, age early 20s, dora transformers, rising latina star",
+        "Xochitl Gomez": "xochitl gomez, woman, long dark brown hair, brown eyes, mexican heritage, teen figure, age late teens, doctor strange america chavez, young rising star",
+        "Dominique Thorne": "dominique thorne, woman, black hair varies, brown eyes, trinidadian heritage, slender figure, age late 20s, black panther ironheart, rising star",
+        "Letitia Wright": "letitia wright, woman, black hair varies, brown eyes, guyanese british, slender figure, age early 30s, black panther shuri, rising star",
+        "Ella Purnell": "ella purnell, woman, dark brown hair, large green eyes, british, slender petite figure, age late 20s, yellowjackets fallout, distinctive large eyes",
+        "Diana Silvers": "diana silvers, woman, brown hair, blue eyes, fair skin, tall slender model figure, age late 20s, booksmart, model actress, natural beauty",
+        "Thomasin McKenzie": "thomasin mckenzie, woman, blonde hair, blue eyes, new zealand features, slender figure, age mid 20s, jojo rabbit, innocent beauty",
+        "Jessie Buckley": "jessie buckley, woman, red curly hair, blue eyes, irish features, slender figure, age mid 30s, fargo, fiery redhead actress",
+        "Daisy Edgar-Jones": "daisy edgar jones, woman, brown hair, green eyes, british, slender figure, age late 20s, normal people, english rose beauty",
+        "Phoebe Dynevor": "phoebe dynevor, woman, auburn hair, blue eyes, british, slender figure, age late 20s, bridgerton daphne, regency beauty",
+        "Simone Ashley": "simone ashley, woman, long dark brown hair, brown eyes, british tamil heritage, slender figure, age late 20s, bridgerton kate, south asian british beauty",
+        "Charithra Chandran": "charithra chandran, woman, long dark hair, brown eyes, british indian heritage, slender figure, age late 20s, bridgerton edwina, south asian beauty",
+        
+        # ============================================
+        # MORE INFLUENCERS / TIKTOK / YOUTUBE
+        # ============================================
+        "Charli D'Amelio": "charli damelio, woman, long dark brown hair, brown eyes, italian heritage, petite dancer figure, age early 20s, tiktok star, dancer, girl next door",
+        "Dixie D'Amelio": "dixie damelio, woman, dark brown hair, brown eyes, fair skin, slender figure, age early 20s, tiktok star singer, charli's sister",
+        "Loren Gray": "loren gray, woman, blonde or varies hair, blue eyes, fair skin, slender figure, age early 20s, tiktok star singer, doll-like features",
+        "Avani Gregg": "avani gregg, woman, dark hair often styled dramatically, brown eyes, mixed heritage, petite figure, age early 20s, tiktok star, makeup skills",
+        "Madi Monroe": "madi monroe, woman, blonde hair, blue eyes, fair skin, slender figure, age early 20s, tiktok star, blonde beauty",
+        "Nessa Barrett": "nessa barrett, woman, dark hair varies, brown eyes, fair skin, slender figure, age early 20s, tiktok star singer, alternative aesthetic",
+        "Sommer Ray": "sommer ray, woman, long brown hair, brown eyes, fit extremely toned figure famous glutes, age late 20s, fitness influencer, gym body, squat queen",
+        "Jen Selter": "jen selter, woman, long dark brown hair, brown eyes, fit toned figure famous glutes, age late 20s, fitness influencer, booty gains pioneer",
+        "AnlleLa Sagra": "anllela sagra, woman, long brown hair, hazel eyes, colombian features, extremely fit muscular feminine figure, age late 20s, fitness model bodybuilder, athletic curves",
+        "Michelle Lewin": "michelle lewin, woman, long blonde hair, brown eyes, venezuelan heritage, extremely fit muscular feminine figure, age mid 30s, fitness influencer, muscular beauty",
+        "Brittany Renner": "brittany renner, woman, long dark hair, brown eyes, black american features, fit curvy athletic figure, age early 30s, fitness influencer, controversial, fit curves",
+        "Lele Pons": "lele pons, woman, long blonde or brown hair, brown eyes, venezuelan heritage, slender figure, age late 20s, vine youtube star, latina influencer",
+        "Hannah Stocking": "hannah stocking, woman, long dark brown hair, blue eyes, tall slender figure, fair skin, age early 30s, youtube comedian, tall beauty",
+        "Liza Koshy": "liza koshy, woman, dark brown hair, brown eyes, mixed indian heritage, petite figure, age late 20s, youtube comedian actress, energetic cute",
+        "Emma Chamberlain": "emma chamberlain, woman, brown hair varies, green eyes, fair skin, slender figure, age early 20s, youtube influencer, relatable aesthetic, coffee obsessed",
+        "Alix Earle": "alix earle, woman, long blonde hair, blue eyes, fair skin, slender figure, age early 20s, tiktok influencer, grwm queen, all american",
+        
+        # ============================================
+        # MORE MODELS / INSTAGRAM MODELS  
+        # ============================================
+        "Suki Waterhouse": "suki waterhouse, woman, long blonde hair, blue eyes, british, slender figure, fair skin, age early 30s, model actress singer, english rose",
+        "Doutzen Kroes": "doutzen kroes, woman, long blonde hair, blue eyes, dutch features, tall slender figure, age late 30s, victorias secret angel, dutch supermodel",
+        "Candice Swanepoel": "candice swanepoel, woman, long blonde hair, blue eyes, south african, tall slender figure, age mid 30s, victorias secret angel, blonde goddess",
+        "Jasmine Tookes": "jasmine tookes, woman, long brown hair, brown eyes, black american features, tall athletic figure, age early 30s, victorias secret angel, athletic beauty",
+        "Taylor Hill": "taylor hill, woman, long brown hair, green eyes, fair skin, tall slender figure, age late 20s, victorias secret angel, girl next door model",
+        "Cami Morrone": "camila morrone, woman, long brown hair, brown eyes, argentine heritage, slender figure, age late 20s, model actress, natural beauty",
+        "Yris Palmer": "yris palmer, woman, long dark hair, brown eyes, latina features, curvy fit figure, age early 30s, influencer entrepreneur, beauty mogul",
+        "Amber Rose": "amber rose, woman, shaved platinum blonde head signature, brown eyes, mixed heritage, curvy figure, age early 40s, model influencer, bold look",
+        "Jordyn Woods": "jordyn woods, woman, varies hair, brown eyes, black american features, curvy plus size figure, age late 20s, influencer model, body positive curves",
+        "Tammy Hembrow": "tammy hembrow, woman, long blonde hair, blue eyes, australian, extremely fit curvy figure famous glutes, age late 20s, fitness influencer, gym body goals",
+        "Natalie Roser": "natalie roser, woman, long blonde hair, blue eyes, australian, slender model figure, fair skin, age early 30s, fitness model, aussie blonde",
+        "Nikita Dragun": "nikita dragun, woman, varies dramatic hair, brown eyes, trans woman vietnamese heritage, slender figure, age late 20s, influencer, dramatic glam",
+        
+        # ============================================
+        # ADDITIONAL MUSICIANS
+        # ============================================
+        "Ice Spice": "ice spice, woman, distinctive orange curly hair, brown eyes, black american dominican heritage, curvy figure, age early 20s, rapper, unique hair signature, rising star",
+        "Saweetie": "saweetie, woman, long blonde hair or varies, brown eyes, filipino chinese black heritage, slender curvy figure, age early 30s, rapper, icy girl, glamorous",
+        "Normani": "normani, woman, long dark hair varies, brown eyes, black american features, fit dancer figure, age late 20s, former fifth harmony solo, powerful dancer",
+        "Kehlani": "kehlani, woman, varies hair often colorful, brown eyes, mixed filipino black heritage, fit figure, tattoos, age late 20s, r&b singer, alternative beautiful",
+        "Summer Walker": "summer walker, woman, long black hair, brown eyes, black american features, slender figure, age late 20s, r&b singer, soft-spoken beauty",
+        "Jhene Aiko": "jhene aiko, woman, long dark hair, brown eyes, mixed japanese heritage, petite slender figure, tattoos, age mid 30s, r&b singer, ethereal beauty",
+        "Tinashe": "tinashe, woman, long dark curly hair, brown eyes, mixed danish zimbabwean heritage, fit dancer figure, age early 30s, singer dancer, athletic beautiful",
+        "Tyla": "tyla, woman, long dark hair, brown eyes, south african coloured heritage, slender figure, age early 20s, water singer, rising star, south african beauty",
+        "Sabrina Carpenter": "sabrina carpenter, woman, blonde hair, brown eyes, petite figure, fair skin, age mid 20s, singer actress, disney alum grown up, espresso singer",
+        "Tate McRae": "tate mcrae, woman, long brown hair, brown eyes, canadian, slender dancer figure, age early 20s, singer dancer, teen star grown up",
+        
+        # ============================================
+        # GAMERS / STREAMERS
+        # ============================================
+        "Loserfruit": "loserfruit kathleen belsten, woman, long brown hair sometimes pink, brown eyes, australian, slender figure, age late 20s, twitch streamer fortnite, bubbly personality",
+        "Fuslie": "fuslie leslie fu, woman, long dark hair, brown eyes, chinese american heritage, petite figure, age early 30s, twitch streamer, asian beauty gamer",
+        "QuarterJade": "quarterjade jodi lee, woman, long dark hair, brown eyes, asian american heritage, petite figure, age late 20s, twitch streamer, gamer girl",
+        "Kyedae": "kyedae, woman, long dark hair, brown eyes, japanese canadian heritage, slender figure, age early 20s, valorant streamer, gamer girlfriend aesthetic",
+        "AriaSaki": "ariasaki, woman, long dark hair, brown eyes, asian heritage, petite figure, age late 20s, twitch streamer, anime aesthetic",
+        "39daph": "39daph, woman, dark hair, brown eyes, korean canadian heritage, petite figure, age mid 20s, artist streamer, artistic edgy",
+        "Sydeon": "sydeon, woman, dark hair, brown eyes, black american features, slender figure, age late 20s, twitch streamer offlinetv, gamer personality",
+        "Lily Pichu": "lily pichu, woman, long dark hair, brown eyes, asian heritage, very petite figure, age early 30s, twitch streamer artist, cute voice anime aesthetic",
     }
     
     QUALITY_PRESETS = {
