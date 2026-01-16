@@ -263,6 +263,201 @@ class AnimeCharacterSelectorV2:
         "Power (CSM)": "power chainsaw man, young woman, long wild blonde hair, red horns, sharp teeth, red eyes, crazy expression, white shirt blood stained, blood fiend devil, chaotic, beautiful feral energy",
         "2B (Nier)": "2b nier automata, young woman, short white hair with blindfold visor, pale skin, black gothic leotard dress, thigh high boots, android, katana, stoic beautiful, mole under lips",
         "A2 (Nier)": "a2 nier automata, young woman, long wild white hair, tattered black clothing, damaged body showing endoskeleton, fierce warrior android, aggressive expression",
+        
+        # ============================================
+        # POKEMON
+        # ============================================
+        "Misty": "misty pokemon, young woman, short orange hair in side ponytail, blue-green eyes, fair skin, yellow crop top, red suspenders, blue denim shorts, water trainer, tomboy, athletic slim figure, feisty expression",
+        "May": "may pokemon, young woman, brown hair with green bandana, blue eyes, fair skin, red and blue outfit, petite curvy figure, coordinator, cheerful personality",
+        "Dawn": "dawn pokemon, young woman, dark blue hair with gold clips, blue eyes, fair skin, black and pink dress, white scarf, petite figure, coordinator, cheerful",
+        "Serena": "serena pokemon xy, young woman, honey blonde hair, blue eyes, fair skin, pink outfit with hat and ribbon, performer, slender figure, loves fashion, crush on ash",
+        "Cynthia": "cynthia pokemon champion, adult woman, very long wavy blonde hair, grey eyes, black outfit with long coat, sinnoh champion, tall elegant figure, beautiful powerful, black dress underneath",
+        "Jessie": "jessie team rocket pokemon, adult woman, incredibly long magenta red hair in dramatic swoosh style, blue eyes, white and red team rocket uniform with midriff, curvy figure, dramatic villain",
+        "Nurse Joy": "nurse joy pokemon, young woman, pink hair in loops, blue eyes, nurse outfit white and pink, kind smile, healer, pretty identical nurses",
+        "Officer Jenny": "officer jenny pokemon, young woman, blue-green hair under police cap, eyes matching hair, police uniform, authoritative, pretty identical officers",
+        "Marnie": "marnie pokemon sword shield, young woman, black hair with undercut styled over one eye, pale skin, punk style, dark clothes with pink and black, pale blue eyes, reserved expression, cute punk girl",
+        "Nessa": "nessa pokemon sword shield, young woman, long black hair with blue streaks, dark skin, blue eyes, water gym leader, swim outfit blue, tall athletic model figure, beautiful confident",
+        "Bea": "bea pokemon sword shield, young woman, grey short hair, dark grey eyes, fighting gym leader, orange shorts and sports bra showing abs, athletic muscular, serious expression, bandaged fists",
+        "Sonia": "sonia pokemon sword shield, adult woman, long orange ginger hair, green eyes, lab coat over short dress, tall curvy figure, pokemon professor assistant, intelligent beautiful",
+        "Hilda": "hilda pokemon black white, young woman, long brown hair in high ponytail with cap, blue eyes, white tank top, very short shorts, curvy figure, confident bold expression",
+        "Rosa": "rosa pokemon black white 2, young woman, long brown hair in twin buns, blue eyes, pink and white outfit with visor, cheerful expression, cute",
+        "Gloria": "gloria pokemon sword shield, young woman, short brown hair, grey eyes, scottish tam beret, grey dress and cardigan, determined expression, galar protagonist",
+        "Clair": "clair pokemon dragon master, young woman, long light blue hair in ponytail, blue eyes, revealing blue body suit cape, dragon trainer, proud confident, tall slender",
+        "Elesa": "elesa pokemon, young woman, blonde hair in unique headphone style, blue eyes, model, nimbasa gym leader electric type, yellow and black outfit, tall slender supermodel",
+        "Skyla": "skyla pokemon, young woman, red hair in high ponytail, blue eyes, flying gym leader, blue outfit, pilot, cheerful energetic, athletic figure",
+        "Korrina": "korrina pokemon, young woman, blonde hair in ponytail with helmet, grey eyes, fighting gym leader, roller skating outfit, athletic energetic, mega evolution",
+        "Lillie": "lillie pokemon sun moon, young woman, long pale blonde hair, green eyes, white dress with hat, elegant refined, alola region, gentle kind expression, slender delicate figure",
+        "Lusamine": "lusamine pokemon, adult woman, long blonde hair, green eyes, white bodysuit, very slender tall figure, aether foundation president, beautiful cold elegant, lillie's mother",
+        
+        # ============================================
+        # MY LIFE AS A TEENAGE ROBOT
+        # ============================================
+        "Jenny/XJ-9": "jenny wakeman xj-9 my life as a teenage robot, teenage robot girl, metallic silver-blue body, white pigtails, blue eyes with visible circuits, round head, robotic joints, red and white cheerleader-style outfit painted on, heroic expression, created by mom nora, teen superhero robot",
+        "Misty (Teenage Robot)": "misty from my life as a teenage robot, human teenage girl, short brown hair, yellow outfit, melodys friend, jealous of jenny initially",
+        
+        # ============================================
+        # FAIRLY ODDPARENTS
+        # ============================================
+        "Trixie Tang": "trixie tang fairly oddparents, teenage girl, long black hair in headband, purple eyes, purple and white cheerleader outfit or purple dress, popular girl, beautiful, snooty rich expression, dimmsdale",
+        "Veronica": "veronica fairly oddparents, teenage girl, blonde hair, friend of trixie, pink outfit, dimmsdale",
+        "Tootie": "tootie fairly oddparents, young girl, black hair in pigtails, braces, glasses, purple dress, obsessed with timmy, vicky's sister",
+        "Vicky": "vicky fairly oddparents, teenage girl, orange red ponytail, green eyes, green crop top, black pants, evil babysitter, mean expression, iconic villain",
+        
+        # ============================================
+        # JIMMY NEUTRON
+        # ============================================
+        "Cindy Vortex": "cindy vortex jimmy neutron, young girl, blonde hair in ponytail, green eyes, pink shirt, genius rival to jimmy, competitive bossy expression, smart",
+        "Libby Folfax": "libby folfax jimmy neutron, young girl, dark skin, black hair in braids, purple outfit, cindy's best friend, music lover, fashionable",
+        "Beautiful Gorgeous": "beautiful gorgeous jimmy neutron, adult woman, blonde hair, spy villain, femme fatale, beautiful seductress, black spy outfit",
+        
+        # ============================================
+        # DANNY PHANTOM
+        # ============================================
+        "Sam Manson": "sam manson danny phantom, teenage girl, short black hair in ponytail, purple eyes, goth aesthetic, purple and black outfit, crop top with exposed midriff, combat boots, ultra-recyclo-vegetarian, danny's friend and love interest, beautiful goth",
+        "Paulina": "paulina sanchez danny phantom, teenage girl, long black hair, teal eyes, latina features, pink outfit, popular cheerleader, extremely beautiful, shallow but gorgeous",
+        "Valerie Gray": "valerie gray danny phantom, teenage girl, dark skin, black hair in short style, ghost hunter, red hunter suit, athletic, brown eyes",
+        "Ember McLain": "ember mclain danny phantom, ghost rockstar, flaming blue hair like fire, green skin, purple and black rocker outfit with guitar, rebellious expression, remember my name",
+        "Desiree": "desiree danny phantom, ghost genie woman, long flowing black hair, green skin, purple and gold genie outfit revealing, wishes themed villain, seductive expression",
+        "Spectra": "spectra danny phantom, ghost woman, short black hair, green skin, suit dress, therapist disguise, feeds on misery, beautiful sinister",
+        
+        # ============================================
+        # ED EDD N EDDY
+        # ============================================
+        "Nazz": "nazz ed edd n eddy, teenage girl, short blonde hair, blue eyes, cool girl of cul-de-sac, purple tank top, jeans, popular blonde, laid back cool expression",
+        "Marie Kanker": "marie kanker ed edd n eddy, teenage girl, blue hair covering one eye, trailer park girl, tank top, aggressive, obsessed with edd, kanker sister",
+        "Lee Kanker": "lee kanker ed edd n eddy, teenage girl, curly red hair covering eyes, polka dot shirt, leader of kanker sisters, aggressive",
+        "May Kanker": "may kanker ed edd n eddy, teenage girl, blonde bucktooth, kanker sister, obsessed with ed, flannel shirt",
+        
+        # ============================================
+        # POWERPUFF GIRLS
+        # ============================================
+        "Blossom": "blossom powerpuff girls, young superhero girl, long orange-red hair with big red bow, pink eyes, pink dress with black stripe, leader, smart and confident, flying, cartoon style, super powers",
+        "Bubbles": "bubbles powerpuff girls, young superhero girl, blonde hair in pigtails, baby blue eyes, light blue dress with black stripe, sweet cute innocent, flying, cartoon style",
+        "Buttercup": "buttercup powerpuff girls, young superhero girl, short black flipped hair, green eyes, green dress with black stripe, tomboy tough fighter, flying, cartoon style",
+        "Sedusa": "sedusa powerpuff girls, adult villain woman, long wild black hair that comes alive, green eyes, red dress, femme fatale, seductive evil",
+        "Miss Bellum": "miss bellum powerpuff girls, adult woman, long curly red hair, face never fully shown, very curvaceous figure in red dress and heels, mayors assistant, sexy secretary trope",
+        
+        # ============================================
+        # DEXTER'S LABORATORY
+        # ============================================
+        "DeeDee": "deedee dexters laboratory, teenage girl, tall slender, long blonde hair in ponytails, blue eyes, pink ballet tutu and leotard, ballerina, annoying sister, happy expression, long legs",
+        
+        # ============================================
+        # KIM POSSIBLE
+        # ============================================
+        "Kim Possible": "kim possible, teenage girl, long red-orange hair, green eyes, fair skin, black crop top and cargo pants, athletic cheerleader spy figure, confident heroic expression, teen hero, call me beep me",
+        "Shego": "shego kim possible, adult woman, long black hair with green tint, green skin from comet, black and green catsuit, villain, green plasma powers, sarcastic evil smirk, athletic curvy figure",
+        "Bonnie Rockwaller": "bonnie rockwaller kim possible, teenage girl, brown hair in ponytail, teal eyes, cheerleader uniform, rival to kim, mean girl, beautiful but snobby",
+        
+        # ============================================
+        # TOTALLY SPIES
+        # ============================================
+        "Sam (Totally Spies)": "sam totally spies, teenage girl, long red hair, green eyes, green spy catsuit skintight, intelligent leader of trio, athletic figure, beverly hills spy",
+        "Clover": "clover totally spies, teenage girl, long blonde hair, blue eyes, red spy catsuit skintight, fashion obsessed, flirty, athletic curvy figure, beverly hills spy",
+        "Alex (Totally Spies)": "alex totally spies, teenage girl, short black hair, brown eyes, yellow spy catsuit skintight, athletic sporty, asian features, beverly hills spy",
+        
+        # ============================================
+        # WINX CLUB
+        # ============================================
+        "Bloom": "bloom winx club, young fairy woman, long orange-red hair, cyan blue eyes, sparkly blue fairy outfit with wings, fire powers, princess of domino, beautiful slender",
+        "Stella": "stella winx club, young fairy woman, long blonde hair, hazel eyes, orange sparkly fairy outfit with wings, sun and moon powers, fashionable princess, beautiful",
+        "Flora": "flora winx club, young fairy woman, long brown hair, green eyes, pink and green fairy outfit with wings, nature powers, gentle sweet, tan skin",
+        "Musa": "musa winx club, young fairy woman, dark blue hair in pigtails, blue eyes, red fairy outfit with wings, music powers, asian features, tomboyish",
+        "Tecna": "tecna winx club, young fairy woman, short magenta hair, teal eyes, purple tech fairy outfit with wings, technology powers, logical smart",
+        "Layla/Aisha": "aisha layla winx club, young fairy woman, long curly brown hair, blue eyes, dark skin, green fairy outfit with wings, morphix water powers, athletic tomboy princess",
+        
+        # ============================================
+        # THE INCREDIBLES
+        # ============================================
+        "Elastigirl/Helen": "elastigirl helen parr incredibles, adult woman, short brown hair, brown eyes, red and black super suit, very curvy figure especially wide hips and thighs, stretchy powers, mom superhero, athletic",
+        "Violet Parr": "violet parr incredibles, teenage girl, long black hair covering face sometimes, violet eyes, shy, red and black super suit, slender, invisibility powers, awkward teen superhero",
+        "Mirage (Incredibles)": "mirage incredibles, adult woman, short platinum blonde hair, grey eyes, white tight dress, slender figure, mysterious assistant, seductive",
+        
+        # ============================================
+        # W.I.T.C.H.
+        # ============================================
+        "Will Vandom": "will vandom witch, teenage girl, short red hair, brown eyes, guardian leader, pink wings fairy form, petite, energy powers",
+        "Irma Lair": "irma lair witch, teenage girl, brown hair in bob, blue eyes, water guardian, humor personality, curvy figure",
+        "Taranee Cook": "taranee cook witch, teenage girl, dark skin, brown hair in braids, brown eyes behind glasses, fire guardian, shy initially",
+        "Cornelia Hale": "cornelia hale witch, teenage girl, long blonde hair, blue eyes, earth guardian, fashion conscious, snobby but loyal, tall slender beautiful",
+        "Hay Lin": "hay lin witch, teenage girl, long black hair in pigtails, brown eyes, asian features, air guardian, artistic, cheerful",
+        
+        # ============================================
+        # SAMURAI JACK
+        # ============================================
+        "Ashi": "ashi samurai jack, young woman, long black hair (later short), dark eyes, asian features, athletic warrior body, daughters of aku black bodysuit or leaves, becomes good, beautiful fierce",
+        
+        # ============================================
+        # COURAGE THE COWARDLY DOG
+        # ============================================
+        "Muriel Bagge": "muriel bagge courage cowardly dog, elderly woman, grey hair in bun, glasses, scottish, kind grandmother, apron dress, eustace's wife",
+        
+        # ============================================
+        # CLONE HIGH
+        # ============================================
+        "Cleopatra (Clone High)": "cleopatra clone high, teenage girl clone, long black hair with gold accessories, egyptian features stylized, revealing outfits, popular mean girl, beautiful, party animal",
+        "Joan of Arc (Clone High)": "joan of arc clone high, teenage girl clone, short black bob hair, goth aesthetic, purple outfit, cynical intelligent, crush on abe, beautiful",
+        
+        # ============================================
+        # FOSTERS HOME
+        # ============================================
+        "Frankie Foster": "frankie foster fosters home for imaginary friends, young adult woman, long red hair in ponytail, green eyes, casual outfit with jacket, caretaker for imaginary friends, tired but caring, pretty, freckles",
+        
+        # ============================================
+        # ATOMIC BETTY
+        # ============================================
+        "Atomic Betty": "atomic betty, young girl, red hair in pigtails, galactic guardian hero, white and red space suit, dual life as normal preteen and superhero",
+        
+        # ============================================
+        # CODE LYOKO
+        # ============================================
+        "Yumi Ishiyama": "yumi ishiyama code lyoko, teenage girl, short black hair, dark eyes, japanese, black outfit, lyoko warrior geisha form, martial arts, serious cool",
+        "Aelita Schaeffer": "aelita schaeffer code lyoko, teenage girl, short pink hair, green eyes, elf-like lyoko form, ai program became human, gentle intelligent, pink fairy outfit on lyoko",
+        
+        # ============================================
+        # LILO & STITCH
+        # ============================================
+        "Nani Pelekai": "nani pelekai lilo and stitch, young adult woman, long black hair, brown eyes, hawaiian features, tan skin, athletic surfer body, lilo's big sister, red top, caring but stressed",
+        
+        # ============================================
+        # AMERICAN DRAGON JAKE LONG
+        # ============================================
+        "Rose (American Dragon)": "rose american dragon jake long, teenage girl, long blonde hair in ponytail, blue eyes, huntsgirl outfit or regular clothes, love interest to jake, dragon slayer turned ally, beautiful, athletic",
+        "Trixie Carter": "trixie carter american dragon, teenage girl, dark skin, purple hair, jake's friend, sass attitude, stylish",
+        "Sun Park": "sun park american dragon, adult woman, korean dragon mentor, wise elderly but beautiful in younger scenes",
+        
+        # ============================================
+        # 6TEEN
+        # ============================================
+        "Nikki Wong": "nikki wong 6teen, teenage girl, short purple hair, punk rock style, sarcastic, works at khaki barn, asian features, edgy",
+        "Caitlin Cooke": "caitlin cooke 6teen, teenage girl, long blonde hair, valley girl, pink outfit, shopaholic, bubbly",
+        "Jen Masterson": "jen masterson 6teen, teenage girl, brown hair in ponytail, athletic, works at penalty box, responsible, practical",
+        
+        # ============================================
+        # BRATZ (Animated)
+        # ============================================
+        "Cloe (Bratz)": "cloe bratz, teenage girl, long blonde hair, blue eyes, fashion doll style, glamorous outfit, angel nickname, beautiful glam",
+        "Yasmin (Bratz)": "yasmin bratz, teenage girl, long brown hair, hazel eyes, latina features, fashion doll style, pretty princess nickname",
+        "Jade (Bratz)": "jade bratz, teenage girl, long black hair, brown eyes, asian features, fashion doll style, kool kat nickname, edgy fashion",
+        "Sasha (Bratz)": "sasha bratz, teenage girl, dark skin, brown eyes, bunny boo nickname, fashion doll style, urban style, confident",
+        
+        # ============================================
+        # STATIC SHOCK
+        # ============================================
+        "Shenice Vale": "shenice vale gear static shock, teenage girl, dark skin, short hair, becomes hero, tech genius",
+        
+        # ============================================
+        # X-MEN EVOLUTION
+        # ============================================  
+        "Rogue (Evolution)": "rogue x-men evolution, teenage girl, brown hair with white streak in front, green eyes, gothic style, southern belle, cannot touch, beautiful mysterious",
+        "Kitty Pryde (Evolution)": "kitty pryde x-men evolution, teenage girl, brown hair in ponytail, blue eyes, valley girl speech, phases through objects, cute bubbly",
+        "Jean Grey (Evolution)": "jean grey x-men evolution, teenage girl, long red hair, green eyes, popular preppy, telepathic, beautiful, cheerleader-type",
+        
+        # ============================================
+        # SCOOBY DOO MODERN
+        # ============================================
+        "Daphne Blake": "daphne blake scooby doo, young woman, long red-orange hair with purple headband, violet-blue eyes, purple dress, danger-prone, beautiful fashionable, mystery inc",
+        "Velma Dinkley": "velma dinkley scooby doo, young woman, short brown bob hair, brown eyes behind thick glasses, orange turtleneck, red pleated skirt, genius detective, jinkies, cute nerdy",
     }
     
     QUALITY_PRESETS = {
