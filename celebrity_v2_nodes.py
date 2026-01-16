@@ -335,29 +335,34 @@ class CelebritySelectorV2:
     }
     
     QUALITY_PRESETS = {
-        "Ultra Photorealistic": "photorealistic, hyperrealistic, 8k uhd, dslr, raw photo, realistic skin texture, realistic eyes, sharp focus, professional photography, studio lighting, subsurface scattering, volumetric lighting",
-        "High Quality Photo": "photorealistic, high resolution, detailed face, realistic, professional photo, natural lighting, 4k, sharp",
-        "Artistic Portrait": "artistic portrait, painterly style, professional lighting, beautiful, elegant, studio portrait",
-        "Glamour Shot": "glamour photography, professional lighting, magazine quality, perfect makeup, styled hair, studio background",
-        "Casual/Candid": "candid photography, natural lighting, realistic, casual, authentic moment, unposed",
-        "Standard": "high quality, realistic, detailed",
+        "Ultra Photorealistic": "photorealistic, hyperrealistic, 8k uhd, dslr quality, raw photo, realistic skin texture with pores, realistic detailed eyes with reflections, sharp focus, professional photography, studio lighting, subsurface scattering, volumetric lighting, cinematic, award winning photo, highly detailed face, perfect likeness, accurate facial features",
+        "High Quality Photo": "photorealistic, high resolution, extremely detailed face, realistic, professional photo, natural lighting, 4k uhd, sharp focus, accurate likeness, detailed eyes, skin texture",
+        "Artistic Portrait": "artistic portrait, painterly style, professional lighting, beautiful, elegant, studio portrait, detailed face, expressive, masterpiece, best quality",
+        "Glamour Shot": "glamour photography, professional studio lighting, magazine cover quality, perfect makeup, styled hair, studio background, fashion photography, detailed face, polished",
+        "Casual/Candid": "candid photography, natural lighting, realistic, casual, authentic moment, unposed, street photography, detailed face, 4k",
+        "Maximum Likeness": "extremely detailed face, perfect likeness, accurate facial features, photorealistic portrait, celebrity lookalike, recognizable, identical features, same person, exact match, hyperdetailed face, studio portrait, 8k uhd, sharp focus",
     }
     
     CLOTHING_OPTIONS = {
         "Default/Dressed": "",
-        "Nude": ", completely nude, naked, bare skin, full nudity, nipples visible, anatomically correct, artistic nude, uncensored",
-        "Topless": ", topless, bare breasts, no shirt, exposed chest, nipples visible",
-        "Lingerie": ", wearing sexy lingerie, lace underwear, bralette, panties, garter belt, stockings, seductive",
-        "Bikini": ", wearing bikini, two piece swimsuit, beach, toned body, wet skin",
-        "Sheer/See-Through": ", wearing sheer see-through clothing, transparent fabric, nipples visible through clothes",
-        "Evening Gown": ", wearing elegant evening gown, formal dress, red carpet style",
-        "Casual": ", casual outfit, jeans and top, relaxed style",
-        "Athletic Wear": ", wearing athletic clothes, sports bra, yoga pants, workout gear, toned body",
-        "Swimsuit One-Piece": ", wearing one piece swimsuit, beach, model pose",
-        "Red Carpet": ", red carpet outfit, designer dress, glamorous, jewelry, styled hair",
-        "Business Attire": ", professional business attire, blazer, sophisticated",
+        "Nude": ", completely nude, naked, bare skin, full frontal nudity, nipples visible, anatomically correct nude, artistic nude photography, uncensored, no clothes, exposed body",
+        "Topless": ", topless, bare breasts exposed, no shirt, bare chest, nipples visible, half nude",
+        "Lingerie": ", wearing sexy lingerie, lace bra and panties, garter belt, stockings, seductive pose, intimate apparel, sheer lace",
+        "Bikini": ", wearing small bikini, two piece swimsuit, beach setting, toned body visible, wet skin, swimwear model",
+        "Micro Bikini": ", wearing micro bikini, extremely small swimsuit, string bikini, barely covered, revealing swimwear",
+        "Sheer/See-Through": ", wearing sheer see-through clothing, transparent fabric, nipples visible through clothes, revealing outfit",
+        "Evening Gown": ", wearing elegant evening gown, formal dress, red carpet style, designer dress, glamorous",
+        "Casual": ", casual outfit, jeans and top, relaxed style, everyday clothes",
+        "Athletic Wear": ", wearing athletic clothes, sports bra and shorts, yoga pants, workout gear, toned body visible, gym outfit",
+        "Swimsuit One-Piece": ", wearing one piece swimsuit, beach, model pose, swimwear",
+        "Red Carpet": ", red carpet outfit, designer dress, glamorous, jewelry, styled hair, formal event",
+        "Business Attire": ", professional business attire, blazer and skirt, sophisticated, office wear",
+        "Bodysuit": ", wearing tight bodysuit, form-fitting, catsuit, skintight",
         "Custom": "",
     }
+    
+    # Comprehensive negative prompt for quality
+    NEGATIVE_PROMPT = "deformed, distorted, disfigured, bad anatomy, wrong anatomy, extra limbs, missing limbs, floating limbs, mutated hands, extra fingers, missing fingers, fused fingers, too many fingers, long neck, mutation, poorly drawn face, poorly drawn hands, bad proportions, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, cross-eyed, blurry, low quality, jpeg artifacts, signature, watermark, username, artist name, bad-hands-5, easynegative, ng_deepnegative, bad face, ugly face, wrong face, different person, different face, not the same person, unrecognizable, wrong identity, bad likeness, inaccurate features"
     
     @classmethod
     def INPUT_TYPES(cls):
@@ -373,16 +378,20 @@ class CelebritySelectorV2:
             }
         }
     
-    RETURN_TYPES = ("STRING", "STRING")
-    RETURN_NAMES = ("positive_prompt", "celebrity_name")
+    RETURN_TYPES = ("STRING", "STRING", "STRING")
+    RETURN_NAMES = ("positive_prompt", "negative_prompt", "celebrity_name")
     FUNCTION = "generate"
     CATEGORY = "Mason/Characters"
     
     def generate(self, celebrity, quality, clothing, additional_details=""):
         prompt_parts = []
         
-        # Add quality
+        # Add quality prefix with likeness emphasis
         prompt_parts.append(self.QUALITY_PRESETS[quality])
+        
+        # Add the celebrity name explicitly for LoRA/embedding matching
+        celeb_name = celebrity.lower().replace(" ", "_").replace("(", "").replace(")", "").replace("/", "_")
+        prompt_parts.append(f"{celebrity}")
         
         # Add celebrity details
         prompt_parts.append(self.CELEBRITIES[celebrity])
@@ -391,12 +400,12 @@ class CelebritySelectorV2:
         if clothing != "Default/Dressed" and clothing != "Custom":
             prompt_parts.append(self.CLOTHING_OPTIONS[clothing])
         
-        # Add custom
+        # Add custom details
         if additional_details.strip():
             prompt_parts.append(additional_details.strip())
         
         final_prompt = ", ".join(filter(None, prompt_parts))
-        return (final_prompt, celebrity)
+        return (final_prompt, self.NEGATIVE_PROMPT, celebrity)
 
 
 # Backwards compatibility
@@ -408,5 +417,6 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MasonCelebritySelectorV2": "⭐ Celebrity Selector V2 (200+ People)",
+    "MasonCelebritySelectorV2": "⭐ Celebrity Selector V2 (250+ People)",
 }
+

@@ -461,30 +461,38 @@ class AnimeCharacterSelectorV2:
     }
     
     QUALITY_PRESETS = {
-        "Ultra Detailed": "masterpiece, best quality, ultra detailed, extremely detailed face, perfect anatomy, 8k uhd, photorealistic, intricate details, sharp focus, professional lighting, volumetric lighting, ray tracing, subsurface scattering",
-        "High Quality": "masterpiece, best quality, highly detailed, perfect anatomy, sharp focus, beautiful, professional",
-        "Anime Style": "masterpiece, best quality, anime style, detailed anime face, beautiful anime art, vibrant colors, clean lines",
-        "Semi-Realistic": "masterpiece, best quality, semi-realistic, detailed, beautiful, realistic anime, 3d render quality",
-        "Standard": "high quality, detailed, good anatomy",
+        "Ultra Detailed": "masterpiece, best quality, ultra detailed, extremely detailed face, perfect anatomy, 8k uhd, intricate details, sharp focus, professional lighting, volumetric lighting, ray tracing, subsurface scattering, accurate character design, perfect likeness, recognizable character, iconic appearance",
+        "High Quality Anime": "masterpiece, best quality, highly detailed, perfect anatomy, sharp focus, beautiful anime art, professional, vibrant colors, accurate character, recognizable",
+        "Anime Style": "masterpiece, best quality, anime style, detailed anime face, beautiful anime art, vibrant saturated colors, clean crisp lines, cel shaded, anime key visual, accurate character design",
+        "Semi-Realistic": "masterpiece, best quality, semi-realistic, detailed, beautiful, realistic anime, 3d render quality, accurate features, recognizable character",
+        "Cartoon Style": "cartoon style, animated, clean lines, vibrant colors, cel shaded, best quality, detailed, accurate character design, recognizable",
+        "Maximum Accuracy": "extremely detailed, perfect character likeness, accurate character design, recognizable iconic character, same character, exact match, canonical appearance, official art style, perfect anatomy, masterpiece, best quality, 8k uhd",
     }
     
     CLOTHING_OPTIONS = {
         "Canon/Default": "",
-        "Nude": ", completely nude, naked, bare skin, nipples visible, full body nudity, uncensored, anatomically correct",
-        "Topless": ", topless, bare breasts, nipples visible, no top, exposed chest",
-        "Lingerie": ", wearing sexy lingerie, lace bra and panties, garter belt, stockings, seductive pose",
-        "Bikini": ", wearing bikini, swimsuit, beach, wet skin, summer",
-        "Micro Bikini": ", wearing micro bikini, string bikini, barely covered, extreme swimwear",
-        "See-Through": ", wearing see-through clothing, transparent fabric, nipples visible through clothes",
-        "Bunny Suit": ", wearing playboy bunny suit, rabbit ears, fishnet stockings, bow tie collar",
-        "Maid Bikini": ", wearing bikini maid outfit, frilly apron, revealing maid costume",
-        "School Uniform": ", wearing japanese school uniform, sailor uniform, pleated skirt",
-        "Gym Clothes": ", wearing tight gym clothes, sports bra, yoga pants, athletic wear",
-        "Dress Formal": ", wearing elegant formal dress, evening gown, sophisticated",
-        "Latex/Leather": ", wearing tight latex suit, leather outfit, shiny material, dominatrix",
-        "Traditional": ", wearing traditional cultural clothing, kimono, hanbok, cheongsam",
+        "Nude": ", completely nude, naked, bare skin, nipples visible, full body nudity, uncensored, anatomically correct anime, exposed body",
+        "Topless": ", topless, bare breasts exposed, nipples visible, no top, bare chest, half nude",
+        "Lingerie": ", wearing sexy lingerie, lace bra and panties, garter belt, stockings, seductive pose, intimate apparel",
+        "Bikini": ", wearing bikini, swimsuit, beach scene, wet skin, summer, swimwear",
+        "Micro Bikini": ", wearing micro bikini, string bikini, barely covered, extreme revealing swimwear",
+        "See-Through": ", wearing see-through clothing, transparent fabric, nipples visible through clothes, sheer outfit",
+        "Bunny Suit": ", wearing playboy bunny suit, bunny ears, fishnet stockings, bow tie collar, bunny girl costume",
+        "Maid Bikini": ", wearing bikini maid outfit, frilly apron only, revealing maid costume, skimpy maid",
+        "Maid Outfit": ", wearing maid outfit, maid dress, frilly apron, maid headdress, serving",
+        "School Uniform": ", wearing japanese school uniform, sailor fuku, pleated skirt, school girl",
+        "Gym Clothes": ", wearing tight gym clothes, sports bra, buruma shorts, athletic wear, sporty",
+        "Dress Formal": ", wearing elegant formal dress, evening gown, sophisticated, ballroom",
+        "Latex/Leather": ", wearing tight latex suit, leather outfit, shiny material, dominatrix style, skintight",
+        "Traditional/Kimono": ", wearing traditional kimono, japanese clothing, obi sash, elegant traditional",
+        "Chinese Dress": ", wearing chinese dress, cheongsam, qipao, side slit, mandarin collar",
+        "Bodysuit": ", wearing tight bodysuit, form-fitting, plugsuit, skintight suit",
+        "Armor": ", wearing armor, fantasy armor, battle outfit, warrior",
         "Custom": "",
     }
+    
+    # Comprehensive negative prompt for anime/cartoon
+    NEGATIVE_PROMPT = "deformed, distorted, disfigured, bad anatomy, wrong anatomy, extra limbs, missing limbs, floating limbs, mutated hands, extra fingers, missing fingers, fused fingers, too many fingers, long neck, mutation, poorly drawn face, poorly drawn hands, bad proportions, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, cross-eyed, blurry, low quality, jpeg artifacts, signature, watermark, username, artist name, wrong character, different character, off-model, inaccurate design, wrong colors, wrong hair color, wrong eye color, wrong outfit, unrecognizable"
     
     @classmethod
     def INPUT_TYPES(cls):
@@ -500,8 +508,8 @@ class AnimeCharacterSelectorV2:
             }
         }
     
-    RETURN_TYPES = ("STRING", "STRING")
-    RETURN_NAMES = ("positive_prompt", "character_name")
+    RETURN_TYPES = ("STRING", "STRING", "STRING")
+    RETURN_NAMES = ("positive_prompt", "negative_prompt", "character_name")
     FUNCTION = "generate"
     CATEGORY = "Mason/Characters"
     
@@ -509,10 +517,13 @@ class AnimeCharacterSelectorV2:
         # Build prompt
         prompt_parts = []
         
-        # Add quality prefix
+        # Add quality prefix with accuracy emphasis
         prompt_parts.append(self.QUALITY_PRESETS[quality])
         
-        # Add character details
+        # Add character name explicitly for recognition
+        prompt_parts.append(f"{character}")
+        
+        # Add detailed character description
         prompt_parts.append(self.CHARACTERS[character])
         
         # Add clothing modification
@@ -524,7 +535,7 @@ class AnimeCharacterSelectorV2:
             prompt_parts.append(additional_details.strip())
         
         final_prompt = ", ".join(filter(None, prompt_parts))
-        return (final_prompt, character)
+        return (final_prompt, self.NEGATIVE_PROMPT, character)
 
 
 # Keep backwards compatibility with old node name
@@ -536,5 +547,6 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MasonAnimeCharacterSelectorV2": "🎌 Character Selector V2 (300+ Anime/Cartoon)",
+    "MasonAnimeCharacterSelectorV2": "🎌 Character Selector V2 (260+ Anime/Cartoon)",
 }
+
