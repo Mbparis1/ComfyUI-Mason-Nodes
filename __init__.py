@@ -715,6 +715,12 @@ from .sampler_nodes import NODE_DISPLAY_NAME_MAPPINGS as SAMPLER_DISPLAY_MAPPING
 NODE_CLASS_MAPPINGS.update(SAMPLER_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(SAMPLER_DISPLAY_MAPPINGS)
 
+# Import Custom Scheduler Nodes (Custom noise schedules and hybrid samplers)
+from .custom_scheduler_nodes import NODE_CLASS_MAPPINGS as SCHED_MAPPINGS
+from .custom_scheduler_nodes import NODE_DISPLAY_NAME_MAPPINGS as SCHED_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(SCHED_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(SCHED_DISPLAY_MAPPINGS)
+
 # Import NSFW Enhancement Nodes (Actions, Anatomy, Expressions, Styles, Quality)
 from .nsfw_enhancement_nodes import NODE_CLASS_MAPPINGS as NSFW_MAPPINGS
 from .nsfw_enhancement_nodes import NODE_DISPLAY_NAME_MAPPINGS as NSFW_DISPLAY_MAPPINGS
