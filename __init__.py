@@ -672,3 +672,21 @@ from .celebrity_character_nodes import NODE_CLASS_MAPPINGS as CELEB_CHAR_MAPPING
 from .celebrity_character_nodes import NODE_DISPLAY_NAME_MAPPINGS as CELEB_CHAR_DISPLAY_MAPPINGS
 NODE_CLASS_MAPPINGS.update(CELEB_CHAR_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(CELEB_CHAR_DISPLAY_MAPPINGS)
+
+# Import Masterpiece Builder nodes
+from .masterpiece_builder_nodes import NODE_CLASS_MAPPINGS as MASTERPIECE_MAPPINGS
+from .masterpiece_builder_nodes import NODE_DISPLAY_NAME_MAPPINGS as MASTERPIECE_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(MASTERPIECE_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(MASTERPIECE_DISPLAY_MAPPINGS)
+
+# Import Art Style nodes (Famous Artists, Color Grading, Lighting, Composition)
+from .art_style_nodes import NODE_CLASS_MAPPINGS as ART_STYLE_MAPPINGS
+from .art_style_nodes import NODE_DISPLAY_NAME_MAPPINGS as ART_STYLE_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(ART_STYLE_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(ART_STYLE_DISPLAY_MAPPINGS)
+
+# Import Detail Perfection nodes (Anatomy, Details, Poses, Environment)
+from .detail_perfection_nodes import NODE_CLASS_MAPPINGS as DETAIL_PERF_MAPPINGS
+from .detail_perfection_nodes import NODE_DISPLAY_NAME_MAPPINGS as DETAIL_PERF_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(DETAIL_PERF_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(DETAIL_PERF_DISPLAY_MAPPINGS)
