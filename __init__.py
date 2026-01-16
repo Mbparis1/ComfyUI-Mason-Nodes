@@ -709,6 +709,12 @@ from .utility_nodes import NODE_DISPLAY_NAME_MAPPINGS as UTILITY_DISPLAY_MAPPING
 NODE_CLASS_MAPPINGS.update(UTILITY_MAPPINGS)
 NODE_DISPLAY_NAME_MAPPINGS.update(UTILITY_DISPLAY_MAPPINGS)
 
+# Import Custom Sampler Nodes (Full KSampler replacements)
+from .sampler_nodes import NODE_CLASS_MAPPINGS as SAMPLER_MAPPINGS
+from .sampler_nodes import NODE_DISPLAY_NAME_MAPPINGS as SAMPLER_DISPLAY_MAPPINGS
+NODE_CLASS_MAPPINGS.update(SAMPLER_MAPPINGS)
+NODE_DISPLAY_NAME_MAPPINGS.update(SAMPLER_DISPLAY_MAPPINGS)
+
 # Import NSFW Enhancement Nodes (Actions, Anatomy, Expressions, Styles, Quality)
 from .nsfw_enhancement_nodes import NODE_CLASS_MAPPINGS as NSFW_MAPPINGS
 from .nsfw_enhancement_nodes import NODE_DISPLAY_NAME_MAPPINGS as NSFW_DISPLAY_MAPPINGS
