@@ -167,6 +167,7 @@ class ProfessionalLighting:
     SETUPS = {
         # Studio Lighting
         "Rembrandt": "Rembrandt lighting, triangle of light on cheek, dramatic, portrait classic",
+        "Rembrandt Portrait": "Rembrandt lighting, triangle of light on cheek, dramatic, portrait classic, studio portrait",
         "Butterfly": "butterfly lighting, shadow under nose, glamour, beauty photography",
         "Loop": "loop lighting, soft shadow from nose, flattering, portrait",
         "Split": "split lighting, half face lit, dramatic, moody, artistic",
@@ -239,6 +240,7 @@ class CompositionGuide:
         "Asymmetry": "asymmetrical balance, dynamic tension, interesting",
         "Layers": "layered composition, foreground midground background, depth",
         "Pattern Break": "pattern with focal point break, attention grabbing",
+        "Portrait Close-Up": "close-up portrait composition, face focus, intimate framing",
     }
     
     PERSPECTIVES = {
@@ -250,6 +252,7 @@ class CompositionGuide:
         "Worm's Eye": "worm's eye view, extreme low angle, dramatic",
         "Over Shoulder": "over the shoulder shot, connection, conversation",
         "POV": "point of view shot, first person perspective, immersive",
+        "shallow": "shallow depth of field, background blur, subject isolation",
     }
     
     @classmethod

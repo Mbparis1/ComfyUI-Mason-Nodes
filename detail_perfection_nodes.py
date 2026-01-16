@@ -125,6 +125,8 @@ class DetailEnhancer:
         "Sharp Focus": "razor sharp focus, crisp details, no blur",
         "Film Grain": "subtle film grain, cinematic texture, analog feel",
         "HDR": "HDR, high dynamic range, detailed highlights and shadows",
+        "skin": "detailed skin texture, realistic pores, natural skin detail",
+        "True": "enhanced quality, detailed rendering, high fidelity",
     }
     
     @classmethod
