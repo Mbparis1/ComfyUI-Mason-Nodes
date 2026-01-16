@@ -332,6 +332,97 @@ class CelebritySelectorV2:
         "39daph": "39daph, woman, dark hair, brown eyes, korean canadian heritage, petite figure, age mid 20s, artist streamer, artistic edgy",
         "Sydeon": "sydeon, woman, dark hair, brown eyes, black american features, slender figure, age late 20s, twitch streamer offlinetv, gamer personality",
         "Lily Pichu": "lily pichu, woman, long dark hair, brown eyes, asian heritage, very petite figure, age early 30s, twitch streamer artist, cute voice anime aesthetic",
+        
+        # ============================================
+        # K-POP IDOLS
+        # ============================================
+        "Jennie (BLACKPINK)": "jennie kim blackpink, woman, dark brown or blonde hair varies, cat-like eyes brown, korean features, petite slender figure, age late 20s, kpop idol, fierce sexy, fashion icon",
+        "Lisa (BLACKPINK)": "lalisa manobal lisa blackpink, woman, long blonde or various hair, brown eyes, thai features, tall slender dancer figure, age late 20s, kpop idol, powerful dancer, model beauty",
+        "Rosé (BLACKPINK)": "park chaeyoung rose blackpink, woman, long blonde or pink hair, brown eyes, korean australian, slender figure, age late 20s, kpop idol, angelic voice, elegant",
+        "Jisoo (BLACKPINK)": "kim jisoo blackpink, woman, long dark brown hair, brown eyes, classic korean beauty, slender figure, age late 20s, kpop idol actress, visual, traditional beauty",
+        "IU": "lee jieun iu, woman, long brown or black hair, brown eyes, korean features, petite slender figure, age early 30s, korean singer actress, innocent look, national sweetheart",
+        "Irene (Red Velvet)": "bae joohyun irene red velvet, woman, long dark hair varies, brown eyes, perfect korean features, slender figure, age early 30s, kpop idol, legendary visual",
+        "Tzuyu (TWICE)": "chou tzuyu twice, woman, long dark hair, brown eyes, taiwanese features, tall slender figure, age mid 20s, kpop idol, elegant tall beauty",
+        "Wonyoung": "jang wonyoung, woman, long dark hair often styled, brown eyes, korean features, very tall slender figure, age late teens, kpop idol ive, doll-like, elegant",
+        "Karina (aespa)": "yoo jimin karina aespa, woman, dark or colored hair, brown eyes, korean features, tall slender figure, age early 20s, kpop idol, ai concept, fierce beautiful",
+        "Winter (aespa)": "kim minjeong winter aespa, woman, varies hair color, brown eyes, korean features, slender figure, age early 20s, kpop idol, innocent cute",
+        
+        # ============================================
+        # MORE ACTRESSES - CLASSIC & CURRENT
+        # ============================================
+        "Monica Bellucci": "monica bellucci, woman, long dark brown hair, brown eyes, italian features, curvaceous voluptuous figure, age 40s-50s depicted, italian actress, timeless beauty, sensual",
+        "Salma Hayek": "salma hayek, woman, long dark brown hair, brown eyes, mexican heritage, very curvaceous busty figure, age 50s, actress, latina bombshell, hourglass",
+        "Sofia Vergara": "sofia vergara, woman, long brown hair, brown eyes, colombian features, very curvaceous busty figure, age 50s, modern family actress, colombian bombshell",
+        "Jennifer Love Hewitt": "jennifer love hewitt, woman, long dark brown hair, brown eyes, fair skin, curvy busty figure, age 40s, actress, girl next door curves",
+        "Megan Good": "megan good, woman, long dark hair, brown eyes, black american features, curvy figure, age early 40s, actress, beautiful black woman",
+        "Rashida Jones": "rashida jones, woman, long dark hair, brown eyes, mixed black white heritage, slender figure, age late 40s, actress, natural beauty",
+        "Hannah Waddingham": "hannah waddingham, woman, long blonde hair, blue eyes, british tall figure, statuesque, age late 40s, ted lasso actress, powerful presence",
+        "Juno Temple": "juno temple, woman, long blonde hair, blue eyes, british petite figure, fair skin, age mid 30s, ted lasso actress, pixie-like",
+        "Florence Pugh": "florence pugh, woman, short or medium blonde hair, green eyes, british, curvy petite figure, age late 20s, oppenheimer actress, bold beautiful",
+        "Ana de Armas": "ana de armas, woman, long brown hair, green hazel eyes, cuban heritage, slender figure, age mid 30s, bond girl actress, exotic beauty",
+        "Eiza Gonzalez": "eiza gonzalez, woman, long dark hair, brown eyes, mexican heritage, slender fit figure, age early 30s, actress, latina beauty",
+        "Aubrey Plaza": "aubrey plaza, woman, long dark hair, brown eyes, puerto rican heritage, slender figure, age late 30s, parks and rec actress, deadpan beauty",
+        "Elizabeth Olsen": "elizabeth olsen, woman, long strawberry blonde hair, blue-green eyes, fair skin, slender figure, age mid 30s, scarlet witch actress, natural beauty",
+        "Hailee Steinfeld": "hailee steinfeld, woman, long dark brown hair, hazel eyes, fair skin, slender figure, age late 20s, actress singer, girl next door",
+        "Samara Weaving": "samara weaving, woman, blonde hair, brown eyes, australian, slender figure, age early 30s, actress, striking features",
+        "Margaret Qualley": "margaret qualley, woman, long dark hair, blue eyes, tall slender figure, fair skin, age late 20s, actress model, elegant dancer",
+        "Daisy Ridley": "daisy ridley, woman, brown hair, hazel eyes, british, slender fit figure, fair skin, age early 30s, star wars rey, natural beauty",
+        "Emilia Clarke": "emilia clarke, woman, dark brown hair, blue-green eyes, british petite, slender figure, age late 30s, game of thrones daenerys, expressive",
+        "Nathalie Emmanuel": "nathalie emmanuel, woman, long curly dark hair, brown eyes, british black heritage, slender figure, age mid 30s, game of thrones missandei, natural curls",
+        
+        # ============================================
+        # MORE ADULT PERFORMERS - NEWER
+        # ============================================
+        "Violet Myers": "violet myers, woman, long dark hair, brown eyes, mixed german filipino heritage, very busty curvy natural figure, age mid 20s, adult performer, exotic curves",
+        "Savannah Bond": "savannah bond, woman, long blonde hair, blue eyes, australian, tall athletic busty figure, age late 20s, adult performer, aussie blonde bombshell",
+        "Blake Blossom": "blake blossom, woman, long brown hair, blue eyes, fair skin, very busty natural figure tall, age early 20s, adult performer, natural beauty curves",
+        "Coco Lovelock": "coco lovelock, woman, red hair, blue eyes, very petite small figure, fair skin, age early 20s, adult performer, tiny redhead",
+        "Kenzie Reeves": "kenzie reeves, woman, blonde hair, blue eyes, very petite small figure, fair skin, age mid 20s, adult performer, tiny blonde",
+        "Vanna Bardot": "vanna bardot, woman, brown hair, brown eyes, petite figure, fair skin, age early 20s, adult performer, girl next door",
+        "Vina Sky": "vina sky, woman, long dark hair, brown eyes, vietnamese heritage, very petite small figure, age mid 20s, adult performer, tiny asian",
+        "Aria Lee": "aria lee, woman, dark hair, brown eyes, korean heritage, petite figure, age mid 20s, adult performer, cute asian",
+        "Avery Cristy": "avery cristy, woman, blonde hair, blue eyes, petite busty figure, age early 20s, adult performer, busty blonde teen",
+        "Lily Lou": "lily lou, woman, brown hair, brown eyes, thick curvy figure, age early 20s, adult performer, thick curves",
+        "Kazumi": "kazumi, woman, long dark hair, brown eyes, japanese heritage, petite curvy figure, tattoos, age late 20s, adult performer influencer, tattooed asian",
+        "Baby Alien": "baby alien, woman, blonde hair, blue eyes, very petite small figure under 5 feet, age 20s, adult performer, famously tiny, pocket-sized",
+        "Sophie Rain": "sophie rain, woman, dark hair, brown eyes, petite figure, age early 20s, rising content creator, viral spiderman",
+        
+        # ============================================
+        # SPORTS FIGURES
+        # ============================================
+        "Paige Spiranac": "paige spiranac, woman, long blonde hair, blue eyes, athletic curvy figure, fair skin, age late 20s, golfer influencer, sporty bombshell",
+        "Alex Morgan": "alex morgan, woman, long brown hair, brown eyes, athletic slender toned figure, fair skin, age mid 30s, soccer player, athlete beauty",
+        "Simone Biles": "simone biles, woman, dark hair often with color, brown eyes, black american features, extremely petite muscular gymnast figure, age late 20s, olympian, powerful tiny athlete",
+        "Olivia Dunne": "livvy dunne olivia dunne, woman, long blonde hair, blue eyes, slender athletic gymnast figure, fair skin, age early 20s, lsu gymnast influencer, tiktok famous",
+        "McKayla Maroney": "mckayla maroney, woman, long brown hair, brown eyes, athletic curvy figure, age mid 20s, former olympian gymnast, not impressed meme, grown up beauty",
+        
+        # ============================================
+        # CLASSIC BEAUTIES / VINTAGE
+        # ============================================
+        "Marilyn Monroe": "marilyn monroe, woman, platinum blonde hair iconic, blue eyes, fair skin, hourglass curvy figure, 1950s aesthetic, classic hollywood icon, red lips, beauty mark",
+        "Brigitte Bardot": "brigitte bardot, woman, long blonde hair, blue eyes, french features, slender curvy figure, 1960s aesthetic, french actress, sex symbol, pouty lips",
+        "Raquel Welch": "raquel welch, woman, long brown hair, brown eyes, tan skin, curvaceous hourglass figure, 1960s-70s aesthetic, one million years bc bikini icon",
+        "Sophia Loren": "sophia loren, woman, long brown hair, brown eyes, italian features, voluptuous curvy figure, classic hollywood, italian goddess",
+        "Jayne Mansfield": "jayne mansfield, woman, platinum blonde hair, blue eyes, extremely curvaceous busty figure, 1950s aesthetic, classic bombshell, hourglass extreme",
+        "Betty Page": "bettie page, woman, black hair signature bangs, blue eyes, fair skin, pinup curvy figure, 1950s pinup queen, iconic poses, vintage aesthetic",
+        
+        # ============================================
+        # ROYALTY / SOCIALITES
+        # ============================================
+        "Kate Middleton": "kate middleton catherine princess of wales, woman, long brown hair, green eyes, british elegant, slender figure, age early 40s, royal, sophisticated class",
+        "Meghan Markle": "meghan markle duchess of sussex, woman, long dark brown hair, brown eyes, mixed race heritage, slender figure, age early 40s, royal actress, american princess",
+        "Paris Hilton": "paris hilton, woman, long blonde hair, blue eyes, fair skin, slender figure, age early 40s, socialite heiress, 2000s icon, thats hot",
+        "Nicole Richie": "nicole richie, woman, long brown hair, brown eyes, slender petite figure, age early 40s, socialite, simple life era",
+        
+        # ============================================
+        # INTERNATIONAL STARS
+        # ============================================
+        "Deepika Padukone": "deepika padukone, woman, long dark hair, brown eyes, indian features, tall slender elegant figure, age late 30s, bollywood actress, indian beauty",
+        "Priyanka Chopra": "priyanka chopra, woman, long dark hair, brown eyes, indian features, slender figure, age early 40s, bollywood actress miss world, indian international star",
+        "Alia Bhatt": "alia bhatt, woman, long dark hair varies, brown eyes, indian petite features, slender petite figure, age late 20s, bollywood actress, cute indian star",
+        "Fan Bingbing": "fan bingbing, woman, long black hair, dark eyes, chinese features, slender elegant figure, age early 40s, chinese actress, porcelain beauty",
+        "Dilraba Dilmurat": "dilraba dilmurat, woman, long dark hair, brown eyes, uyghur chinese features, slender figure, age early 30s, chinese actress, exotic eurasian beauty",
+        "Gal Gadot": "gal gadot, woman, long dark brown hair, brown eyes, israeli tall slender figure, age late 30s, wonder woman actress, tall exotic beauty",
     }
     
     QUALITY_PRESETS = {

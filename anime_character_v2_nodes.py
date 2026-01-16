@@ -458,6 +458,109 @@ class AnimeCharacterSelectorV2:
         # ============================================
         "Daphne Blake": "daphne blake scooby doo, young woman, long red-orange hair with purple headband, violet-blue eyes, purple dress, danger-prone, beautiful fashionable, mystery inc",
         "Velma Dinkley": "velma dinkley scooby doo, young woman, short brown bob hair, brown eyes behind thick glasses, orange turtleneck, red pleated skirt, genius detective, jinkies, cute nerdy",
+        
+        # ============================================
+        # GENSHIN IMPACT
+        # ============================================
+        "Raiden Shogun": "raiden shogun ei genshin impact, woman, long purple hair with braid, purple eyes, elegant archon, electro vision, kimono-like outfit, calm powerful expression, inazuma ruler",
+        "Keqing": "keqing genshin impact, young woman, purple twin tails, purple eyes, liyue yuheng, electro vision, elegant chinese outfit, determined expression",
+        "Ganyu": "ganyu genshin impact, young woman, long blue hair with horns, golden eyes, adeptus half-qilin, cryo vision, floral outfit, gentle expression",
+        "Hu Tao": "hu tao genshin impact, young woman, long brown hair with red tips, red flower eyes, wangsheng funeral director, pyro vision, playful mischievous expression",
+        "Yae Miko": "yae miko genshin impact, woman, long pink hair with fox ears, wise pink eyes, guuji of grand narukami shrine, electro vision, seductive cunning",
+        "Shenhe": "shenhe genshin impact, young woman, long white hair, icy blue eyes, adeptus disciple, cryo vision, ethereal cold beauty",
+        "Yelan": "yelan genshin impact, woman, short dark blue hair, teal eyes, liyue intelligence, hydro vision, seductive spy aesthetic, dice earrings",
+        "Eula": "eula genshin impact, young woman, long pale blue hair, golden eyes, lawrence clan, cryo claymore, elegant noble outfit, tsundere",
+        "Mona": "mona genshin impact, young woman, long blue hair with twin tails, purple eyes, astrologer, hydro vision, revealing bodysuit, confident",
+        "Lisa": "lisa genshin impact, woman, short curly purple hair, green eyes, librarian witch, electro vision, revealing witch outfit, ara ara personality",
+        "Jean": "jean genshin impact, woman, long blonde hair in ponytail, blue eyes, acting grand master, anemo vision, knight outfit, responsible beauty",
+        "Kuki Shinobu": "kuki shinobu genshin impact, young woman, green hair with mask, green eyes, arataki gang deputy, electro vision, ninja outfit, capable",
+        
+        # ============================================
+        # HONKAI STAR RAIL
+        # ============================================
+        "Kafka": "kafka honkai star rail, woman, long purple hair, heterochromia eyes red and gold, stellaron hunter, mysterious alluring, elegant suit",
+        "Silver Wolf": "silver wolf honkai star rail, young woman, grey-white hair with purple tips, yellow eyes, hacker gamer girl, hoodie, playful cocky",
+        "Himeko": "himeko honkai star rail, woman, long red hair, amber eyes, astral express navigator, mature elegant, red dress",
+        "Seele": "seele honkai star rail, young woman, purple bob hair, purple eyes, butterfly theme, cute yet deadly, determined",
+        "Fu Xuan": "fu xuan honkai star rail, young woman, long brown hair with ornate headdress, red eyes, divination master, petite powerful, xianzhou luofu",
+        "Jingliu": "jingliu honkai star rail, woman, long white hair with blindfold, sealed eyes, former sword champion, ice powers, tragic beauty",
+        
+        # ============================================
+        # BLUE ARCHIVE
+        # ============================================
+        "Asuna (Blue Archive)": "asuna ichinose blue archive, young woman, long blonde hair with red ribbon, red eyes, c&c club, seductive student, revealing outfit",
+        "Karin": "karin kakudate blue archive, young woman, long pink hair, blue eyes, justice task force, student soldier, serious beauty",
+        "Hoshino": "hoshino takanashi blue archive, young woman, short grey-blue hair, sleepy blue eyes, abydos student, lazy but skilled, small and cute",
+        "Aru": "aru rikuhachima blue archive, young woman, long blonde hair with horns headband, red eyes, problem solver 68 leader, self-proclaimed villain, chuunibyou",
+        
+        # ============================================
+        # AZUR LANE
+        # ============================================
+        "Atago (Azur Lane)": "atago azur lane, woman, long black hair with dog ears, golden eyes, takao-class cruiser, ara ara onee-san, revealing kimono",
+        "Taihou": "taihou azur lane, woman, long black hair, red eyes, aircraft carrier, yandere obsessive, revealing outfit, very large bust",
+        "Formidable": "formidable azur lane, woman, long silver-white hair with black bow, blue eyes, illustrious-class, elegant gothic, twintails",
+        "Shinano": "shinano azur lane, woman, long white hair with fox ears and tails, sleepy purple eyes, aircraft carrier, shrine maiden outfit, largest ship",
+        
+        # ============================================
+        # PERSONA SERIES
+        # ============================================
+        "Ann Takamaki": "ann takamaki persona 5, young woman, long blonde wavy hair with pigtails, blue eyes, panther thief, red latex catsuit, model student",
+        "Makoto Niijima": "makoto niijima persona 5, young woman, short brown hair with braid, red eyes, queen thief, student council president, serious biker aesthetic",
+        "Futaba Sakura": "futaba sakura persona 5, young woman, long orange hair, brown eyes behind glasses, navigator hacker, gamer girl, petite otaku",
+        "Haru Okumura": "haru okumura persona 5, young woman, short fluffy brown hair, brown eyes, noir thief, gentle rich girl, pink aesthetic",
+        "Rise Kujikawa": "rise kujikawa persona 4, young woman, reddish-brown hair in twintails, brown eyes, idol risette, cheerful flirty, orange outfit",
+        "Mitsuru Kirijo": "mitsuru kirijo persona 3, woman, long red hair, red eyes, student council president, ice persona, elegant mature",
+        
+        # ============================================
+        # FINAL FANTASY
+        # ============================================
+        "Aerith Gainsborough": "aerith gainsborough final fantasy 7, young woman, long brown hair with pink bow, green eyes, flower girl, pink dress, gentle healer",
+        "Cloud (Female)": "female cloud strife genderswap final fantasy 7, young woman, spiky blonde hair, blue mako eyes, soldier buster sword, serious beautiful",
+        "Tifa Lockhart": "tifa lockhart final fantasy 7, young woman, long black hair, red-brown eyes, martial artist bartender, white tank top, large bust athletic",
+        "Yuna": "yuna final fantasy 10, young woman, short brown hair, heterochromia blue and green eyes, summoner, traditional sendian dress, gentle",
+        "Lightning": "lightning claire farron final fantasy 13, woman, pink hair, blue eyes, l'cie soldier, stoic serious, guardian corps uniform",
+        "Rikku": "rikku final fantasy 10, young woman, blonde hair with braids and headband, green swirl eyes, al bhed thief, revealing yellow bikini outfit, cheerful",
+        
+        # ============================================
+        # CLASSIC ANIME WAIFUS
+        # ============================================
+        "Asuka Langley": "asuka langley soryu evangelion, young woman, long orange-red hair, blue eyes, eva pilot plugsuit, tsundere fiery, german japanese",
+        "Misato Katsuragi": "misato katsuragi evangelion, woman, long purple hair, brown eyes, nerv captain, mature sexy, red jacket, beer lover",
+        "CC (Code Geass)": "cc code geass, woman, long green hair, golden-amber eyes, immortal witch, pizza lover, mysterious seductive",
+        "Kallen Stadtfeld": "kallen stadtfeld code geass, young woman, short red hair, blue eyes, guren pilot, fiery rebel, revealing bunny suit or pilot suit",
+        "Yoruichi Shihouin": "yoruichi shihouin bleach, woman, long purple hair, golden cat eyes, former captain, dark-skinned, athletic sexy, flash goddess",
+        "Rangiku Matsumoto": "rangiku matsumoto bleach, woman, long wavy orange hair, blue eyes, lieutenant, very curvaceous busty, lazy glamorous",
+        "Nelliel": "nelliel tu odelschwanck nel bleach, woman, long teal-green hair, hazel eyes, former espada, athletic curvy, hollow mask remnant",
+        "Erza Scarlet": "erza scarlet fairy tail, woman, long scarlet red hair, brown eyes, requip mage, armor or bunny suit, strong beautiful",
+        "Mirajane Strauss": "mirajane strauss fairy tail, woman, long white hair, blue eyes, she-devil takeover, model beautiful, revealing outfits, sweet but deadly",
+        "Lucy Heartfilia": "lucy heartfilia fairy tail, young woman, long blonde hair usually in side ponytail, brown eyes, celestial wizard, curvy busty, blue outfit",
+        
+        # ============================================
+        # MORE DISNEY / PIXAR
+        # ============================================
+        "Megara": "megara hercules disney, young woman, long dark purple hair in ponytail, violet eyes, greek woman, purple dress, sarcastic seductive",
+        "Esmeralda": "esmeralda hunchback of notre dame disney, young woman, long black wavy hair, green eyes, romani dancer, tan skin, curvy beautiful, red dress",
+        "Pocahontas": "pocahontas disney, young woman, long black hair flowing, brown eyes, native american princess, tan skin, athletic, one with nature",
+        "Moana": "moana disney, young woman, long dark curly hair, brown eyes, polynesian voyager, tan skin, athletic, red outfit with island patterns",
+        "Rapunzel": "rapunzel tangled disney, young woman, extremely long blonde magical hair, large green eyes, princess tower, pink dress, barefoot, innocent",
+        "Elsa": "elsa frozen disney, young woman, platinum blonde hair in braid, blue eyes, ice queen, pale skin, blue ice dress, powerful elegant",
+        "Anna": "anna frozen disney, young woman, strawberry blonde hair with white streak, blue eyes, princess of arendelle, freckles, warm personality, green dress",
+        "Merida": "merida brave disney pixar, young woman, wild curly red hair, blue eyes, scottish princess, freckles, green dress, archer rebellious",
+        "Raya": "raya and the last dragon disney, young woman, long black hair, brown eyes, southeast asian warrior, athletic, skilled fighter, strong",
+        "Mirabel Madrigal": "mirabel madrigal encanto disney, young woman, curly black hair with glasses, brown eyes, colombian, curvy, green dress, no powers but special",
+        "Isabela Madrigal": "isabela madrigal encanto disney, young woman, long black hair with flowers, brown eyes, colombian beauty, perfect graceful, flower powers, purple dress",
+        
+        # ============================================
+        # MORE MODERN ANIME
+        # ============================================
+        "Power (Chainsaw Man)": "power chainsaw man, young woman, long blonde messy hair with red horns, yellow eyes, blood fiend, chaotic feral, fang tooth, flat chested",
+        "Makima": "makima chainsaw man, woman, long red-brown hair worn in braids, yellow ringed eyes, control devil, professional suit, manipulative seductive, mysterious",
+        "Reze": "reze chainsaw man, young woman, short dark purple hair, purple eyes, bomb devil hybrid, cute cafe worker disguise, explosive personality",
+        "Himeno": "himeno chainsaw man, woman, short dark hair with eyepatch, one brown eye, public safety, cigarette smoker, seductive older woman, ghost devil contract",
+        "Yor Forger": "yor forger spy x family, woman, long black hair, red eyes, assassin thorn princess, red dress or combat outfit, elegant deadly, kind mother",
+        "Marin Kitagawa": "marin kitagawa my dress up darling, young woman, long blonde hair with pink tips, pink eyes, gyaru makeup, cosplayer, curvy, energetic friendly",
+        "Mai Sakurajima": "mai sakurajima bunny girl senpai, young woman, long black hair, blue-purple eyes, actress bunny suit, elegant beautiful, tsundere",
+        "Rio Futaba": "rio futaba bunny girl senpai, young woman, short dark hair, brown eyes glasses, science girl, quiet intelligent, modest figure",
     }
     
     QUALITY_PRESETS = {
