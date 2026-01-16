@@ -7,7 +7,33 @@ These can fully replace the standard ComfyUI KSampler
 import torch
 import comfy.samplers
 import comfy.sample
+import comfy.utils
 import latent_preview
+
+
+def common_ksampler_mason(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent, denoise=1.0, disable_noise=False, start_step=None, last_step=None, force_full_denoise=False):
+    """Common sampler function that properly handles latent preparation - matches ComfyUI's implementation."""
+    latent_image = latent["samples"]
+    latent_image = comfy.sample.fix_empty_latent_channels(model, latent_image)
+
+    if disable_noise:
+        noise = torch.zeros(latent_image.size(), dtype=latent_image.dtype, layout=latent_image.layout, device="cpu")
+    else:
+        batch_inds = latent["batch_index"] if "batch_index" in latent else None
+        noise = comfy.sample.prepare_noise(latent_image, seed, batch_inds)
+
+    noise_mask = None
+    if "noise_mask" in latent:
+        noise_mask = latent["noise_mask"]
+
+    callback = latent_preview.prepare_callback(model, steps)
+    disable_pbar = not comfy.utils.PROGRESS_BAR_ENABLED
+    samples = comfy.sample.sample(model, noise, steps, cfg, sampler_name, scheduler, positive, negative, latent_image,
+                                  denoise=denoise, disable_noise=disable_noise, start_step=start_step, last_step=last_step,
+                                  force_full_denoise=force_full_denoise, noise_mask=noise_mask, callback=callback, disable_pbar=disable_pbar, seed=seed)
+    out = latent.copy()
+    out["samples"] = samples
+    return (out, )
 
 
 class MasonKSamplerFull:
@@ -68,21 +94,7 @@ class MasonKSamplerFull:
             sampler_name = p["sampler"]
             scheduler = p["scheduler"]
         
-        # Perform sampling - exact same as standard KSampler
-        samples = comfy.sample.sample(
-            model, 
-            seed, 
-            steps, 
-            cfg, 
-            sampler_name, 
-            scheduler, 
-            positive, 
-            negative, 
-            latent_image["samples"],
-            denoise=denoise
-        )
-        
-        return ({"samples": samples},)
+        return common_ksampler_mason(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=denoise)
 
 
 class MasonKSamplerAdvanced:
@@ -148,25 +160,7 @@ class MasonKSamplerAdvanced:
         if add_noise == "disable":
             disable_noise = True
         
-        # Perform advanced sampling
-        samples = comfy.sample.sample(
-            model,
-            noise_seed,
-            steps,
-            cfg,
-            sampler_name,
-            scheduler,
-            positive,
-            negative,
-            latent_image["samples"],
-            denoise=1.0,
-            disable_noise=disable_noise,
-            start_step=start_at_step,
-            last_step=end_at_step,
-            force_full_denoise=force_full_denoise
-        )
-        
-        return ({"samples": samples},)
+        return common_ksampler_mason(model, noise_seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=1.0, disable_noise=disable_noise, start_step=start_at_step, last_step=end_at_step, force_full_denoise=force_full_denoise)
 
 
 class MasonSmartSampler:
@@ -238,14 +232,12 @@ class MasonSmartSampler:
     def sample(self, model, positive, negative, latent_image, preset, seed, denoise=1.0):
         p = self.PRESETS[preset]
         
-        samples = comfy.sample.sample(
-            model, seed, p["steps"], p["cfg"], p["sampler"], p["scheduler"],
-            positive, negative, latent_image["samples"], denoise=denoise
-        )
+        result = common_ksampler_mason(model, seed, p["steps"], p["cfg"], p["sampler"], p["scheduler"],
+                                        positive, negative, latent_image, denoise=denoise)
         
         settings_str = f"Preset: {preset} | Steps: {p['steps']} | CFG: {p['cfg']} | Sampler: {p['sampler']} | Scheduler: {p['scheduler']}"
         
-        return ({"samples": samples}, settings_str)
+        return (result[0], settings_str)
 
 
 class MasonHorrorSampler:
@@ -278,10 +270,8 @@ class MasonHorrorSampler:
     
     def sample(self, model, positive, negative, latent_image, intensity, seed):
         s = self.INTENSITY[intensity]
-        samples = comfy.sample.sample(model, seed, s["steps"], s["cfg"], s["sampler"], 
-                                       s["scheduler"], positive, negative, 
-                                       latent_image["samples"], denoise=1.0)
-        return ({"samples": samples},)
+        return common_ksampler_mason(model, seed, s["steps"], s["cfg"], s["sampler"], 
+                                      s["scheduler"], positive, negative, latent_image, denoise=1.0)
 
 
 class MasonNSFWSampler:
@@ -314,10 +304,8 @@ class MasonNSFWSampler:
     
     def sample(self, model, positive, negative, latent_image, content_type, seed):
         s = self.CONTENT_TYPE[content_type]
-        samples = comfy.sample.sample(model, seed, s["steps"], s["cfg"], s["sampler"],
-                                       s["scheduler"], positive, negative,
-                                       latent_image["samples"], denoise=1.0)
-        return ({"samples": samples},)
+        return common_ksampler_mason(model, seed, s["steps"], s["cfg"], s["sampler"],
+                                      s["scheduler"], positive, negative, latent_image, denoise=1.0)
 
 
 class MasonQuickSampler:
@@ -350,10 +338,8 @@ class MasonQuickSampler:
     
     def sample(self, model, positive, negative, latent_image, quality, seed):
         s = self.QUALITY[quality]
-        samples = comfy.sample.sample(model, seed, s["steps"], s["cfg"], s["sampler"],
-                                       s["scheduler"], positive, negative,
-                                       latent_image["samples"], denoise=1.0)
-        return ({"samples": samples},)
+        return common_ksampler_mason(model, seed, s["steps"], s["cfg"], s["sampler"],
+                                      s["scheduler"], positive, negative, latent_image, denoise=1.0)
 
 
 class MasonImg2ImgSampler:
@@ -391,10 +377,8 @@ class MasonImg2ImgSampler:
     
     def sample(self, model, positive, negative, latent_image, modification, seed, cfg=7.0):
         s = self.MODIFICATION[modification]
-        samples = comfy.sample.sample(model, seed, s["steps"], cfg, "dpmpp_2m_sde", "karras",
-                                       positive, negative, latent_image["samples"],
-                                       denoise=s["denoise"])
-        return ({"samples": samples},)
+        return common_ksampler_mason(model, seed, s["steps"], cfg, "dpmpp_2m_sde", "karras",
+                                      positive, negative, latent_image, denoise=s["denoise"])
 
 
 NODE_CLASS_MAPPINGS = {

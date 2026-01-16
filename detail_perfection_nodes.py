@@ -99,6 +99,9 @@ class DetailEnhancer:
         "Jewelry Details": "detailed jewelry, sparkling gems, intricate metalwork, luxury",
         "Leather Details": "detailed leather texture, realistic grain, quality material",
         "Lace Details": "intricate lace details, delicate patterns, transparency",
+        "Silk Details": "smooth silk texture, luxurious sheen, flowing fabric",
+        "Velvet Details": "rich velvet texture, soft pile, deep color depth",
+        "Denim Details": "detailed denim texture, realistic stitching, worn-in look",
         
         # Environmental Details
         "Water Effects": "realistic water, reflections, ripples, wet surfaces, droplets",
@@ -106,6 +109,9 @@ class DetailEnhancer:
         "Smoke Effects": "atmospheric smoke, wisps, volumetric, mysterious",
         "Rain Effects": "rain drops, wet surfaces, reflections, atmospheric",
         "Snow Effects": "snow particles, frost, cold atmosphere, winter",
+        "Fog Effects": "atmospheric fog, misty, depth perception, ethereal",
+        "Dust Particles": "floating dust particles, sunbeam illuminated, atmospheric",
+        "Steam Effects": "rising steam, moisture, warm atmosphere",
         
         # Light Details
         "Light Rays": "god rays, volumetric light beams, atmospheric lighting",
@@ -113,19 +119,75 @@ class DetailEnhancer:
         "Bokeh": "beautiful bokeh, blurred background lights, depth of field",
         "Sparkles": "sparkles and glitter, magical particles, shimmering",
         "Glow": "soft glow effect, ethereal, dreamy atmosphere",
+        "Rim Lighting": "edge lighting, subject separation, dramatic silhouette",
+        "Neon Glow": "vibrant neon glow, colorful light bleeding, cyberpunk",
+        "Candlelight": "warm flickering candlelight, intimate, romantic",
         
-        # Surface Details
-        "Sweat/Wet Skin": "glistening skin, sweat droplets, wet look, shiny",
+        # Skin Details
+        "skin": "detailed skin texture, realistic pores, natural skin detail",
+        "Perfect Skin": "flawless skin, smooth texture, perfect complexion",
+        "Realistic Skin": "ultra-realistic skin, visible pores, subsurface scattering",
+        "Sweaty Skin": "glistening skin, sweat droplets, wet look, shiny",
+        "Oily Skin": "oily skin texture, natural sheen, realistic",
+        "Freckled Skin": "detailed freckles, natural skin markings, realistic",
+        "Tanned Skin": "sun-kissed tan, warm skin tones, healthy glow",
+        "Pale Skin": "porcelain pale skin, smooth, delicate complexion",
+        "Goosebumps": "visible goosebumps, cold skin reaction, detailed",
+        "Veiny Details": "visible veins, realistic blood vessels, detailed anatomy",
+        
+        # Eye Details
+        "Detailed Eyes": "highly detailed eyes, realistic iris patterns, reflective",
+        "Sparkling Eyes": "sparkling bright eyes, catchlights, lively expression",
+        "Bedroom Eyes": "sultry half-lidded eyes, seductive gaze, inviting",
+        "Crying Eyes": "teary eyes, realistic tear drops, emotional",
+        "Eye Makeup": "detailed eye makeup, mascara, eyeshadow, perfect application",
+        
+        # Hair Details
+        "Detailed Hair": "highly detailed hair, strand-level detail, realistic highlights",
+        "Flowing Hair": "flowing hair, dynamic movement, silky strands",
+        "Wet Hair": "wet dripping hair, slicked back, water droplets",
+        "Windswept Hair": "wind-blown hair, dynamic movement, natural",
+        "Messy Hair": "naturally messy hair, bedhead, casual sexy",
+        
+        # Body Details
+        "Muscle Definition": "visible muscle definition, toned body, athletic build",
+        "Soft Body": "soft feminine curves, natural body fat, realistic",
+        "Body Hair": "realistic body hair, natural, detailed",
+        "Abs Definition": "visible abs, defined core muscles, fit",
+        "Collar Bones": "visible collar bones, elegant neck, slender",
+        
+        # NSFW Anatomical Details
+        "Nipple Details": "detailed nipples, realistic areola, natural variation",
+        "Breast Details": "realistic breast shape, natural hang, detailed skin",
+        "Genital Details": "anatomically correct genitals, realistic detail",
+        "Body Fluids": "realistic body fluids, wet, glistening",
+        
+        # Makeup & Beauty
         "Makeup Details": "detailed makeup, perfect application, beauty",
+        "Lipstick Detail": "detailed lipstick, glossy lips, perfect application",
+        "Blush Details": "natural blush, rosy cheeks, realistic makeup",
+        "Nail Details": "detailed manicure, polished nails, perfect",
+        
+        # Tattoo & Body Art
         "Tattoo Details": "detailed tattoos, crisp lines, artistic ink",
-        "Scars/Marks": "realistic scars, beauty marks, character details",
+        "Piercing Details": "detailed piercings, metallic shine, realistic",
+        "Body Paint": "detailed body paint, artistic, colorful",
         
         # Technical Details
         "8K Resolution": "8k uhd, ultra high resolution, extreme detail",
         "Sharp Focus": "razor sharp focus, crisp details, no blur",
         "Film Grain": "subtle film grain, cinematic texture, analog feel",
         "HDR": "HDR, high dynamic range, detailed highlights and shadows",
-        "skin": "detailed skin texture, realistic pores, natural skin detail",
+        "RAW Photo": "RAW photo style, unprocessed look, maximum detail",
+        "Photorealistic": "photorealistic, hyperrealistic, photograph quality",
+        "Cinematic": "cinematic quality, movie still, professional",
+        
+        # Artistic Effects
+        "Oil Painting": "oil painting texture, visible brushstrokes, artistic",
+        "Watercolor": "watercolor effect, soft edges, blended colors",
+        "Pencil Drawing": "detailed pencil strokes, graphite texture, artistic",
+        
+        # Legacy/Compatibility
         "True": "enhanced quality, detailed rendering, high fidelity",
     }
     
