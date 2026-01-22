@@ -254,7 +254,6 @@ class NSFWFetishWearLoRA:
         "harness": "leather harness, body harness, strapped",
         "latex_nurse": "latex nurse outfit, fetish nurse, medical fetish",
         "maid": "french maid outfit, latex maid, sexy maid apron",
-        "schoolgirl": "sexy schoolgirl uniform, plaid skirt, unbuttoned shirt",
         "sheer_lingerie": "sheer lingerie, see-through, transparent, lace",
     }
     

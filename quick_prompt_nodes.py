@@ -6,8 +6,8 @@ No typing needed - just select options from menus
 class QuickPersonBuilder:
     """Build a person prompt with simple dropdowns - no typing needed"""
     
-    GENDERS = ["woman", "man", "female", "male", "girl", "boy", "person"]
-    AGES = ["young", "20s", "30s", "40s", "mature", "elderly", "teen", "adult"]
+    GENDERS = ["woman", "man", "female", "male", "person"]
+    AGES = ["young adult", "20s", "30s", "40s", "mature", "elderly", "adult"]
     ETHNICITIES = ["caucasian", "asian", "african", "latina", "indian", "middle eastern", "mixed", ""]
     BODY_TYPES = ["slim", "athletic", "curvy", "petite", "average", "muscular", "thick", "fit", ""]
     HAIR_COLORS = ["blonde", "brunette", "black hair", "red hair", "auburn", "silver", "platinum blonde", "dark brown", ""]
