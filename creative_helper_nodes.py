@@ -65,48 +65,6 @@ class EmotionBlender:
             return (f"expression mixing {emotion_1} and {emotion_2}, {e1_weight}% {emotion_1} {e2_weight}% {emotion_2}",)
 
 
-class AgeShifter:
-    """Modify prompts to show person at different ages"""
-    
-    AGES = ["child (8-12)", "teen (13-17)", "young adult (18-25)", "adult (25-35)", 
-            "mature (35-45)", "middle aged (45-55)", "older (55-65)", "elderly (65+)"]
-    
-    @classmethod
-    def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "target_age": (cls.AGES,),
-                "gender": (["woman", "man"],),
-            },
-            "optional": {
-                "add_age_details": ("BOOLEAN", {"default": True}),
-            }
-        }
-    
-    RETURN_TYPES = ("STRING",)
-    RETURN_NAMES = ("age_prompt",)
-    FUNCTION = "shift"
-    CATEGORY = "Mason/Creative Helpers"
-
-    def shift(self, target_age, gender, add_age_details=True):
-        age_details = {
-            "child (8-12)": "young face, innocent expression, smooth skin",
-            "teen (13-17)": "youthful features, teenage appearance",
-            "young adult (18-25)": "youthful, fresh faced, vibrant skin",
-            "adult (25-35)": "mature features, defined face, prime of life",
-            "mature (35-45)": "refined features, subtle maturity, distinguished",
-            "middle aged (45-55)": "mature appearance, wisdom in eyes, slight aging",
-            "older (55-65)": "gracefully aged, fine lines, experienced look",
-            "elderly (65+)": "elderly, wrinkles, white/gray hair, aged skin",
-        }
-        
-        age_num = target_age.split("(")[1].split(")")[0].split("-")[0]
-        base = f"{age_num} year old {gender}"
-        
-        if add_age_details:
-            return (f"{base}, {age_details.get(target_age, '')}",)
-        return (base,)
-
 
 class WeatherAtmosphere:
     """Add weather and atmospheric effects to scenes"""
@@ -396,7 +354,6 @@ class LocationDetailer:
 NODE_CLASS_MAPPINGS = {
     "WildcardRandomizer": WildcardRandomizer,
     "EmotionBlender": EmotionBlender,
-    "AgeShifter": AgeShifter,
     "WeatherAtmosphere": WeatherAtmosphere,
     "TimeOfDayLighting": TimeOfDayLighting,
     "CharacterConsistency": CharacterConsistency,
@@ -409,7 +366,6 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     "WildcardRandomizer": "🎲 Wildcard Randomizer",
     "EmotionBlender": "😊 Emotion Blender",
-    "AgeShifter": "📅 Age Shifter",
     "WeatherAtmosphere": "🌧️ Weather/Atmosphere",
     "TimeOfDayLighting": "🌅 Time of Day Lighting",
     "CharacterConsistency": "👤 Character Consistency",
